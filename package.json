@@ -1,0 +1,17 @@
+{
+  "name": "reservation",
+  "version": "1.0.0",
+  "description": "reservation app v1",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "fares ben slama & zied Jday",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.0.2",
+    "chart.js": "^3.5.0",
+    "font-awesome": "^4.5.0",
+    "jquery": "^3.6.0"
+  }
+}
