@@ -67,12 +67,12 @@ class ReservationModel {
     }
 
 
-    public function DeleteReservationAndLocataire() {
-        $stmt = $this->conn->prepare("SELECT * FROM reservations,locations where locations.id_loc=reservation.id_loc");
-        $stmt->execute([$idReserv]);
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        echo json_encode($result) ;
-     
+    public function DeleteReservations() {
+        $stmt = $this->conn->prepare("DELETE FROM reserv WHERE id_reserv=?");
+        $stmt->execute([$id_reserv]);
+        $stmt2 = $this->conn->prepare("DELETE FROM locataires WHERE id_reserv=?");
+        $stmt2->execute([$id_reserv]);
+        echo json_encode(http_response_code(200));
     }
 
 
