@@ -33,46 +33,68 @@ class ReservationModel {
 
 
     public function getReservations() {
-
-        $stmt = $this->conn->prepare("SELECT* from reservations WHERE id_loc = ? ");
-        $stmt->execute([$id_loc]);
+        $json = file_get_contents('php://input');
+        $data = json_decode($json, true);
+        if(isset($data["id_loc"]) and (intval($data["id_loc"])) ){
+        $stmt = $this->conn->prepare("SELECT* from reservation WHERE id_loc = ? ");
+        $stmt->execute([$data["id_loc"]]);
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         echo json_encode($result);
-     
-    }
-
-    public function InsertReservation() {
-
-        $stmt = $this->conn->prepare("INSERT INTO reservations VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?) ");
-        $stmt->execute([$cin_lo]);
-        echo json_encode(http_response_code(201));
-     
+        }else{
+            http_response_code(401);
+            die();
+        }
     }
 
     public function ArchiverReservation() {
-
-        $stmt = $this->conn->prepare(" UPDATE reservations SET archive_state = ? ");
-        $stmt->execute([$cin_lo]);
+        $json = file_get_contents('php://input');
+        $data = json_decode($json, true);
+        if(isset($data["id_reserv"]) and (intval($data["id_reserv"])) ){
+        $stmt = $this->conn->prepare("UPDATE reservation SET archive_state = ? WHERE id_reserv = ?");
+        $stmt->execute([1,$data["id_reserv"]]);
         echo json_encode(http_response_code(201));
-     
+        }else{
+            http_response_code(401);
+            die();
+        }
     }
 
-
     public function getReservationByLocation() {
+        
         $stmt = $this->conn->prepare("SELECT * FROM reservation,locations where locations.id_loc=reservation.id_loc");
-        $stmt->execute([$idReserv]);
+        $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         echo json_encode($result) ;
      
     }
 
 
-    public function DeleteReservations() {
-        $stmt = $this->conn->prepare("DELETE FROM reserv WHERE id_reserv=?");
-        $stmt->execute([$id_reserv]);
+    public function AddReservation() {
+        $json = file_get_contents('php://input');
+        $data = json_decode($json, true);
+        if (isset($data["id_loc"]) and isset($data["id_groupe"]) and isset($data["datedeb"]) and isset($data["datefin"]) and isset($data["heuredeb"]) and isset($data["jourdeb"]) and isset($data["moisdeb"]) and isset($data["andeb"]) and isset($data["heurefin"]) and isset($data["jourfin"]) and isset($data["moisfin"]) and isset($data["anfin"])){
+        $stmt = $this->conn->prepare("INSERT INTO reservation VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?) ");
+        $stmt->execute([0,$data["id_loc"],$data["id_groupe"],$data["datedeb"],$data["datefin"],$data["heuredeb"],$data["jourdeb"],$data["moisdeb"],$data["andeb"],$data["heurefin"],$data["jourfin"],$data["moisfin"],$data["anfin"],0  ]);
+        echo json_encode(http_response_code(201));
+        }else{
+            http_response_code(401);
+            die();
+        }
+    }
+
+    public function DeleteReservation() {
+        $json = file_get_contents('php://input');
+        $data = json_decode($json, true);
+       if(isset($data["id_reserv"]) and (intval($data["id_reserv"]))){
+        $stmt = $this->conn->prepare("DELETE FROM reservation WHERE id_reserv=?");
+        $stmt->execute([$data["id_reserv"]]);
         $stmt2 = $this->conn->prepare("DELETE FROM locataires WHERE id_reserv=?");
-        $stmt2->execute([$id_reserv]);
+        $stmt2->execute([$data["id_reserv"]]);
         echo json_encode(http_response_code(200));
+    }else{
+        http_response_code(401);
+        die();
+    }
     }
 
 

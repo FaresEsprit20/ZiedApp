@@ -62,10 +62,9 @@ class LocatairesModel {
     public function DeleteLocataire() {
         $json = file_get_contents('php://input');
         $data = json_decode($json, true);
-        if(isset($data["id_loc"]) and (intval($data["id_loc"])) ){
-        $stmt = $this->conn->prepare("DELETE locataires WHERE id_locataire=?");
-        $stmt->execute([$data["id_loc"]]);
-      
+        if(isset($data["id_locataire"]) and (intval($data["id_locataire"])) ){
+        $stmt = $this->conn->prepare("DELETE FROM locataires WHERE id_locataire= ?");
+        $stmt->execute([$data["id_locataire"]]);
         echo json_encode(http_response_code(200)) ;
         }else{
             http_response_code(401);
@@ -73,7 +72,7 @@ class LocatairesModel {
         }
     }
 
-    public function GetLocataireByCin() {
+    public function GetLocatairesByCin() {
 
         $stmt = $this->conn->prepare("SELECT * FROM locataires group by cin");
         $stmt->execute();
