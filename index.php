@@ -110,7 +110,53 @@
   </section>
 
   <!-- End Features Section -->
+
   
+<!-- Start Reservation -->
+
+<section class="reservations" id="reservations">
+  <div class="container-fluid">
+    <div class="special-heading">Réservations</div>
+      <p>Liste des réservations</p>
+  <div class="row">
+  <div class="col col-sm col-lg-2">
+  </div>
+    <div class="col-12 col-sm-12 col-lg-8">
+
+      
+      <div class="products-table mt-5 mb-5">
+        <div class="table-responsive">
+
+          <table class="table">
+            <caption>Liste de production</caption>
+            <thead class="table-dark">
+              <th scope="col">#</th>
+              <th scope="col">Ligne</th>
+              <th scope="col">Produit</th>
+              <th scope="col">Date</th>
+              <th scope="col">Heure</th>
+              <th scope="col">Qte</th>
+            </thead>
+            <tbody id="tbodydaily">
+              
+            </tbody>
+          </table>
+      
+        </div>
+
+    </div>
+  </div>
+  <div class="col col-sm col-lg-2">
+  </div>
+  </div>
+ 
+</section>
+
+<!-- End Reservation-->
+
+
+
+
 
 <!-- Start Products -->
 
