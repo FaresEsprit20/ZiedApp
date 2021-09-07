@@ -29,14 +29,27 @@ class LocatairesModel {
     }
     
 
+    public function AddLocataire() {
+        $json = file_get_contents('php://input');
+        $data = json_decode($json, true);
+        if((isset($data["id_reserv"]) ) and (isset($data["nom"]) and (!intval($data["nom"]))) and (isset($data["prenom"])) and (isset($data["cin"]) ) and (isset($data["rue"])) and (isset($data["codepostal"])) and (isset($data["pays"])) and (isset($data["tel"])) and (isset($data["portable"])) and (isset($data["email"])) and (isset($data["commentaires"]))  ){
+        $stmt = $this->conn->prepare("INSERT INTO locataires VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        $stmt->execute([0,$data["id_reserv"],$data["nom"],$data["prenom"],$data["cin"],$data["rue"],$data["codepostal"],$data["ville"],$data["pays"],$data["tel"],$data["portable"],$data["email"],$data["commentaires"],0]);
+       echo json_encode(http_response_code(201));
+    }else {
+            http_response_code(401);
+            die();
+        }
+    
+    }
 
-
+    
     public function ArchiverLocataire() {
         $json = file_get_contents('php://input');
         $data = json_decode($json, true);
-        if(isset($data["id_loc"]) and (intval($data["id_loc"])) ){
-        $stmt = $this->conn->prepare("UPDATE locataires SET archive_state= ? WHERE id_locataire=?");
-        $stmt->execute([1,$data["id_loc"]]);
+        if(isset($data["id_locataire"]) and (intval($data["id_locataire"])) ){
+        $stmt = $this->conn->prepare("UPDATE locataires SET archiver_state= ? WHERE id_locataire=?");
+        $stmt->execute([1,$data["id_locataire"]]);
         echo json_encode(http_response_code(200)) ;
         }else{
             http_response_code(401);
@@ -72,9 +85,9 @@ class LocatairesModel {
     public function UpdateLocataire() {
         $json = file_get_contents('php://input');
         $data = json_decode($json, true);
-        if((isset($data["id_reserv"]) and (intval($data["id_reserv"]))) and (isset($data["nom"]) and (!intval($data["nom"]))) and (isset($data["prenom"]) and (!intval($data["prenom"])))(isset($data["cin"]) and (!intval($data["cin"])))(isset($data["rue"]) and (!intval($data["rue"]))) and (isset($data["codepostal"]) and (!intval($data["codepostal"]))) and (isset($data["pays"]) and (!intval($data["pays"]))) and (isset($data["tel"]) and (!intval($data["tel"])))  and (isset($data["portable"]) and (!intval($data["portable"]))) and (isset($data["email"]) and (!intval($data["email"]))) and (isset($data["commentaires"]) and (!intval($data["commentaires"]))) and (isset($data["id_locataire"]) and (!intval($data["id_locataire"]))) ){
-        $stmt = $this->conn->prepare("UPDATE locataires SET id_reserv=?,nom=?,prenom=?,cin=?,rue=?,codepostal=?,pays=?,tel=?,portable=?,email=?,commentaires=? WHERE id_locataire=?");
-        $stmt->execute([$data["id_reserv"],$data["nom"],$data["prenom"],$data["cin"],$data["rue"],$data["codepostal"],$data["pays"],$data["tel"],$data["portable"],$data["email"],$data["commentaires"],$data["id_locataire"] ]);
+        if((isset($data["id_reserv"]) and (intval($data["id_reserv"]))) ){
+        $stmt = $this->conn->prepare("UPDATE locataires SET id_reserv=?,nom=?,prenom=?,cin=?,rue=?,codepostal=?,pays=?,ville=?,tel=?,portable=?,email=?,commentaires=? WHERE id_locataire=?");
+        $stmt->execute([$data["id_reserv"],$data["nom"],$data["prenom"],$data["cin"],$data["rue"],$data["codepostal"],$data["pays"],$data["ville"],$data["tel"],$data["portable"],$data["email"],$data["commentaires"],$data["id_locataire"] ]);
         echo json_encode(http_response_code(200)) ;
         }else{
             http_response_code(401);

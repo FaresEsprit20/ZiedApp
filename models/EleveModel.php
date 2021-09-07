@@ -12,6 +12,7 @@ class EleveModel {
     public $nom_eleve;
     public $classe;
     public $num_tel;
+    public $id_groupe;
     public $conn;
     
 
