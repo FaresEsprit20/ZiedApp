@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Sep 07, 2021 at 09:44 PM
+-- Generation Time: Sep 08, 2021 at 11:56 AM
 -- Server version: 5.7.31
 -- PHP Version: 7.3.21
 
@@ -34,9 +34,7 @@ CREATE TABLE IF NOT EXISTS `eleves` (
   `nom_eleve` varchar(255) NOT NULL,
   `classe` varchar(255) NOT NULL,
   `num_tel` varchar(255) NOT NULL,
-  `id_groupe` int(11) NOT NULL,
-  PRIMARY KEY (`code_eleve`),
-  KEY `id_groupe` (`id_groupe`)
+  PRIMARY KEY (`code_eleve`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -49,8 +47,6 @@ DROP TABLE IF EXISTS `groupe`;
 CREATE TABLE IF NOT EXISTS `groupe` (
   `id_groupe` int(11) NOT NULL AUTO_INCREMENT,
   `nom_groupe` varchar(255) NOT NULL,
-  `id_ligne` varchar(255) NOT NULL,
-  `id_prof` varchar(255) NOT NULL,
   `archive_state` smallint(1) DEFAULT '0',
   PRIMARY KEY (`id_groupe`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -69,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `groupe_eleve` (
   `presence` smallint(1) NOT NULL DEFAULT '1',
   `date` date NOT NULL,
   `heure` time NOT NULL,
-  `id_prof` varchar(255) NOT NULL,
+  `nom_prof` varchar(255) NOT NULL,
   PRIMARY KEY (`id_eleve`,`id_groupe`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -169,12 +165,6 @@ INSERT INTO `reservation` (`id_reserv`, `id_loc`, `id_groupe`, `datedeb`, `datef
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `eleves`
---
-ALTER TABLE `eleves`
-  ADD CONSTRAINT `eleves_ibfk_1` FOREIGN KEY (`id_groupe`) REFERENCES `groupe` (`id_groupe`);
 
 --
 -- Constraints for table `locataires`
