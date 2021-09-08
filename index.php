@@ -283,42 +283,42 @@
       <div class="fw-bold">Réservations</div>
       Nombre de réservations
     </div>
-    <span class="badge bg-dark rounded-pill">15</span>
+    <span class="badge bg-primary rounded-pill">15</span>
   </li>
   <li class="list-group-item d-flex justify-content-between align-items-start">
     <div class="ms-2 me-auto">
       <div class="fw-bold">Réservations Archivées</div>
       Nombre de réservations archivées
     </div>
-    <span class="badge bg-dark rounded-pill">0</span>
+    <span class="badge bg-primary rounded-pill">0</span>
   </li>
   <li class="list-group-item d-flex justify-content-between align-items-start">
     <div class="ms-2 me-auto">
       <div class="fw-bold">Locataires</div>
       Nombre de locataires
     </div>
-    <span class="badge bg-dark rounded-pill">15</span>
+    <span class="badge bg-primary rounded-pill">15</span>
   </li>
   <li class="list-group-item d-flex justify-content-between align-items-start">
     <div class="ms-2 me-auto">
       <div class="fw-bold">Locataires</div>
       Nombre de locataires archivés
     </div>
-    <span class="badge bg-dark rounded-pill">5</span>
+    <span class="badge bg-primary rounded-pill">5</span>
   </li>
   <li class="list-group-item d-flex justify-content-between align-items-start">
     <div class="ms-2 me-auto">
       <div class="fw-bold">Groupes</div>
       Nombre de groupes
     </div>
-    <span class="badge bg-dark rounded-pill">8</span>
+    <span class="badge bg-primary rounded-pill">8</span>
   </li>
   <li class="list-group-item d-flex justify-content-between align-items-start">
     <div class="ms-2 me-auto">
       <div class="fw-bold">Groupes</div>
       Nombre de groupes archivés
     </div>
-    <span class="badge bg-dark rounded-pill">8</span>
+    <span class="badge bg-primary rounded-pill">8</span>
   </li>
 </ul>
 
