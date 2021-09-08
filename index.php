@@ -117,7 +117,7 @@
 <section class="reservations" id="reservations">
   <div class="container-fluid">
     <div class="special-heading">Réservations</div>
-      <p>Liste des réservations</p>
+      <p>Créer une réservation</p>
   <div class="row">
   <div class="col col-sm col-lg-2">
   </div>
@@ -131,88 +131,116 @@
 
         <form class="row g-3">
         <div class="col-md-9">
-    <label for="inputState" class="form-label">State</label>
-    <select id="inputState" class="form-select">
-      <option selected>Choose...</option>
-      <option>...</option>
+    <label for="inputSalle" class="form-label">Choisir Salle</label>
+    <select id="inputSalle" class="form-select">
+      <option selected disabled>Salle...</option>
     </select>
   </div>
   <div class="col-md-4">
-    <label for="inputState" class="form-label">State</label>
-    <select id="inputState" class="form-select">
-      <option selected>Choose...</option>
-      <option>...</option>
+    <label for="inputHeure" class="form-label">Début de réservation</label>
+    <select id="inputHeure" class="form-select">
+      <option selected disabled>Heure...</option>
+          <option value="00">00</option>
+          <option value="01">01</option>
+          <option value="02">02</option>
+          <option value="03">03</option>
+          <option value="04">04</option>
+          <option value="05">05</option>
+          <option value="06">06</option>
+          <option value="07">07</option>
+          <option value="08">08</option>
+          <option value="09">09</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
+          <option value="16">16</option>
+          <option value="17">17</option>
+          <option value="18">18</option>
+          <option value="19">19</option>
+          <option value="20">20</option>
+          <option value="21">21</option>
+          <option value="22">22</option>
+          <option value="23">23</option>
     </select>
   </div>
   <div class="col-md-4">
-    <label for="inputState" class="form-label">State</label>
-    <select id="inputState" class="form-select">
-      <option selected>Choose...</option>
-      <option>...</option>
+  <label for="inputJour" style="visibility:hidden" class="form-label">Début de réservation</label>
+    <select id="inputJour" class="form-select">
+      <option selected disabled>Jour...</option>
+          <option value="01">1</option>
+          <option value="02">2</option>
+          <option value="03">3</option>
+          <option value="04">4</option>
+          <option value="05">5</option>
+          <option value="06">6</option>
+          <option value="07">7</option>
+          <option value="08">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
+          <option value="16">16</option>
+          <option value="17">17</option>
+          <option value="18">18</option>
+          <option value="19">19</option>
+          <option value="20">20</option>
+          <option value="21">21</option>
+          <option value="22">22</option>
+          <option value="23">23</option>
+          <option value="24">24</option>
+          <option value="25">25</option>
+          <option value="26">26</option>
+          <option value="27">27</option>
+          <option value="28">28</option>
+          <option value="29">29</option>
+          <option value="30">30</option>
+          <option value="31">31</option>
     </select>
   </div>
   <div class="col-md-4">
-    <label for="inputState" class="form-label">State</label>
-    <select id="inputState" class="form-select">
-      <option selected>Choose...</option>
-      <option>...</option>
+  <label for="inputMois" style="visibility:hidden" class="form-label">Début de réservation</label>
+    <select id="inputMois" class="form-select">
+      <option selected disabled>Mois...</option>
+          <option value="01">Janvier</option>
+          <option value="02">Février</option>
+          <option value="03">Mars</option>
+          <option value="04">Avril</option>
+          <option value="05">Mai</option>
+          <option value="06">Juin</option>
+          <option value="07">Juillet</option>
+          <option value="08">Aout</option>
+          <option value="09">Séptembre</option>
+          <option value="10">Octobre</option>
+          <option value="11">Novembre</option>
+          <option value="12">Décembre</option>
     </select>
   </div>
+
   <div class="col-md-6">
-    <label for="inputState" class="form-label">State</label>
-    <select id="inputState" class="form-select">
-      <option selected>Choose...</option>
-      <option>...</option>
-    </select>
+    <label for="reserv_cin" class="form-label">CIN</label>
+    <input type="text" class="form-control" id="reserv_cin">
   </div>
   <div class="col-md-6">
-    <label for="inputState" class="form-label">State</label>
-    <select id="inputState" class="form-select">
-      <option selected>Choose...</option>
-      <option>...</option>
-    </select>
+    <label for="reserv_groupe" class="form-label">Nom Groupe</label>
+    <input type="text" class="form-control" id="reserv_groupe">
   </div>
-  <div class="col-md-6">
-    <label for="inputEmail4" class="form-label">Email</label>
-    <input type="email" class="form-control" id="inputEmail4">
-  </div>
-  <div class="col-md-6">
-    <label for="inputPassword4" class="form-label">Password</label>
-    <input type="password" class="form-control" id="inputPassword4">
-  </div>
-  <div class="col-12">
-    <label for="inputAddress" class="form-label">Address</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-  </div>
-  <div class="col-12">
-    <label for="inputAddress2" class="form-label">Address 2</label>
-    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-  </div>
-  <div class="col-md-6">
-    <label for="inputCity" class="form-label">City</label>
-    <input type="text" class="form-control" id="inputCity">
-  </div>
-  <div class="col-md-4">
-    <label for="inputState" class="form-label">State</label>
-    <select id="inputState" class="form-select">
-      <option selected>Choose...</option>
-      <option>...</option>
-    </select>
-  </div>
-  <div class="col-md-2">
-    <label for="inputZip" class="form-label">Zip</label>
-    <input type="text" class="form-control" id="inputZip">
-  </div>
+  
+  
   <div class="col-12">
     <div class="form-check">
       <input class="form-check-input" type="checkbox" id="gridCheck">
       <label class="form-check-label" for="gridCheck">
-        Check me out
+        Cochez moi
       </label>
     </div>
   </div>
   <div class="col-12">
-    <button type="submit" class="btn btn-primary">Sign in</button>
+    <button type="submit" class="btn btn-dark">Confirmer Réservation</button>
   </div>
 
 </form>
@@ -237,41 +265,72 @@
 
 <!-- Start Products -->
 
-<section class="products" id="products">
+<section class="reservationsstats" id="reservationsstats">
   <div class="container-fluid">
     <div class="special-heading">Réservations</div>
-      <p>Liste des réservations</p>
+      <p>Statistiques des réservations</p>
   <div class="row">
   <div class="col col-sm col-lg-2">
   </div>
-    <div class="col-12 col-sm-12 col-lg-8">
-
-      
-      <div class="products-table mt-5 mb-5">
-        <div class="table-responsive">
-
-          <table class="table">
-            <caption>Liste de production</caption>
-            <thead class="table-dark">
-              <th scope="col">#</th>
-              <th scope="col">Ligne</th>
-              <th scope="col">Produit</th>
-              <th scope="col">Date</th>
-              <th scope="col">Heure</th>
-              <th scope="col">Qte</th>
-            </thead>
-            <tbody id="tbodydaily">
-              
-            </tbody>
-          </table>
-      
-        </div>
+   
+  <div class="col-12 col-sm-12 col-lg-8">  
+      <div class="reservations-table mt-5 mb-5">
+   
+   
+      <ul class="list-group">
+  <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">Réservations</div>
+      Nombre de réservations
+    </div>
+    <span class="badge bg-dark rounded-pill">15</span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">Réservations Archivées</div>
+      Nombre de réservations archivées
+    </div>
+    <span class="badge bg-dark rounded-pill">0</span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">Locataires</div>
+      Nombre de locataires
+    </div>
+    <span class="badge bg-dark rounded-pill">15</span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">Locataires</div>
+      Nombre de locataires archivés
+    </div>
+    <span class="badge bg-dark rounded-pill">5</span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">Groupes</div>
+      Nombre de groupes
+    </div>
+    <span class="badge bg-dark rounded-pill">8</span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">Groupes</div>
+      Nombre de groupes archivés
+    </div>
+    <span class="badge bg-dark rounded-pill">8</span>
+  </li>
+</ul>
 
     </div>
   </div>
+  
+
   <div class="col col-sm col-lg-2">
   </div>
-  </div>
+
+  <!--End Row -->
+</div>
  
 </section>
 
