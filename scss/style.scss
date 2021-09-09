@@ -211,8 +211,14 @@ body {
 #reservations {
   padding-top: $section-padding;
   padding-bottom: $section-padding;
+  background-color: $section-background;
+
 }
 
+.locatairesView {
+  padding-top: 200px;
+  padding-bottom: 80px;
+}
 
 #features {
   padding-top: $section-padding;
@@ -246,17 +252,6 @@ body {
   padding-bottom: $section-padding;
 
 }
-
-.reservations {
-  padding-top: $section-padding;
-  padding-bottom: $section-padding;
-}
-
-.groupes {
-  padding-top: $section-padding;
-  padding-bottom: $section-padding;
-}
-
 
 
 
