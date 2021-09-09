@@ -441,47 +441,47 @@
    
    
       <ul class="list-group">
-  <li class="list-group-item d-flex justify-content-between align-items-start">
+  <li class="list-group-item d-flex justify-content-between align-items-start list-group-item-action">
     <div class="ms-2 me-auto">
-      <div class="fw-bold">Réservations</div>
+      <div class="fw-bold text-secondary">Réservations</div>
       Nombre de réservations
     </div>
-    <span class="badge bg-primary rounded-pill">15</span>
+    <span style="width:28px;" class="badge bg-primary rounded-pill text-center">15</span>
   </li>
-  <li class="list-group-item d-flex justify-content-between align-items-start">
+  <li class="list-group-item d-flex justify-content-between align-items-start list-group-item-action">
     <div class="ms-2 me-auto">
-      <div class="fw-bold">Réservations Archivées</div>
+      <div class="fw-bold text-secondary">Réservations Archivées</div>
       Nombre de réservations archivées
     </div>
-    <span class="badge bg-primary rounded-pill">0</span>
+    <span style="width:28px;" class="badge bg-primary rounded-pill text-center">0</span>
   </li>
-  <li class="list-group-item d-flex justify-content-between align-items-start">
+  <li class="list-group-item d-flex justify-content-between align-items-start list-group-item-action">
     <div class="ms-2 me-auto">
-      <div class="fw-bold">Locataires</div>
+      <div class="fw-bold text-secondary">Locataires</div>
       Nombre de locataires
     </div>
-    <span class="badge bg-primary rounded-pill">15</span>
+    <span style="width:28px;" class="badge bg-primary rounded-pill text-center">15</span>
   </li>
-  <li class="list-group-item d-flex justify-content-between align-items-start">
-    <div class="ms-2 me-auto">
-      <div class="fw-bold">Locataires</div>
+  <li class="list-group-item d-flex justify-content-between align-items-start list-group-item-action">
+    <div class="ms-2 me-auto ">
+      <div class="fw-bold text-secondary">Locataires</div>
       Nombre de locataires archivés
     </div>
-    <span class="badge bg-primary rounded-pill">5</span>
+    <span style="width:28px;" class="badge bg-primary rounded-pill text-center">5</span>
   </li>
-  <li class="list-group-item d-flex justify-content-between align-items-start">
+  <li class="list-group-item d-flex justify-content-between align-items-start list-group-item-action">
     <div class="ms-2 me-auto">
-      <div class="fw-bold">Groupes</div>
+      <div class="fw-bold text-secondary">Groupes</div>
       Nombre de groupes
     </div>
-    <span class="badge bg-primary rounded-pill">8</span>
+    <span style="width:28px;" class="badge bg-primary rounded-pill text-center">8</span>
   </li>
-  <li class="list-group-item d-flex justify-content-between align-items-start">
+  <li class="list-group-item d-flex justify-content-between align-items-start list-group-item-action">
     <div class="ms-2 me-auto">
-      <div class="fw-bold">Groupes</div>
+      <div class="fw-bold text-secondary" >Groupes</div>
       Nombre de groupes archivés
     </div>
-    <span class="badge bg-primary rounded-pill">8</span>
+    <span style="width:28px;" class="badge bg-primary rounded-pill text-center">8</span>
   </li>
 </ul>
 
