@@ -19,7 +19,7 @@
         <header>
     <nav class="navbar fixed-top navbar-light bg-light" id="navbar">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="index.php">
             <img src="assets/images/logo/logo.jpeg" alt="" width="30" height="24" class="d-inline-block align-text-top">
             Reserv App
           </a>
@@ -53,9 +53,9 @@
           </a>
           <i class="navbar-fa fa fa-archive fa-2x d-inline-block"></i>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Locataires</a></li>
+            <li><a class="dropdown-item" href="locatairesView.php">Locataires</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Réservations</a></li>
+            <li><a class="dropdown-item" href="RéservationsView.php">Réservations</a></li>
           </ul>
         </li>
               <li class="nav-item">

@@ -11287,7 +11287,12 @@ body {
 
 .locatairesView {
   padding-top: 200px;
-  padding-bottom: 80px;
+  padding-bottom: 60px;
+}
+
+.locatairesView {
+  padding-top: 60px;
+  padding-bottom: 60px;
 }
 
 #features {

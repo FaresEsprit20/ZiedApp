@@ -217,7 +217,12 @@ body {
 
 .locatairesView {
   padding-top: 200px;
-  padding-bottom: 80px;
+  padding-bottom: $section-padding;
+}
+
+.locatairesView {
+  padding-top: $section-padding;
+  padding-bottom: $section-padding;
 }
 
 #features {
