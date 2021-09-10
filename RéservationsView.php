@@ -245,69 +245,6 @@
               <td scope="col">Portable</td>
               <td scope="col">Etat</td>
             </tr>
-            <tr>
-            <td scope="col">#</td>
-              <td scope="col">CIN</td>
-              <td scope="col">Nom & Prenom</td>
-              <td scope="col">Ville</td>
-              <td scope="col">Email</td>
-              <td scope="col">Portable</td>
-              <td scope="col">Etat</td>
-            </tr>
-            <tr>
-            <td scope="col">#</td>
-              <td scope="col">CIN</td>
-              <td scope="col">Nom & Prenom</td>
-              <td scope="col">Ville</td>
-              <td scope="col">Email</td>
-              <td scope="col">Portable</td>
-              <td scope="col">Etat</td>
-            </tr>
-            <tr>
-            <td scope="col">#</td>
-              <td scope="col">CIN</td>
-              <td scope="col">Nom & Prenom</td>
-              <td scope="col">Ville</td>
-              <td scope="col">Email</td>
-              <td scope="col">Portable</td>
-              <td scope="col">Etat</td>
-            </tr>
-            <tr>
-            <td scope="col">#</td>
-              <td scope="col">CIN</td>
-              <td scope="col">Nom & Prenom</td>
-              <td scope="col">Ville</td>
-              <td scope="col">Email</td>
-              <td scope="col">Portable</td>
-              <td scope="col">Etat</td>
-            </tr>
-            <tr>
-            <td scope="col">#</td>
-              <td scope="col">CIN</td>
-              <td scope="col">Nom & Prenom</td>
-              <td scope="col">Ville</td>
-              <td scope="col">Email</td>
-              <td scope="col">Portable</td>
-              <td scope="col">Etat</td>
-            </tr>
-            <tr>
-            <td scope="col">#</td>
-              <td scope="col">CIN</td>
-              <td scope="col">Nom & Prenom</td>
-              <td scope="col">Ville</td>
-              <td scope="col">Email</td>
-              <td scope="col">Portable</td>
-              <td scope="col">Etat</td>
-            </tr>
-            <tr>
-            <td scope="col">#</td>
-              <td scope="col">CIN</td>
-              <td scope="col">Nom & Prenom</td>
-              <td scope="col">Ville</td>
-              <td scope="col">Email</td>
-              <td scope="col">Portable</td>
-              <td scope="col">Etat</td>
-            </tr>
             </tbody>
           </table>
       
