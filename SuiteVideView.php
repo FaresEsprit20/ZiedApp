@@ -102,13 +102,13 @@
         <div class="col-md-10">
     <label for="inputSalle" class="form-label">Choisir Salle</label>
     <select id="inputSalle" class="form-select">
-      <option selected disabled>Salle...</option>
+      <option selected disabled value="nil">Salle...</option>
     </select>
   </div>
   <div class="col-md-3">
     <label for="inputHeure" class="form-label">Début de réservation</label>
     <select id="inputHeure" class="form-select">
-      <option selected disabled>Heure...</option>
+      <option selected disabled value="nil">Heure...</option>
           <option value="00">00</option>
           <option value="01">01</option>
           <option value="02">02</option>
@@ -138,7 +138,7 @@
   <div class="col-md-3">
   <label for="inputJour" style="visibility:hidden" class="form-label">Début de réservation</label>
     <select id="inputJour" class="form-select">
-      <option selected disabled>Jour...</option>
+      <option selected disabled value="nil">Jour...</option>
           <option value="01">1</option>
           <option value="02">2</option>
           <option value="03">3</option>
@@ -174,7 +174,7 @@
   <div class="col-md-3">
   <label for="inputMois" style="visibility:hidden" class="form-label">Début de réservation</label>
     <select id="inputMois" class="form-select">
-      <option selected disabled>Mois...</option>
+      <option selected disabled value="nil">Mois...</option>
           <option value="01">Janvier</option>
           <option value="02">Février</option>
           <option value="03">Mars</option>
@@ -192,7 +192,7 @@
   <div class="col-md-3">
   <label for="inputAndeb" style="visibility:hidden" class="form-label">Début de réservation</label>
     <select id="inputAndeb" class="form-select">
-      <option selected disabled>An début...</option>
+      <option selected disabled value="nil">An début...</option>
       <option value="2021">2021</option>
       <option value="2022">2022</option>
       <option value="2023">2023</option>
@@ -204,7 +204,7 @@
   <div class="col-md-3">
     <label for="inputHeureFin" class="form-label">Fin de réservation</label>
     <select id="inputHeureFin" class="form-select">
-      <option selected disabled>Heure...</option>
+      <option selected disabled value="nil">Heure...</option>
           <option value="00">00</option>
           <option value="01">01</option>
           <option value="02">02</option>
@@ -234,7 +234,7 @@
   <div class="col-md-3">
   <label for="inputJourFin" style="visibility:hidden" class="form-label">Fin de réservation</label>
     <select id="inputJourFin" class="form-select">
-      <option selected disabled>Jour...</option>
+      <option selected disabled value="nil">Jour...</option>
           <option value="01">1</option>
           <option value="02">2</option>
           <option value="03">3</option>
@@ -270,7 +270,7 @@
   <div class="col-md-3">
   <label for="inputMoisFin" style="visibility:hidden" class="form-label">Fin de réservation</label>
     <select id="inputMoisFin" class="form-select">
-      <option selected disabled>Mois...</option>
+      <option selected disabled value="nil">Mois...</option>
           <option value="01">Janvier</option>
           <option value="02">Février</option>
           <option value="03">Mars</option>
@@ -288,7 +288,7 @@
   <div class="col-md-3">
   <label for="inputAnFin" style="visibility:hidden" class="form-label">Fin de réservation</label>
     <select id="inputAnFin" class="form-select">
-      <option selected disabled>An début...</option>
+      <option selected disabled value="nil">An début...</option>
       <option value="2021">2021</option>
       <option value="2022">2022</option>
       <option value="2023">2023</option>
@@ -305,7 +305,7 @@
   <div class="col-md-6">
   <label for="inputreservgroup" class="form-label">Groupe</label>
     <select id="inputAreservgroup" class="form-select">
-      <option selected disabled>Sélectionner un groupe...</option>
+      <option selected disabled value="nil">Sélectionner un groupe...</option>
     </select>
   </div>
   

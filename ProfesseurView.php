@@ -158,7 +158,7 @@
         <div class="col-md-8">
   <label for="inputMoisFin" style="visibility:hidden" class="form-label">Identifiant Enseignant</label>
     <select id="inputIdProf" class="form-select">
-      <option selected disabled>ID Prof...</option>
+      <option selected disabled value="nil" value="nil">ID Prof...</option>
     </select>
   </div>
 
