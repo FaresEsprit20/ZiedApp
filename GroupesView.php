@@ -140,10 +140,10 @@
 
 <!-- Start Products -->
 
-<section class="reservationsView" id="reservationsView">
+<section class="GroupesTable" id="GroupeTable">
   <div class="container-fluid">
-    <div class="special-heading">Réservations</div>
-      <p>Voir les Réservations par location</p>
+    <div class="special-heading">Groupes</div>
+      <p>Voir la liste des groupes</p>
   <div class="row">
   <div class="col col-sm col-lg-2">
   </div>
@@ -154,21 +154,11 @@
         <div class="table-responsive">
 
           <table class="table display" id="reservationsDatatable">
-            <caption>Liste des Réservations par location</caption>
+            <caption>Liste des Groupes</caption>
             <thead class="table-dark">
-              <th scope="col">#id_loc</th>
-              <th scope="col">#Nom_salle</th>
-              <th scope="col">#Nom groupe</th>
-              <th scope="col">CIN Locataire</th>
-              <th scope="col">Nom & Prenom</th>
-              <th scope="col">Ville</th>
-              <th scope="col">Email</th>
-              <th scope="col">Portable</th>
-              <th scope="col">Date début Location</th>
-              <th scope="col">Date fin Location</th>
-              <th scope="col">Heure début</th>
-              <th scope="col">Heure fin</th>
-              
+              <th scope="col">#Id_Groupe</th>
+              <th scope="col">#Nom_Groupe</th>
+              <th scope="col">Action</th>
             </thead>
             <tbody id="tbody">
               
