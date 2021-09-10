@@ -84,8 +84,60 @@
 <a id="button-scroll-top"></a>
 
 
+<!-- Start Groupes -->
+
+<section class="groupes" id="groupes">
+  <div class="container-fluid">
+    <div class="special-heading">Groupes</div>
+      <p>Créer un groupe</p>
+  <div class="row">
+  <div class="col col-sm col-lg-2">
+  </div>
+    <div class="col-12 col-sm-12 col-lg-8">
+
+      
+      <div class="products-table mt-5 mb-5">
+        <div class="table-reservations">
 
   
+
+        <form class="row g-3">
+       
+
+  <div class="col-md-8">
+    <label for="nom_groupe" class="form-label">Nom Groupe</label>
+    <input type="text" class="form-control" id="nom_groupe" required>
+  </div>
+  <div class="col-12">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="reservCheck" required>
+      <label class="form-check-label" for="reservCheck">
+        Cochez moi
+      </label>
+    </div>
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-dark">Créer le Groupe</button>
+  </div>
+
+</form>
+
+
+      
+        </div>
+
+    </div>
+  </div>
+  <div class="col col-sm col-lg-2">
+  </div>
+  </div>
+ 
+</section>
+
+<!-- End Groupes -->
+
+
+
 <!-- Start Products -->
 
 <section class="reservationsView" id="reservationsView">
@@ -135,13 +187,6 @@
 
 <!-- End Products -->
 
-
-
-
-
-
-
-</div>
 </main>
 <footer>
     <div class="bg-light">

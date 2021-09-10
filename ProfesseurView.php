@@ -85,7 +85,114 @@
 
 
 
+<!-- Start Professeur -->
+
+<section class="locs" id="locs">
+  <div class="container-fluid">
+    <div class="special-heading">Enseignant</div>
+      <p>Créer un Enseignant</p>
+  <div class="row">
+  <div class="col col-sm col-lg-2">
+  </div>
+    <div class="col-12 col-sm-12 col-lg-8">
+
+      
+      <div class="products-table mt-5 mb-5">
+        <div class="table-reservations">
+
   
+
+        <form class="row g-3">
+       
+
+  <div class="col-md-8">
+    <label for="nom_enseignant" class="form-label">Nom Enseignant</label>
+    <input type="text" class="form-control" id="nom_enseignant" required>
+  </div>
+  <div class="col-12">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="reservCheck" required>
+      <label class="form-check-label" for="reservCheck">
+        Cochez moi
+      </label>
+    </div>
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-dark">Créer Enseignant</button>
+  </div>
+
+</form>
+
+        </div>
+
+    </div>
+  </div>
+  <div class="col col-sm col-lg-2">
+  </div>
+  </div>
+ 
+</section>
+
+<!-- End Professseur -->
+
+
+
+<!-- Start Professeur -->
+
+<section class="locs" id="locs">
+  <div class="container-fluid">
+    <div class="special-heading">Enseignant</div>
+      <p>Modifier un Enseignant</p>
+  <div class="row">
+  <div class="col col-sm col-lg-2">
+  </div>
+    <div class="col-12 col-sm-12 col-lg-8">
+
+      
+      <div class="products-table mt-5 mb-5">
+        <div class="table-reservations">
+
+  
+
+        <form class="row g-3">
+        <div class="col-md-8">
+  <label for="inputMoisFin" style="visibility:hidden" class="form-label">Identifiant Enseignant</label>
+    <select id="inputIdProf" class="form-select">
+      <option selected disabled>ID Prof...</option>
+    </select>
+  </div>
+
+  <div class="col-md-8">
+    <label for="nom_prof" class="form-label">Nom Enseignant</label>
+    <input type="text" class="form-control" id="nom_prof" required>
+  </div>
+  <div class="col-12">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="reservCheck" required>
+      <label class="form-check-label" for="reservCheck">
+        Cochez moi
+      </label>
+    </div>
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-dark">Editer Enseignant</button>
+  </div>
+
+</form>
+
+        </div>
+
+    </div>
+  </div>
+  <div class="col col-sm col-lg-2">
+  </div>
+  </div>
+ 
+</section>
+
+<!-- End Professseur -->
+
+
 <!-- Start Products -->
 
 <section class="reservationsView" id="reservationsView">
@@ -115,7 +222,7 @@
               <th scope="col">Date début Location</th>
               <th scope="col">Date fin Location</th>
               <th scope="col">Heure début</th>
-              <th scope="col">Heure fin</th>
+              <th scope="col">Action</th>
               
             </thead>
             <tbody id="tbody">
@@ -136,12 +243,6 @@
 <!-- End Products -->
 
 
-
-
-
-
-
-</div>
 </main>
 <footer>
     <div class="bg-light">

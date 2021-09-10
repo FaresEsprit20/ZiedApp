@@ -63,7 +63,7 @@
                 <i class="navbar-fa fa fa-area-chart fa-2x d-inline-block"></i>
               </li>
               <li class="nav-item">
-                <a class="nav-link d-inline-block" href="#contact">Suites Vides</a>
+                <a class="nav-link d-inline-block" href="SuiteVideView.php">Suites Vides</a>
                 <i class="navbar-fa fa fa-mail-forward fa-2x d-inline-block"></i>
               </li>
               <li class="nav-item">
@@ -347,11 +347,13 @@
   </div>
 
 <!-- Fin Partie Fin de Réservation -->
-
-  <div class="col-md-6">
-    <label for="reserv_cin" class="form-label">CIN</label>
-    <input type="text" class="form-control" id="reserv_cin">
+<div class="col-md-6">
+  <label for="inputrens" class="form-label">Enseignant</label>
+    <select id="inputens" class="form-select">
+      <option selected disabled>Sélectionner un Enseignant...</option>
+    </select>
   </div>
+
   <div class="col-md-6">
   <label for="inputreservgroup" class="form-label">Groupe</label>
     <select id="inputAreservgroup" class="form-select">
@@ -388,57 +390,8 @@
 <!-- End Reservation-->
 
 
-<!-- Start Groupes -->
-
-<section class="groupes" id="groupes">
-  <div class="container-fluid">
-    <div class="special-heading">Groupes</div>
-      <p>Créer un groupe</p>
-  <div class="row">
-  <div class="col col-sm col-lg-2">
-  </div>
-    <div class="col-12 col-sm-12 col-lg-8">
-
-      
-      <div class="products-table mt-5 mb-5">
-        <div class="table-reservations">
-
-  
-
-        <form class="row g-3">
-       
-
-  <div class="col-md-8">
-    <label for="nom_groupe" class="form-label">Nom Groupe</label>
-    <input type="text" class="form-control" id="nom_groupe">
-  </div>
-  <div class="col-12">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="reservCheck" required>
-      <label class="form-check-label" for="reservCheck">
-        Cochez moi
-      </label>
-    </div>
-  </div>
-  <div class="col-12">
-    <button type="submit" class="btn btn-dark">Créer le Groupe</button>
-  </div>
-
-</form>
 
 
-      
-        </div>
-
-    </div>
-  </div>
-  <div class="col col-sm col-lg-2">
-  </div>
-  </div>
- 
-</section>
-
-<!-- End Reservation-->
 
 
 <!-- Start Products -->
@@ -461,42 +414,49 @@
       <div class="fw-bold text-secondary">Réservations</div>
       Nombre de réservations
     </div>
-    <span style="width:28px;" class="badge bg-primary rounded-pill text-center">15</span>
+    <span style="width:34px;" class="badge bg-primary rounded-pill text-center">15</span>
   </li>
   <li class="list-group-item d-flex justify-content-between align-items-start list-group-item-action">
     <div class="ms-2 me-auto">
       <div class="fw-bold text-secondary">Réservations Archivées</div>
       Nombre de réservations archivées
     </div>
-    <span style="width:28px;" class="badge bg-primary rounded-pill text-center">0</span>
+    <span style="width:34px;" class="badge bg-primary rounded-pill text-center">0</span>
   </li>
   <li class="list-group-item d-flex justify-content-between align-items-start list-group-item-action">
     <div class="ms-2 me-auto">
       <div class="fw-bold text-secondary">Locataires</div>
       Nombre de locataires
     </div>
-    <span style="width:28px;" class="badge bg-primary rounded-pill text-center">15</span>
+    <span style="width:34px;" class="badge bg-primary rounded-pill text-center">15</span>
   </li>
   <li class="list-group-item d-flex justify-content-between align-items-start list-group-item-action">
     <div class="ms-2 me-auto ">
       <div class="fw-bold text-secondary">Locataires</div>
       Nombre de locataires archivés
     </div>
-    <span style="width:28px;" class="badge bg-primary rounded-pill text-center">5</span>
+    <span style="width:34px;" class="badge bg-primary rounded-pill text-center">5</span>
   </li>
   <li class="list-group-item d-flex justify-content-between align-items-start list-group-item-action">
     <div class="ms-2 me-auto">
       <div class="fw-bold text-secondary">Groupes</div>
       Nombre de groupes
     </div>
-    <span style="width:28px;" class="badge bg-primary rounded-pill text-center">8</span>
+    <span style="width:34px;" class="badge bg-primary rounded-pill text-center">8</span>
   </li>
   <li class="list-group-item d-flex justify-content-between align-items-start list-group-item-action">
     <div class="ms-2 me-auto">
       <div class="fw-bold text-secondary" >Groupes</div>
       Nombre de groupes archivés
     </div>
-    <span style="width:28px;" class="badge bg-primary rounded-pill text-center">8</span>
+    <span style="width:34px;" class="badge bg-primary rounded-pill text-center">8</span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-start list-group-item-action">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold text-secondary" >Paiement</div>
+      Pourcentage de personnes payés
+    </div>
+    <span style="width:34px;" class="badge bg-primary rounded-pill text-center">80%</span>
   </li>
 </ul>
 
