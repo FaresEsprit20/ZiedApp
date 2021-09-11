@@ -148,17 +148,21 @@
 
   
 
-        <form class="row g-3">
+        <form class="row g-3" id="createreservation">
         <div class="col-md-10">
     <label for="inputSalle" class="form-label">Choisir Salle</label>
-    <select id="inputSalle" class="form-select">
-      <option selected disabled value="nil">Salle...</option>
+    <select id="inputSalle" class="form-select" required>
+      <option selected  value="nil">Salle...</option>
+      <option   value="nils">Salles...</option>
     </select>
+    <div id="is" style="visibility:hidden">
+      
+    </div>
   </div>
   <div class="col-md-3">
     <label for="inputHeure" class="form-label">Début de réservation</label>
-    <select id="inputHeure" class="form-select">
-      <option selected disabled value="nil">Heure...</option>
+    <select id="inputHeure" class="form-select" required>
+      <option selected  value="nil">Heure...</option>
           <option value="00">00</option>
           <option value="01">01</option>
           <option value="02">02</option>
@@ -184,11 +188,14 @@
           <option value="22">22</option>
           <option value="23">23</option>
     </select>
+    <div id="ih" style="visibility:hidden">
+      
+    </div>
   </div>
   <div class="col-md-3">
   <label for="inputJour" style="visibility:hidden" class="form-label">Début de réservation</label>
-    <select id="inputJour" class="form-select">
-      <option selected disabled value="nil">Jour...</option>
+    <select id="inputJour" class="form-select" required>
+      <option selected  value="nil">Jour...</option>
           <option value="01">1</option>
           <option value="02">2</option>
           <option value="03">3</option>
@@ -220,11 +227,14 @@
           <option value="30">30</option>
           <option value="31">31</option>
     </select>
+    <div id="ij" style="visibility:hidden">
+      
+    </div>
   </div>
   <div class="col-md-3">
   <label for="inputMois" style="visibility:hidden" class="form-label">Début de réservation</label>
-    <select id="inputMois" class="form-select">
-      <option selected disabled value="nil">Mois...</option>
+    <select id="inputMois" class="form-select" required>
+      <option selected  value="nil">Mois...</option>
           <option value="01">Janvier</option>
           <option value="02">Février</option>
           <option value="03">Mars</option>
@@ -238,23 +248,29 @@
           <option value="11">Novembre</option>
           <option value="12">Décembre</option>
     </select>
+    <div id="im" style="visibility:hidden">
+      
+    </div>
   </div>
   <div class="col-md-3">
   <label for="inputAndeb" style="visibility:hidden" class="form-label">Début de réservation</label>
-    <select id="inputAndeb" class="form-select">
-      <option selected disabled value="nil">An début...</option>
+    <select id="inputAndeb" class="form-select" required>
+      <option selected  value="nil">An début...</option>
       <option value="2021">2021</option>
       <option value="2022">2022</option>
       <option value="2023">2023</option>
       <option value="2024">2024</option>  
     </select>
+    <div id="ia" style="visibility:hidden">
+      
+    </div>
   </div>
 
   <!-- Partie Fin de Réservation -->
   <div class="col-md-3">
     <label for="inputHeureFin" class="form-label">Fin de réservation</label>
-    <select id="inputHeureFin" class="form-select">
-      <option selected disabled value="nil" >Heure...</option>
+    <select id="inputHeureFin" class="form-select" required>
+      <option selected  value="nil" >Heure...</option>
           <option value="00">00</option>
           <option value="01">01</option>
           <option value="02">02</option>
@@ -280,11 +296,14 @@
           <option value="22">22</option>
           <option value="23">23</option>
     </select>
+    <div id="ihf" style="visibility:hidden">
+      
+    </div>
   </div>
   <div class="col-md-3">
   <label for="inputJourFin" style="visibility:hidden" class="form-label">Fin de réservation</label>
-    <select id="inputJourFin" class="form-select">
-      <option selected disabled value="nil">Jour...</option>
+    <select id="inputJourFin" class="form-select"required>
+      <option selected  value="nil" >Jour...</option>
           <option value="01">1</option>
           <option value="02">2</option>
           <option value="03">3</option>
@@ -316,11 +335,14 @@
           <option value="30">30</option>
           <option value="31">31</option>
     </select>
+    <div id="ijf" style="visibility:hidden">
+      
+    </div>
   </div>
   <div class="col-md-3">
   <label for="inputMoisFin" style="visibility:hidden" class="form-label">Fin de réservation</label>
     <select id="inputMoisFin" class="form-select">
-      <option selected disabled value="nil">Mois...</option>
+      <option selected  value="nil" required>Mois...</option>
           <option value="01">Janvier</option>
           <option value="02">Février</option>
           <option value="03">Mars</option>
@@ -334,31 +356,43 @@
           <option value="11">Novembre</option>
           <option value="12">Décembre</option>
     </select>
+    <div id="imf" style="visibility:hidden">
+      
+    </div>
   </div>
   <div class="col-md-3">
   <label for="inputAnFin" style="visibility:hidden" class="form-label">Fin de réservation</label>
-    <select id="inputAnFin" class="form-select">
-      <option selected disabled value="nil">An début...</option>
+    <select id="inputAnFin" class="form-select" required>
+      <option selected  value="nil">An début...</option>
       <option value="2021">2021</option>
       <option value="2022">2022</option>
       <option value="2023">2023</option>
       <option value="2024">2024</option>  
     </select>
+    <div id="iaf" style="visibility:hidden">
+      
+    </div>
   </div>
 
 <!-- Fin Partie Fin de Réservation -->
 <div class="col-md-6">
-  <label for="inputrens" class="form-label">Enseignant</label>
-    <select id="inputens" class="form-select">
-      <option selected disabled value="nil">Sélectionner un Enseignant...</option>
+  <label for="inputens" class="form-label">Enseignant</label>
+    <select id="inputens" class="form-select" required>
+      <option selected  value="nil">Sélectionner un Enseignant...</option>
     </select>
+    <div id="iens" style="visibility:hidden">
+      
+    </div>
   </div>
 
   <div class="col-md-6">
   <label for="inputreservgroup" class="form-label">Groupe</label>
-    <select id="inputAreservgroup" class="form-select">
-      <option selected disabled value="nil">Sélectionner un groupe...</option>
+    <select id="inputreservgroup" class="form-select" required>
+      <option selected  value="nil">Sélectionner un groupe...</option>
     </select>
+    <div id="igrp" style="visibility:hidden">
+      
+    </div>
   </div>
   
   <div class="col-12">
@@ -579,7 +613,7 @@
     <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="assets/js/main-script.js" ></script> 
     <script src="assets/js/Index/dashboard.js" ></script> 
-
+ 
     
 
 
