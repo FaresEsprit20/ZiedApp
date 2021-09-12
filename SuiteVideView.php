@@ -40,7 +40,7 @@
                 <i class="navbar-fa fa fa-pencil-square fa-2x d-inline-block"></i>
               </li>
               <li class="nav-item">
-                <a class="nav-link d-inline-block" href="#reservations">Réservations</a>
+                <a class="nav-link d-inline-block" href="RéservationsView.php">Réservations</a>
                 <i class="navbar-fa fa fa-product-hunt fa-2x d-inline-block"></i>
               </li>
               <li class="nav-item">
