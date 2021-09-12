@@ -78,6 +78,15 @@ class ReservationModel {
      
     }
 
+    public function getReservationByLocationAndLocataire() {
+        
+        $stmt = $this->conn->prepare("SELECT * FROM reservation,locations,locataires where (locations.id_loc=reservation.id_loc) and (reservation.id_locataire=locataires.id_locataire)");
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode($result) ;
+     
+    }
+
 
     public function AddReservation() {
         $json = file_get_contents('php://input');

@@ -2,7 +2,53 @@
 
 $(document).ready(function(){
 
-    $('#locationsDatatable').DataTable();
+
+    //get dashboard data
+    $.ajax({    
+        type: "GET",
+        url: "http://localhost/Zied/server/Api/Reservations/getReservationByLocationAndLocataire.php",                     
+        dataType: "json",               
+        success: function(data){      
+          var jsonData = data;
+          console.log("Reservations data loaded ....");
+          console.log(jsonData);
+
+          for(item of jsonData){
+              var row = "<tr>";
+              row+="<td>"+item.id_reserv+"</td>";
+              row+="<td>"+item.ID_loc+"</td>";
+              row+="<td>"+item.id_locataire+"</td>";
+              row+="<td>"+item.cin_loc+"</td>";
+              row+="<td>"+item.id_groupe+"</td>";
+              row+="<td>"+item.cin+"</td>";
+              row+="<td>"+item.nom + " "+item.prenom+"</td>";
+              row+="<td>"+item.ville+"</td>";
+              row+="<td>"+item.email+"</td>";
+              row+="<td>"+item.portable+"</td>";
+              row+="<td>"+item.datedeb+"</td>";
+              row+="<td>"+item.datefin+"</td>";
+              row+="<td>"+item.heuredeb+"</td>";
+              row+="<td>"+item.heurefin+"</td>";
+              row+="</td>";
+
+            $("#tbodyReservations").append(row);
+          }
+          $('#reservationsDatatable').DataTable();
+        
+
+
+
+        },
+        error: function (data) { alert("Server Error"); }
+    });
+
+
+
+
+
+
+
+
 
 
 //get Reservation Form data

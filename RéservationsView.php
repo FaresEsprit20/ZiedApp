@@ -419,7 +419,9 @@
           <table class="table display" id="reservationsDatatable">
             <caption>Liste des Réservations par location</caption>
             <thead class="table-dark">
+              <th scope="col">#id_reserv</th>
               <th scope="col">#id_loc</th>
+              <th scope="col">#id_locataire</th>
               <th scope="col">#Nom_salle</th>
               <th scope="col">#Nom groupe</th>
               <th scope="col">CIN Locataire</th>
@@ -433,7 +435,7 @@
               <th scope="col">Heure fin</th>
               
             </thead>
-            <tbody id="tbody">
+            <tbody id="tbodyReservations">
               
             </tbody>
           </table>
