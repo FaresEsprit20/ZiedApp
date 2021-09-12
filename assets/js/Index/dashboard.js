@@ -447,7 +447,7 @@ console.log("object" +JSON.stringify(object));
                console.log(data);
                 // show response from the php script.
                 var myModal = $("#reservmodal");
-               
+                myModal.modal("show");
                
            }
          });
