@@ -415,7 +415,9 @@ $.ajax({
             // show response from the php script.
             var myModal = $("#reservmodal");
             myModal.modal("show");
-           
+            document.getElementById("createreservation").reset();
+            
+            setTimeout(function(){ location.replace("index.php"); }, 6000);
        }
      });
 
