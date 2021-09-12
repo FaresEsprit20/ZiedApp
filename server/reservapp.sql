@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Sep 12, 2021 at 05:29 PM
+-- Generation Time: Sep 12, 2021 at 09:25 PM
 -- Server version: 5.7.31
 -- PHP Version: 7.3.21
 
@@ -49,17 +49,18 @@ CREATE TABLE IF NOT EXISTS `groupe` (
   `nom_groupe` varchar(255) NOT NULL,
   `archive_state` smallint(1) DEFAULT '0',
   PRIMARY KEY (`id_groupe`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `groupe`
 --
 
 INSERT INTO `groupe` (`id_groupe`, `nom_groupe`, `archive_state`) VALUES
-(1, 'TWIN 5', 0),
 (2, '5 Sim1', 1),
 (3, '4 NIDS 1', 1),
-(4, '6 BI 6', 0);
+(4, '6 BI 6', 0),
+(6, '5 EPI IA', 0),
+(7, ' TWIN 5', 0);
 
 -- --------------------------------------------------------
 
@@ -160,19 +161,15 @@ CREATE TABLE IF NOT EXISTS `reservation` (
   PRIMARY KEY (`id_reserv`),
   KEY `reservation_ibfk_1` (`id_loc`),
   KEY `id_locataire` (`id_locataire`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `reservation`
 --
 
 INSERT INTO `reservation` (`id_reserv`, `id_loc`, `id_locataire`, `id_groupe`, `datedeb`, `datefin`, `heuredeb`, `jourdeb`, `moisdeb`, `andeb`, `heurefin`, `jourfin`, `moisfin`, `anfin`, `archive_state`) VALUES
-(2, 4, 9, '4Twin 6', '2021-08-05', '2021-08-06', '10', '05', '08', 2021, '18', '06', '08', 2022, 0),
-(3, 4, 9, '4Twin 6', '2021-08-05', '2021-08-06', '10', '05', '08', 2021, '18', '06', '08', 2022, 0),
-(4, 4, 9, '4Twin 6', '2021-08-05', '2021-08-06', '10', '05', '08', 2021, '18', '06', '08', 2022, 0),
-(5, 4, 9, '4Twin 6', '2021-08-05', '2021-08-06', '10', '05', '08', 2021, '18', '06', '08', 2022, 0),
-(15, 4, 9, '4', '2021-10-02', '2023-03-02', '01', '02', '10', 2021, '00', '02', '03', 2023, 0),
-(17, 4, 9, '6 BI 6', '2021-02-01', '2022-02-03', '02', '01', '02', 2021, '02', '03', '02', 2022, 0);
+(18, 1, 8, '6 BI 6', '2023-11-03', '2024-02-02', '01', '03', '11', 2023, '01', '02', '02', 2024, 0),
+(28, 1, 8, '6 BI 6', '2021-02-01', '2022-02-03', '00', '01', '02', 2021, '02', '03', '02', 2022, 1);
 
 --
 -- Constraints for dumped tables
