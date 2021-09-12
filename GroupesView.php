@@ -45,7 +45,7 @@
                 <i class="navbar-fa fa fa-product-hunt fa-2x d-inline-block"></i>
               </li>
               <li class="nav-item">
-                <a class="nav-link d-inline-block" href="#groupes">Groupes</a>
+                <a class="nav-link d-inline-block" href="GroupesView.php">Groupes</a>
                 <i class="navbar-fa fa fa-users fa-2x d-inline-block"></i>
               </li>
               <li class="nav-item dropdown">
@@ -56,7 +56,9 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="locatairesView.php">Locataires</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="RéservationsView.php">Réservations</a></li>
+            <li><a class="dropdown-item" href="LocationsView.php">Locations</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="ProfesseurView.php">Enseignants</a></li>
           </ul>
         </li>
               <li class="nav-item">
@@ -101,12 +103,13 @@
 
   
 
-        <form class="row g-3">
+        <form class="row g-3" id="creategroup">
        
 
   <div class="col-md-8">
     <label for="nom_groupe" class="form-label">Nom Groupe</label>
-    <input type="text" class="form-control" id="nom_groupe" required>
+    <input type="text" class="form-control" id="nom_groupe">
+    <div id="is" style="visibility:hidden">
   </div>
   <div class="col-12">
     <div class="form-check">
@@ -135,7 +138,26 @@
 </section>
 
 <!-- End Groupes -->
-
+<!-- Modal -->
+<div class="modal fade" id="reservmodal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Succés</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       Votre Groupe a été crée avec Succés!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary"  data-bs-dismiss="modal">OK!</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- End Modal -->
 
 
 <!-- Start Products -->
@@ -160,7 +182,7 @@
               <th scope="col">#Nom_Groupe</th>
               <th scope="col">Action</th>
             </thead>
-            <tbody id="tbody">
+            <tbody id="tbodyGroupes">
               
             </tbody>
           </table>
@@ -201,7 +223,7 @@
     <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="assets/js/main-script.js" ></script> 
-    <script src="assets/js/Reservations/datatableReservation.js" ></script> 
+    <script src="assets/js/Groupes/datatableGroupes.js" ></script> 
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.1/js/dataTables.bootstrap5.min.js"></script>
 

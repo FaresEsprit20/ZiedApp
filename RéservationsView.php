@@ -45,7 +45,7 @@
                 <i class="navbar-fa fa fa-product-hunt fa-2x d-inline-block"></i>
               </li>
               <li class="nav-item">
-                <a class="nav-link d-inline-block" href="#groupes">Groupes</a>
+                <a class="nav-link d-inline-block" href="GroupesView.php">Groupes</a>
                 <i class="navbar-fa fa fa-users fa-2x d-inline-block"></i>
               </li>
               <li class="nav-item dropdown">
@@ -56,7 +56,9 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="locatairesView.php">Locataires</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="RéservationsView.php">Réservations</a></li>
+            <li><a class="dropdown-item" href="LocationsView.php">Locations</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="ProfesseurView.php">Enseignants</a></li>
           </ul>
         </li>
               <li class="nav-item">
