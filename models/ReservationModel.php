@@ -80,7 +80,7 @@ class ReservationModel {
 
     public function getReservationByLocationAndLocataire() {
         
-        $stmt = $this->conn->prepare("SELECT * FROM reservation,locations,locataires where (locations.id_loc=reservation.id_loc) and (reservation.id_locataire=locataires.id_locataire)");
+        $stmt = $this->conn->prepare("SELECT * FROM reservation,locations,locataires where (locations.id_loc=reservation.id_loc) and (reservation.id_locataire=locataires.id_locataire) and reservation.archive_state = 0 ");
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         echo json_encode($result) ;
@@ -107,8 +107,6 @@ class ReservationModel {
        if(isset($data["id_reserv"]) and (intval($data["id_reserv"]))){
         $stmt = $this->conn->prepare("DELETE FROM reservation WHERE id_reserv=?");
         $stmt->execute([$data["id_reserv"]]);
-        $stmt2 = $this->conn->prepare("DELETE FROM locataires WHERE id_reserv=?");
-        $stmt2->execute([$data["id_reserv"]]);
         echo json_encode(http_response_code(200));
     }else{
         http_response_code(401);

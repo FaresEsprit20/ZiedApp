@@ -433,6 +433,7 @@
               <th scope="col">Date fin Location</th>
               <th scope="col">Heure début</th>
               <th scope="col">Heure fin</th>
+              <th scope="col">Action</th>
               
             </thead>
             <tbody id="tbodyReservations">

@@ -3,6 +3,42 @@
 $(document).ready(function(){
 
 
+function delReserv($id){
+
+    //get dashboard data
+    $.ajax({    
+        type: "POST",
+        url: "http://localhost/Zied/server/Api/Reservations/DeleteReservation.php",                     
+        dataType: "json",            
+        data: JSON.stringify($id),
+        contentType: 'application/json',   
+        success: function(data){     
+          console.log("reservation deleted !");
+          console.log(data);
+        }
+    });
+
+}
+
+
+function archvReserv($id){
+
+    //get dashboard data
+    $.ajax({    
+        type: "POST",
+        url: "http://localhost/Zied/server/Api/Reservations/ArchiverReservation.php",                     
+        dataType: "json",            
+        data: JSON.stringify($id),
+        contentType: 'application/json',   
+        success: function(data){     
+          console.log("reservation archived !");
+          console.log(data);
+        }
+    });
+
+}
+
+
     //get dashboard data
     $.ajax({    
         type: "GET",
@@ -14,8 +50,9 @@ $(document).ready(function(){
           console.log(jsonData);
 
           for(item of jsonData){
+             
               var row = "<tr>";
-              row+="<td>"+item.id_reserv+"</td>";
+              row+='<td class="id_reserv">'+item.id_reserv+'</td>';
               row+="<td>"+item.ID_loc+"</td>";
               row+="<td>"+item.id_locataire+"</td>";
               row+="<td>"+item.cin_loc+"</td>";
@@ -29,10 +66,29 @@ $(document).ready(function(){
               row+="<td>"+item.datefin+"</td>";
               row+="<td>"+item.heuredeb+"</td>";
               row+="<td>"+item.heurefin+"</td>";
+              row+='<td><div><button id="btnDelete" style="display:block;width:65px;margin-bottom:5px;" type="button" class="btn btn-info">Del</button><button style="display:block;width:65px;" id="btnArchv"type="button" class="btn btn-dark">Archv</button></div></td>';
               row+="</td>";
 
             $("#tbodyReservations").append(row);
           }
+          $("#tbodyReservations").on('click','#btnDelete', function(){
+            var id =   $(this).closest('tr').find('.id_reserv').text();
+            var object = {
+                id_reserv: id
+            }
+            var jsonObject = JSON.stringify(object);
+            delReserv(object);
+            alert("object deleted successfully");
+          });
+          $("#tbodyReservations").on('click','#btnArchv', function(){
+            var id =   $(this).closest('tr').find('.id_reserv').text();
+            var object = {
+                id_reserv: id
+            }
+            var jsonObject = JSON.stringify(object);
+            archvReserv(object);
+            alert("object arhived successfully");
+          });
           $('#reservationsDatatable').DataTable();
         
 
