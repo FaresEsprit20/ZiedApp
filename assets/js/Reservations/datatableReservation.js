@@ -77,8 +77,14 @@ function archvReserv($id){
                 id_reserv: id
             }
             var jsonObject = JSON.stringify(object);
-            delReserv(object);
-            alert("object deleted successfully");
+           
+            if (confirm('Do you want to Delete?')) {
+                delReserv(object);
+                location.reload();
+            }else{
+                return false;
+            }
+           
           });
           $("#tbodyReservations").on('click','#btnArchv', function(){
             var id =   $(this).closest('tr').find('.id_reserv').text();
@@ -86,8 +92,12 @@ function archvReserv($id){
                 id_reserv: id
             }
             var jsonObject = JSON.stringify(object);
-            archvReserv(object);
-            alert("object arhived successfully");
+            if (confirm('Do you want to Archive?')) {
+                archvReserv(object);
+                location.reload();
+            }else{
+                return false;
+            }
           });
           $('#reservationsDatatable').DataTable();
         
