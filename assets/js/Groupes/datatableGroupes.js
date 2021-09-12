@@ -8,7 +8,7 @@ $(document).ready(function(){
         //get dashboard data
         $.ajax({    
             type: "POST",
-            url: "http://localhost/Zied/server/Api/Reservations/DeleteReservation.php",                     
+            url: "http://localhost/Zied/server/Api/Groupes/DeleteGroupe.php",                     
             dataType: "json",            
             data: JSON.stringify($id),
             contentType: 'application/json',   
@@ -26,7 +26,7 @@ $(document).ready(function(){
         //get dashboard data
         $.ajax({    
             type: "POST",
-            url: "http://localhost/Zied/server/Api/Reservations/ArchiverReservation.php",                     
+            url: "http://localhost/Zied/server/Api/Groupes/ArchiverGroupe.php",                     
             dataType: "json",            
             data: JSON.stringify($id),
             contentType: 'application/json',   
