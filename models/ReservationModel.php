@@ -3,7 +3,7 @@
 header('Access-Control-Allow-Origin: *');
  
 // imports will be here
-
+require "ToJson/ReservationFormToJson.php";
 
 
 class ReservationModel {
@@ -11,6 +11,7 @@ class ReservationModel {
     //atributes
     public $id_reserv;
     public $id_loc;
+    public $id_locataire;
     public $id_groupe;
     public $datedeb;
     public $datefin;
@@ -32,7 +33,16 @@ class ReservationModel {
     
 
 
-    public function getReservations() {
+    public function getReservations() {       
+        $stmt = $this->conn->prepare("SELECT* from reservation WHERE archive_state = 0 ");
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode($result);
+        
+    }
+
+
+    public function getReservationById() {
         $json = file_get_contents('php://input');
         $data = json_decode($json, true);
         if(isset($data["id_loc"]) and (intval($data["id_loc"])) ){
@@ -72,9 +82,9 @@ class ReservationModel {
     public function AddReservation() {
         $json = file_get_contents('php://input');
         $data = json_decode($json, true);
-        if (isset($data["id_loc"]) and isset($data["id_groupe"]) and isset($data["datedeb"]) and isset($data["datefin"]) and isset($data["heuredeb"]) and isset($data["jourdeb"]) and isset($data["moisdeb"]) and isset($data["andeb"]) and isset($data["heurefin"]) and isset($data["jourfin"]) and isset($data["moisfin"]) and isset($data["anfin"])){
-        $stmt = $this->conn->prepare("INSERT INTO reservation VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?) ");
-        $stmt->execute([0,$data["id_loc"],$data["id_groupe"],$data["datedeb"],$data["datefin"],$data["heuredeb"],$data["jourdeb"],$data["moisdeb"],$data["andeb"],$data["heurefin"],$data["jourfin"],$data["moisfin"],$data["anfin"],0  ]);
+        if (isset($data["id_loc"]) and isset($data["id_locataire"]) and isset($data["id_groupe"]) and isset($data["datedeb"]) and isset($data["datefin"]) and isset($data["heuredeb"]) and isset($data["jourdeb"]) and isset($data["moisdeb"]) and isset($data["andeb"]) and isset($data["heurefin"]) and isset($data["jourfin"]) and isset($data["moisfin"]) and isset($data["anfin"])){
+        $stmt = $this->conn->prepare("INSERT INTO reservation VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ");
+        $stmt->execute([0,$data["id_loc"],$data["id_locataire"],$data["id_groupe"],$data["datedeb"],$data["datefin"],$data["heuredeb"],$data["jourdeb"],$data["moisdeb"],$data["andeb"],$data["heurefin"],$data["jourfin"],$data["moisfin"],$data["anfin"],0  ]);
         echo json_encode(http_response_code(201));
         }else{
             http_response_code(401);
@@ -96,6 +106,22 @@ class ReservationModel {
         die();
     }
     }
+
+
+public function getReservationForm(){
+    $stmt = $this->conn->prepare("SELECT * FROM locataires WHERE archiver_state = 0 ");
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt1 = $this->conn->prepare("SELECT * FROM locations");
+    $stmt1->execute();
+    $result1 = $stmt1->fetchAll(PDO::FETCH_ASSOC);
+    $stmt2 = $this->conn->prepare("SELECT * FROM groupe WHERE archive_state = 0 ");
+    $stmt2->execute();
+    $result2 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+    $object = new ReservationFormToJson($result,$result1,$result2);
+    echo json_encode($object);
+}
+
 
 
 }

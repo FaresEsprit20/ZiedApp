@@ -153,7 +153,6 @@
     <label for="inputSalle" class="form-label">Choisir Salle</label>
     <select id="inputSalle" class="form-select" required>
       <option selected  value="nil">Salle...</option>
-      <option   value="nils">Salles...</option>
     </select>
     <div id="is" style="visibility:hidden">
       
@@ -363,7 +362,7 @@
   <div class="col-md-3">
   <label for="inputAnFin" style="visibility:hidden" class="form-label">Fin de réservation</label>
     <select id="inputAnFin" class="form-select" required>
-      <option selected  value="nil">An début...</option>
+      <option selected  value="nil">An Fin...</option>
       <option value="2021">2021</option>
       <option value="2022">2022</option>
       <option value="2023">2023</option>
@@ -379,6 +378,7 @@
   <label for="inputens" class="form-label">Enseignant</label>
     <select id="inputens" class="form-select" required>
       <option selected  value="nil">Sélectionner un Enseignant...</option>
+      <option value="nils">Sélectionner un Enseignant...</option>
     </select>
     <div id="iens" style="visibility:hidden">
       
@@ -424,7 +424,22 @@
 <!-- End Reservation-->
 
 
-
+<div id="reservmodal" class="modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Succés</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Votre Réservation a été crée avec succés !.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">OK!</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 

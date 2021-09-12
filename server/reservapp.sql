@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Sep 08, 2021 at 08:26 PM
+-- Generation Time: Sep 12, 2021 at 05:29 PM
 -- Server version: 5.7.31
 -- PHP Version: 7.3.21
 
@@ -49,7 +49,17 @@ CREATE TABLE IF NOT EXISTS `groupe` (
   `nom_groupe` varchar(255) NOT NULL,
   `archive_state` smallint(1) DEFAULT '0',
   PRIMARY KEY (`id_groupe`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `groupe`
+--
+
+INSERT INTO `groupe` (`id_groupe`, `nom_groupe`, `archive_state`) VALUES
+(1, 'TWIN 5', 0),
+(2, '5 Sim1', 1),
+(3, '4 NIDS 1', 1),
+(4, '6 BI 6', 0);
 
 -- --------------------------------------------------------
 
@@ -78,32 +88,28 @@ CREATE TABLE IF NOT EXISTS `groupe_eleve` (
 DROP TABLE IF EXISTS `locataires`;
 CREATE TABLE IF NOT EXISTS `locataires` (
   `id_locataire` int(11) NOT NULL AUTO_INCREMENT,
-  `id_reserv` int(11) NOT NULL,
   `nom` varchar(255) NOT NULL,
   `prenom` varchar(255) NOT NULL,
   `cin` varchar(255) DEFAULT NULL,
   `rue` varchar(255) NOT NULL,
   `codepostal` varchar(255) NOT NULL,
   `ville` varchar(255) NOT NULL,
-  `pays` varchar(255) NOT NULL,
   `tel` varchar(255) NOT NULL,
   `portable` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `commentaires` text NOT NULL,
   `archiver_state` smallint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_locataire`),
-  UNIQUE KEY `cin` (`cin`),
-  KEY `locataires_ibfk_1` (`id_reserv`)
+  UNIQUE KEY `cin` (`cin`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `locataires`
 --
 
-INSERT INTO `locataires` (`id_locataire`, `id_reserv`, `nom`, `prenom`, `cin`, `rue`, `codepostal`, `ville`, `pays`, `tel`, `portable`, `email`, `commentaires`, `archiver_state`) VALUES
-(7, 3, 'Andrey', 'Smirnov', '45784225', 'Avenue Mexico', '7586', 'Cardiff', 'ENgland', '', '85785257', 'andrey_smirnov@email.uk', 'A locataire', 0),
-(8, 2, 'Yuri', 'Blankov', '00218241', 'Moscow Avenue', '0021', 'St Petersburg', 'Russia', '02371741', '11114471', 'Yuri77@gmail.com', 'A Russian Locataire', 0),
-(9, 2, 'Zied', 'Jday', '46882521', 'Sallakta Ben Njima', '5180', 'Ksour Essef', 'Tunisia', '14243331', '00001140', 'zied81@gmail.com', 'A Tunisian locataire', 0);
+INSERT INTO `locataires` (`id_locataire`, `nom`, `prenom`, `cin`, `rue`, `codepostal`, `ville`, `tel`, `portable`, `email`, `archiver_state`) VALUES
+(7, 'Andrey', 'Smirnov', '45784225', 'Avenue Mexico', '7586', 'Cardiff', '', '85785257', 'andrey_smirnov@email.uk', 0),
+(8, 'Yuri', 'Blankov', '00218241', 'Moscow Avenue', '0021', 'St Petersburg', '02371741', '11114471', 'Yuri77@gmail.com', 0),
+(9, 'Zied', 'Jday', '46882521', 'Sallakta Ben Njima', '5180', 'Ksour Essef', '14243331', '00001140', 'zied81@gmail.com', 0);
 
 -- --------------------------------------------------------
 
@@ -125,7 +131,7 @@ CREATE TABLE IF NOT EXISTS `locations` (
 INSERT INTO `locations` (`ID_loc`, `cin_loc`) VALUES
 (1, 'A22'),
 (2, 'C214'),
-(4, 'C214'),
+(4, 'C215'),
 (5, 'C21');
 
 -- --------------------------------------------------------
@@ -138,6 +144,7 @@ DROP TABLE IF EXISTS `reservation`;
 CREATE TABLE IF NOT EXISTS `reservation` (
   `id_reserv` int(11) NOT NULL AUTO_INCREMENT,
   `id_loc` int(11) NOT NULL,
+  `id_locataire` int(11) NOT NULL,
   `id_groupe` varchar(255) NOT NULL,
   `datedeb` varchar(255) NOT NULL,
   `datefin` varchar(255) NOT NULL,
@@ -151,32 +158,32 @@ CREATE TABLE IF NOT EXISTS `reservation` (
   `anfin` smallint(4) NOT NULL,
   `archive_state` smallint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_reserv`),
-  KEY `reservation_ibfk_1` (`id_loc`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+  KEY `reservation_ibfk_1` (`id_loc`),
+  KEY `id_locataire` (`id_locataire`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `reservation`
 --
 
-INSERT INTO `reservation` (`id_reserv`, `id_loc`, `id_groupe`, `datedeb`, `datefin`, `heuredeb`, `jourdeb`, `moisdeb`, `andeb`, `heurefin`, `jourfin`, `moisfin`, `anfin`, `archive_state`) VALUES
-(2, 4, '4Twin 6', '2021-08-05', '2021-08-06', '10', '05', '08', 2021, '18', '06', '08', 2022, 0),
-(3, 4, '4Twin 6', '2021-08-05', '2021-08-06', '10', '05', '08', 2021, '18', '06', '08', 2022, 0);
+INSERT INTO `reservation` (`id_reserv`, `id_loc`, `id_locataire`, `id_groupe`, `datedeb`, `datefin`, `heuredeb`, `jourdeb`, `moisdeb`, `andeb`, `heurefin`, `jourfin`, `moisfin`, `anfin`, `archive_state`) VALUES
+(2, 4, 9, '4Twin 6', '2021-08-05', '2021-08-06', '10', '05', '08', 2021, '18', '06', '08', 2022, 0),
+(3, 4, 9, '4Twin 6', '2021-08-05', '2021-08-06', '10', '05', '08', 2021, '18', '06', '08', 2022, 0),
+(4, 4, 9, '4Twin 6', '2021-08-05', '2021-08-06', '10', '05', '08', 2021, '18', '06', '08', 2022, 0),
+(5, 4, 9, '4Twin 6', '2021-08-05', '2021-08-06', '10', '05', '08', 2021, '18', '06', '08', 2022, 0),
+(15, 4, 9, '4', '2021-10-02', '2023-03-02', '01', '02', '10', 2021, '00', '02', '03', 2023, 0),
+(17, 4, 9, '6 BI 6', '2021-02-01', '2022-02-03', '02', '01', '02', 2021, '02', '03', '02', 2022, 0);
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `locataires`
---
-ALTER TABLE `locataires`
-  ADD CONSTRAINT `locataires_ibfk_1` FOREIGN KEY (`id_reserv`) REFERENCES `reservation` (`id_reserv`) ON DELETE CASCADE;
-
---
 -- Constraints for table `reservation`
 --
 ALTER TABLE `reservation`
-  ADD CONSTRAINT `reservation_ibfk_1` FOREIGN KEY (`id_loc`) REFERENCES `locations` (`ID_loc`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `reservation_ibfk_1` FOREIGN KEY (`id_loc`) REFERENCES `locations` (`ID_loc`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `reservation_ibfk_2` FOREIGN KEY (`id_locataire`) REFERENCES `locataires` (`id_locataire`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
