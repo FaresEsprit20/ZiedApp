@@ -45,6 +45,19 @@ class GroupeModel {
         }
     }
 
+    public function UpdateGroup() {
+        $json = file_get_contents('php://input');
+        $data = json_decode($json, true);
+        if( isset($data["id_groupe"]) and (intval($data["id_groupe"]))  and isset($data["nom_groupe"])   ){
+        $stmt = $this->conn->prepare("UPDATE  groupe SET nom_groupe = ? WHERE  id_groupe= ? ");
+        $stmt->execute([$data["nom_groupe"],$data["id_groupe"]]);
+        echo json_encode(http_response_code(200));
+        }else {
+            http_response_code(401);
+            die();
+        }
+    }
+
     public function ArchiverGroupe() {
         $json = file_get_contents('php://input');
         $data = json_decode($json, true);

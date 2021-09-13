@@ -88,7 +88,7 @@
 
 <!-- Start Groupes -->
 
-<section class="groupes" id="groupes">
+<section class="gView" id="gView">
   <div class="container-fluid">
     <div class="special-heading">Groupes</div>
       <p>Créer un groupe</p>
@@ -121,6 +121,67 @@
   </div>
   <div class="col-12">
     <button type="submit" class="btn btn-dark">Créer le Groupe</button>
+  </div>
+
+</form>
+
+
+      
+        </div>
+
+    </div>
+  </div>
+  <div class="col col-sm col-lg-2">
+  </div>
+  </div>
+ 
+</section>
+
+<!-- End Groupes -->
+<!-- Start Groupes -->
+
+<section class="geView" id="geView">
+  <div class="container-fluid">
+    <div class="special-heading">Groupes</div>
+      <p>Modifier un groupe</p>
+  <div class="row">
+  <div class="col col-sm col-lg-2">
+  </div>
+    <div class="col-12 col-sm-12 col-lg-8">
+
+      
+      <div class="products-table mt-5 mb-5">
+        <div class="table-reservations">
+
+  
+
+        <form class="row g-3" id="editgroup">
+       
+
+  <div class="col-md-8">
+  <label for="group_id" class="form-label">Groupe</label>
+    <select id="group_id" class="form-select" required>
+      <option selected  value="nil">Sélectionner un groupe...</option>
+    </select>
+    <div id="ig" style="visibility:hidden">
+      
+    </div>
+  </div>
+  <div class="col-md-8">
+    <label for="group_name" class="form-label">Nom Groupe</label>
+    <input type="text" class="form-control" id="group_name">
+    <div id="iss" style="visibility:hidden">
+  </div>
+  <div class="col-12">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="reservChecks" required>
+      <label class="form-check-label" for="reservChecks">
+        Cochez moi
+      </label>
+    </div>
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-dark">Modifier le Groupe</button>
   </div>
 
 </form>

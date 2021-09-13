@@ -353,8 +353,8 @@
   
   <div class="col-12">
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="reservCheck" required>
-      <label class="form-check-label" for="reservCheck">
+      <input class="form-check-input" type="checkbox" id="reservChecks" required>
+      <label class="form-check-label" for="reservChecks">
         Cochez moi
       </label>
     </div>
