@@ -29,7 +29,7 @@ class LocationsModel {
     public function AddNewLocation() {
         $json = file_get_contents('php://input');
         $data = json_decode($json, true);
-        if(isset($data["cin_loc"]) and (intval($data["id_loc"])) ){
+        if(isset($data["cin_loc"]) ){
         $stmt = $this->conn->prepare("INSERT INTO locations VALUES(?,?)");
         $stmt->execute([0,$data["cin_loc"]]);
         echo json_encode(http_response_code(201));
@@ -42,9 +42,9 @@ class LocationsModel {
     public function UpdateLocation() {
         $json = file_get_contents('php://input');
         $data = json_decode($json, true);
-        if(isset($data["cin_loc"]) and isset($data["id_loc"]) and (intval($data["id_loc"])) and (!intval($data["cin_loc"]))    ){
-            $stmt = $this->conn->prepare("UPDATE locations SET cin_loc= ? WHERE id_loc=?");
-            $stmt->execute([$data["cin_loc"],$data["id_loc"]]);
+        if(isset($data["cin_loc"]) and isset($data["ID_loc"]) and (intval($data["ID_loc"]))    ){
+            $stmt = $this->conn->prepare("UPDATE locations SET cin_loc= ? WHERE ID_loc=?");
+            $stmt->execute([$data["cin_loc"],$data["ID_loc"]]);
             echo json_encode(http_response_code(200));
         }else {
             http_response_code(401);

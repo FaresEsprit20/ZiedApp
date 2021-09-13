@@ -54,8 +54,6 @@
           </a>
           <i class="navbar-fa fa fa-archive fa-2x d-inline-block"></i>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="locatairesView.php">Locataires</a></li>
-            <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="LocationsView.php">Locations</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="ProfesseurView.php">Enseignants</a></li>

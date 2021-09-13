@@ -54,8 +54,6 @@
           </a>
           <i class="navbar-fa fa fa-archive fa-2x d-inline-block"></i>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="locatairesView.php">Locataires</a></li>
-            <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="LocationsView.php">Locations</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="ProfesseurView.php">Enseignants</a></li>
@@ -91,7 +89,7 @@
 
 <!-- Start Locations -->
 
-<section class="locs" id="locs">
+<section class="locsView" id="locsView">
   <div class="container-fluid">
     <div class="special-heading">Locations</div>
       <p>Créer une location</p>
@@ -105,11 +103,13 @@
         <div class="table-reservations">
 
 
-        <form class="row g-3">
+        <form class="row g-3" id="createloc">
        
   <div class="col-md-8">
     <label for="nom_location" class="form-label">Nom Location</label>
-    <input type="text" class="form-control" id="nom_location" required>
+    <input type="text" class="form-control" id="nom_location" >
+    <div id="is" style="visibility:hidden">
+    </div>
   </div>
   <div class="col-12">
     <div class="form-check">
@@ -137,6 +137,86 @@
 
 <!-- End Locations -->
 
+<!-- Modal -->
+<div class="modal fade" id="reservmodal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Succés</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       Votre Location a été crée avec Succés!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary"  data-bs-dismiss="modal">OK!</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- End Modal -->
+
+<!-- Start Groupes -->
+
+<section class="geView" id="geView">
+  <div class="container-fluid">
+    <div class="special-heading">Locations</div>
+      <p>Modifier une location</p>
+  <div class="row">
+  <div class="col col-sm col-lg-2">
+  </div>
+    <div class="col-12 col-sm-12 col-lg-8">
+
+      
+      <div class="products-table mt-5 mb-5">
+        <div class="table-reservations">
+
+  
+
+        <form class="row g-3" id="editgroup">
+       
+
+  <div class="col-md-8">
+  <label for="group_id" class="form-label">Location</label>
+    <select id="group_id" class="form-select" required>
+      <option selected  value="nil">Sélectionner une location...</option>
+    </select>
+    <div id="ig" style="visibility:hidden">
+      
+    </div>
+  </div>
+  <div class="col-md-8">
+    <label for="group_name" class="form-label">Nom Groupe</label>
+    <input type="text" class="form-control" id="group_name">
+    <div id="iss" style="visibility:hidden">
+  </div>
+  <div class="col-12">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="reservChecks" required>
+      <label class="form-check-label" for="reservChecks">
+        Cochez moi
+      </label>
+    </div>
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-dark">Modifier Location</button>
+  </div>
+
+</form>
+
+
+      
+        </div>
+
+    </div>
+  </div>
+  <div class="col col-sm col-lg-2">
+  </div>
+  </div>
+ 
+</section>
 
 
 <!-- Start Products -->
@@ -154,24 +234,13 @@
       <div class="locataires-table mt-5 mb-5">
         <div class="table-responsive">
 
-          <table class="table display" id="reservationsDatatable">
-            <caption>Liste des Réservations par location</caption>
+          <table class="table display" id="locationsDatatable">
+            <caption>Liste des Locations</caption>
             <thead class="table-dark">
               <th scope="col">#id_loc</th>
-              <th scope="col">#Nom_salle</th>
-              <th scope="col">#Nom groupe</th>
-              <th scope="col">CIN Locataire</th>
-              <th scope="col">Nom & Prenom</th>
-              <th scope="col">Ville</th>
-              <th scope="col">Email</th>
-              <th scope="col">Portable</th>
-              <th scope="col">Date début Location</th>
-              <th scope="col">Date fin Location</th>
-              <th scope="col">Heure début</th>
-              <th scope="col">Heure fin</th>
-              
+              <th scope="col">#Nom_salle</th>   
             </thead>
-            <tbody id="tbody">
+            <tbody id="tbodyL">
               
             </tbody>
           </table>
@@ -211,7 +280,7 @@
     <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="assets/js/main-script.js" ></script> 
-    <script src="assets/js/Reservations/datatableReservation.js" ></script> 
+    <script src="assets/js/Locations/datatableLocation.js" ></script> 
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.1/js/dataTables.bootstrap5.min.js"></script>
 
