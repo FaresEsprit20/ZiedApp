@@ -121,7 +121,7 @@
   </div>
   <div class="col-md-4">
     <label for="cin_ens" class="form-label">CIN Enseignant</label>
-    <input type="text" class="form-control" id="cin_ens" >
+    <input type="text" class="form-control" max="99999999" id="cin_ens" minlength="8" maxlength="8">
     <div id="ecin" style="visibility:hidden">
       
       </div>
@@ -142,7 +142,7 @@
   </div>
   <div class="col-md-4">
     <label for="postal_ens" class="form-label">Code Postal</label>
-    <input type="number" class="form-control" id="postal_ens" >
+    <input type="number" max="9999" class="form-control" id="postal_ens" minlength="4" maxlength="4">
     <div id="epostal" style="visibility:hidden">
       
       </div>
@@ -150,21 +150,21 @@
 
   <div class="col-md-4">
     <label for="email_ens" class="form-label">Email Enseignant</label>
-    <input type="email" class="form-control" id="email_ens" >
+    <input type="email" class="form-control" id="email_ens" pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-zA-Z]{2,4}">
     <div id="eemail" style="visibility:hidden">
       
       </div>
   </div>
   <div class="col-md-4">
     <label for="tel_ens" class="form-label">Tel Enseignant</label>
-    <input type="tel" class="form-control" id="tel_ens" >
+    <input type="number" class="form-control" id="tel_ens" >
     <div id="etel" style="visibility:hidden">
       
       </div>
   </div>
   <div class="col-md-4">
     <label for="portable_ens" class="form-label">Portable Enseignant</label>
-    <input type="tel" class="form-control" id="protable_ens" >
+    <input type="number" max="99999999" class="form-control" id="protable_ens" minlength="8" maxlength="8">
     <div id="eprotable" style="visibility:hidden">
       
       </div>
