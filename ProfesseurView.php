@@ -87,7 +87,7 @@
 
 <!-- Start Professeur -->
 
-<section class="locs" id="locs">
+<section class="ensView" id="ensView">
   <div class="container-fluid">
     <div class="special-heading">Enseignant</div>
       <p>Créer un Enseignant</p>
