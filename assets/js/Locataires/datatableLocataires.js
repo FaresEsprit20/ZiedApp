@@ -339,26 +339,23 @@ $(document).ready(function(){
         
         
         if(isValid == true){
-        
+          
         let object = {
-        id_loc: $("#nom_ens").val(),
-        id_locataire: $("#inputens").val(),
-        id_groupe: $("#inputreservgroup option:selected").text(),
-        datedeb: $("#rue_ens").val()+"-"+$("#ville_ens").val()+"-"+$("#cin_ens").val(),
-        datefin: $("#inputAnFin").val()+"-"+$("#ville_ensFin").val()+"-"+$("#cin_ensFin").val(),
-        heuredeb: $("#prenom_ens").val(),
-        jourdeb: $("#cin_ens").val(),
-        moisdeb: $("#ville_ens").val(),
-        andeb: $("#rue_ens").val(),
-        heurefin: $("#prenom_ensFin").val(),
-        jourfin: $("#cin_ensFin").val(),
-        moisfin: $("#ville_ensFin").val(),
-        anfin: $("#inputAnFin").val()
+            nom: $("#nom_ens").val(),
+            prenom:  $("#prenom_ens").val(),
+            cin: $("#cin_ens").val(),
+            prenom: $("#prenom_ens").val(),
+            ville: $("#ville_ens").val(),
+            rue: $("#rue_ens").val(),
+            codepostal: $("#postal_ens").val(),
+            email:  $("#email_ens").val(),
+            tel: $("#tel_ens").val(),
+            portable: $("#portable_ens").val()
         };
         console.log("object" +JSON.stringify(object));
         $.ajax({
                type: "POST",
-               url: "http://localhost/Zied/server/Api/Reservations/AddReservation.php",
+               url: "http://localhost/Zied/server/Api/Locataires/AddLocataire.php",
                data: JSON.stringify(object),
                dataType: 'json',
                contentType: 'application/json',
