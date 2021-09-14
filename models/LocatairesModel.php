@@ -29,7 +29,7 @@ class LocatairesModel {
     public function AddLocataire() {
         $json = file_get_contents('php://input');
         $data = json_decode($json, true);
-        if( (isset($data["nom"]) and (!intval($data["nom"]))) and (isset($data["prenom"])) and (isset($data["cin"]) ) and (isset($data["rue"])) and (isset($data["codepostal"])) and (isset($data["tel"])) and (isset($data["portable"])) and (isset($data["email"])) ){
+        if( (isset($data["nom"])) and (isset($data["prenom"])) and (isset($data["cin"]) ) and (isset($data["rue"])) and (isset($data["codepostal"])) and (isset($data["tel"])) and (isset($data["portable"])) and (isset($data["email"])) ){
         $stmt = $this->conn->prepare("INSERT INTO locataires VALUES(?,?,?,?,?,?,?,?,?,?,?)");
         $stmt->execute([0,$data["nom"],$data["prenom"],$data["cin"],$data["rue"],$data["codepostal"],$data["ville"],$data["tel"],$data["portable"],$data["email"],0]);
        echo json_encode(http_response_code(201));

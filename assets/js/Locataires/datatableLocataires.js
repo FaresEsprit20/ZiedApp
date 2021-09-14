@@ -175,7 +175,7 @@ $(document).ready(function(){
         $("#eprenom").html("Champ valide");
         }
         
-        if( cin_ens.length == 0){
+        if( cin_ens.length !=8){
         $("#ecin").css("visibility","visible");
         isValid = false;
         $("#cin_ens").removeClass("is-valid");
@@ -248,7 +248,7 @@ $(document).ready(function(){
        // var postal_ens = $("#postal_ens").val();
        // var email_ens = $("#email_ens").val();
        // var tel_ens = $("#tel_ens").val(); 
-       if( postal_ens.length == 0){
+       if( postal_ens < 1000 || postal_ens > 9999){
         $("#epostal").css("visibility","visible");
         isValid = false;
         $("#postal_ens").removeClass("is-valid");
@@ -292,7 +292,7 @@ $(document).ready(function(){
             $("#eemail").html("Champ valide");
             }
 
-            if( tel_ens.length == 0){
+            if( tel_ens.length != 8){
                 $("#etel").css("visibility","visible");
                 isValid = false;
                 $("#tel_ens").removeClass("is-valid");
@@ -314,7 +314,7 @@ $(document).ready(function(){
                 $("#etel").html("Champ valide");
                 }
 
-        if( portable_ens.length == 0){
+        if( portable_ens < 10000000 || portable_ens > 99999999){
             $("#eportable").css("visibility","visible");
             isValid = false;
             $("#portable_ens").removeClass("is-valid");
@@ -340,7 +340,8 @@ $(document).ready(function(){
         
         if(isValid == true){
           
-        let object = {
+            console.log("valeur portable  "+portable_ens +"  "+$("#portable_ens").val());
+        let objects = {
             nom: $("#nom_ens").val(),
             prenom:  $("#prenom_ens").val(),
             cin: $("#cin_ens").val(),
@@ -348,15 +349,16 @@ $(document).ready(function(){
             ville: $("#ville_ens").val(),
             rue: $("#rue_ens").val(),
             codepostal: $("#postal_ens").val(),
+            portable: $("#portable_ens").val(),
             email:  $("#email_ens").val(),
             tel: $("#tel_ens").val(),
-            portable: $("#portable_ens").val()
+            
         };
-        console.log("object" +JSON.stringify(object));
+        console.log("object" +JSON.stringify(objects));
         $.ajax({
                type: "POST",
                url: "http://localhost/Zied/server/Api/Locataires/AddLocataire.php",
-               data: JSON.stringify(object),
+               data: JSON.stringify(objects),
                dataType: 'json',
                contentType: 'application/json',
                success: function(data)
@@ -365,7 +367,7 @@ $(document).ready(function(){
                     // show response from the php script.
                     var myModal = $("#reservmodal");
                     myModal.modal("show");
-                    document.getElementById("createreservation").reset();
+                    document.getElementById("createens").reset();
                     
                     setTimeout(function(){ location.replace("index.php"); }, 6000);
                }

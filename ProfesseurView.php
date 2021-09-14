@@ -120,14 +120,14 @@
   </div>
   <div class="col-md-4">
     <label for="cin_ens" class="form-label">CIN Enseignant</label>
-    <input type="text" class="form-control" max="99999999" id="cin_ens" minlength="8" maxlength="8">
+    <input type="number" class="form-control" max="99999999" id="cin_ens">
     <div id="ecin" style="visibility:hidden">
       
       </div>
   </div>
   <div class="col-md-4">
     <label for="ville_ens" class="form-label">Ville</label>
-    <input type="text" class="form-control" id="ville_ens" pattern="[a-zA-Z0-9 ]+">
+    <input type="text" class="form-control" id="ville_ens" pattern="[a-zA-Z ]+">
     <div id="eville" style="visibility:hidden">
       
       </div>
@@ -163,7 +163,7 @@
   </div>
   <div class="col-md-4">
     <label for="portable_ens" class="form-label">Portable Enseignant</label>
-    <input type="number" max="99999999" class="form-control" id="protable_ens" minlength="8" maxlength="8">
+    <input type="number" class="form-control" id="portable_ens">
     <div id="eprotable" style="visibility:hidden">
       
       </div>
