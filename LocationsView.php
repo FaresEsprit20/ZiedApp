@@ -223,8 +223,8 @@
 
 <section class="reservationsView" id="reservationsView">
   <div class="container-fluid">
-    <div class="special-heading">Réservations</div>
-      <p>Voir les Réservations par location</p>
+    <div class="special-heading">Locations</div>
+      <p>Voir les Locations</p>
   <div class="row">
   <div class="col col-sm col-lg-2">
   </div>
