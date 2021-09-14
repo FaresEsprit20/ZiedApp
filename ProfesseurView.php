@@ -106,14 +106,14 @@
 
   <div class="col-md-4">
     <label for="nom_ens" class="form-label">Nom Enseignant</label>
-    <input type="text" class="form-control" id="nom_enst" >
+    <input type="text" class="form-control" id="nom_ens" pattern="[a-zA-Z ]+">
     <div id="enom" style="visibility:hidden">
       
       </div>
   </div>
   <div class="col-md-4">
     <label for="prenom_ens" class="form-label">Prénom Enseignant</label>
-    <input type="text" class="form-control" id="prenom_ens" >
+    <input type="text" class="form-control" id="prenom_ens" pattern="[a-zA-Z ]+">
     <div id="eprenom" style="visibility:hidden">
       
       </div>
@@ -127,7 +127,7 @@
   </div>
   <div class="col-md-4">
     <label for="ville_ens" class="form-label">Ville</label>
-    <input type="text" class="form-control" id="ville_ens" >
+    <input type="text" class="form-control" id="ville_ens" pattern="[a-zA-Z0-9 ]+">
     <div id="eville" style="visibility:hidden">
       
       </div>

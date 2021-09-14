@@ -106,438 +106,279 @@ $(document).ready(function(){
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    //get Reservation Form data
-    $.ajax({    
-        type: "GET",
-        url: "http://localhost/Zied/server/Api/Reservations/getReservationForm.php",                     
-        dataType: "json",               
-        success: function(data){      
-          var jsonData = data;
-          console.log("Reservation Form data loaded ....");
-          console.log(jsonData);
-        
-          var locataires = [];
-          var locations = [];
-          var groupes = [];
-    
-          for(let item of jsonData.locataires){
-              locataires.push(item);
-          }
-          for(let item of jsonData.locations){
-            locations.push(item);
-        }
-        for(let item of jsonData.groupes){
-            groupes.push(item);
-        }
-        console.log(locataires);
-        console.log(locations);
-        console.log(groupes);
-    
-    for(var item of locataires){
-    var option =  new Option(item.nom+' '+item.prenom, item.id_locataire);
-    $("#inputens").append(option);
-    }
-    for(var item of locations){
-    var option =  new Option(item.cin_loc, item.ID_loc);
-    $("#inputSalle").append(option);
-    }
-    for(var item of groupes){
-    var option =  new Option(item.nom_groupe, item.nom_groupe);
-    $("#inputreservgroup").append(option);
-    }
-    
-    
-    //create reservation
+
+
+
+
+
+ //create reservation
     // this is the id of the form
-    $("#createreservation").submit(function(e) {
+    $("#createens").submit(function(e) {
     
-    e.preventDefault(); // avoid to execute the actual submit of the form.
-    
-    var form = $(this);
-    var isValid = false;
-    var inputSalle = $("#inputSalle").val();
-    var inputHeure = $("#inputHeure").val();
-    var inputJour = $("#inputJour").val();
-    var inputHeure = $("#inputHeure").val();
-    var inputMois = $("#inputMois").val();
-    var inputAndeb = $("#inputAndeb").val();
-    var inputHeureFin = $("#inputHeureFin").val();
-    var inputJourFin = $("#inputJourFin").val();
-    var inputHeureFin = $("#inputHeureFin").val();
-    var inputMoisFin = $("#inputMoisFin").val();
-    var inputAnFin = $("#inputAnFin").val();
-    var inputEns = $("#inputens").val();
-    var inputGroupe = $("#inputreservgroup").val();
-    
-    if( inputSalle =="nil" ){
-    $("#is").css("visibility","visible");
-    isValid = false;
-    $("#inputSalle").removeClass("is-valid");
-    $("#inputSalle").addClass("is-invalid");
-    console.log(inputSalle);
-    console.log(isValid);
-    $("#is").removeClass("valid-feedback");
-    $("#is").addClass("invalid-feedback");
-    $("#is").html("Champ invalide");
-    return false;
-    }else{
-    isValid = true;
-    $("#is").css("visibility","visible");
-    $("#inputSalle").removeClass("is-invalid");
-    $("#inputSalle").addClass("is-valid");
-    console.log(isValid);
-    $("#is").removeClass("invalid-feedback");
-    $("#is").addClass("valid-feedback");
-    $("#is").html("Champ valide");
-    }
-    
-    if( inputHeure =="nil"){
-    $("#ih").css("visibility","visible");
-    isValid = false;
-    $("#inputHeure").removeClass("is-valid");
-    $("#inputHeure").addClass("is-invalid");
-    console.log(inputHeure);
-    console.log(isValid);
-    $("#ih").removeClass("valid-feedback");
-    $("#ih").addClass("invalid-feedback");
-    $("#ih").html("Champ invalide");
-    return false;
-    }else{
-    isValid = true;
-    $("#ih").css("visibility","visible");
-    $("#inputHeure").removeClass("is-invalid");
-    $("#inputHeure").addClass("is-valid");
-    console.log(isValid);
-    $("#ih").removeClass("invalid-feedback");
-    $("#ih").addClass("valid-feedback");
-    $("#ih").html("Champ valide");
-    }
-    
-    if( inputJour =="nil"){
-    $("#ij").css("visibility","visible");
-    isValid = false;
-    $("#inputJour").removeClass("is-valid");
-    $("#inputJour").addClass("is-invalid");
-    console.log(inputJour);
-    console.log(isValid);
-    $("#ij").removeClass("valid-feedback");
-    $("#ij").addClass("invalid-feedback");
-    $("#ij").html("Champ invalide");
-    return false;
-    }else{
-    isValid = true;
-    $("#ij").css("visibility","visible");
-    $("#inputJour").removeClass("is-invalid");
-    $("#inputJour").addClass("is-valid");
-    console.log(isValid);
-    $("#ij").removeClass("invalid-feedback");
-    $("#ij").addClass("valid-feedback");
-    $("#ij").html("Champ valide");
-    }
-    
-    if( inputMois =="nil"){
-    $("#im").css("visibility","visible");
-    isValid = false;
-    $("#inputMois").removeClass("is-valid");
-    $("#inputMois").addClass("is-invalid");
-    console.log("mois");
-    console.log(inputMois);
-    console.log(isValid);
-    $("#im").removeClass("valid-feedback");
-    $("#im").addClass("invalid-feedback");
-    $("#im").html("Champ invalide");
-    return false;
-    }else{
-    isValid = true;
-    $("#im").css("visibility","visible");
-    $("#inputMois").removeClass("is-invalid");
-    $("#inputMois").addClass("is-valid");
-    console.log("mois");
-    console.log(inputMois);
-    console.log(isValid);
-    $("#im").removeClass("invalid-feedback");
-    $("#im").addClass("valid-feedback");
-    $("#im").html("Champ valide");
-    }
-    
-    if( inputAndeb =="nil"){
-    $("#ia").css("visibility","visible");
-    isValid = false;
-    $("#inputAndeb").removeClass("is-valid");
-    $("#inputAndeb").addClass("is-invalid");
-    console.log(inputAndeb);
-    console.log(isValid);
-    $("#ia").removeClass("valid-feedback");
-    $("#ia").addClass("invalid-feedback");
-    $("#ia").html("Champ invalide");
-    return false;
-    }else{
-    isValid = true;
-    $("#ia").css("visibility","visible");
-    $("#inputAndeb").removeClass("is-invalid");
-    $("#inputAndeb").addClass("is-valid");
-    console.log(isValid);
-    console.log("andeb");
-    console.log(inputAndeb);
-    $("#ia").removeClass("invalid-feedback");
-    $("#ia").addClass("valid-feedback");
-    $("#ia").html("Champ valide");
-    }
-    
-    
-    if( inputHeureFin =="nil" ){
-    $("#ihf").css("visibility","visible");
-    isValid = false;
-    $("#inputHeureFin").removeClass("is-valid");
-    $("#inputHeureFin").addClass("is-invalid");
-    console.log(inputSalle);
-    console.log(isValid);
-    $("#ihf").removeClass("valid-feedback");
-    $("#ihf").addClass("invalid-feedback");
-    $("#ihf").html("Champ invalide");
-    return false;
-    }else{
-    isValid = true;
-    $("#ihf").css("visibility","visible");
-    $("#inputHeureFin").removeClass("is-invalid");
-    $("#inputHeureFin").addClass("is-valid");
-    console.log(isValid);
-    $("#ihf").removeClass("invalid-feedback");
-    $("#ihf").addClass("valid-feedback");
-    $("#ihf").html("Champ valide");
-    }
-    if( inputJourFin =="nil" ){
-    $("#ijf").css("visibility","visible");
-    isValid = false;
-    $("#inputJourFin").removeClass("is-valid");
-    $("#inputJourFin").addClass("is-invalid");
-    console.log(inputSalle);
-    console.log(isValid);
-    $("#ijf").removeClass("valid-feedback");
-    $("#ijf").addClass("invalid-feedback");
-    $("#ijf").html("Champ invalide");
-    return false;
-    }else{
-    isValid = true;
-    $("#ijf").css("visibility","visible");
-    $("#inputJourFin").removeClass("is-invalid");
-    $("#inputJourFin").addClass("is-valid");
-    console.log(isValid);
-    $("#ijf").removeClass("invalid-feedback");
-    $("#ijf").addClass("valid-feedback");
-    $("#ijf").html("Champ valide");
-    }
-    if( inputMoisFin =="nil" ){
-    $("#imf").css("visibility","visible");
-    isValid = false;
-    $("#inputMoisFin").removeClass("is-valid");
-    $("#inputMoisFin").addClass("is-invalid");
-    console.log(inputSalle);
-    console.log(isValid);
-    $("#imf").removeClass("valid-feedback");
-    $("#imf").addClass("invalid-feedback");
-    $("#imf").html("Champ invalide");
-    return false;
-    }else{
-    isValid = true;
-    $("#imf").css("visibility","visible");
-    $("#inputMoisFin").removeClass("is-invalid");
-    $("#inputMoisFin").addClass("is-valid");
-    console.log(isValid);
-    $("#imf").removeClass("invalid-feedback");
-    $("#imf").addClass("valid-feedback");
-    $("#imf").html("Champ valide");
-    }
-    
-    if( inputAnFin =="nil" ){
-    $("#iaf").css("visibility","visible");
-    isValid = false;
-    $("#inputAnFin").removeClass("is-valid");
-    $("#inputAnFin").addClass("is-invalid");
-    console.log(inputSalle);
-    console.log(isValid);
-    $("#iaf").removeClass("valid-feedback");
-    $("#iaf").addClass("invalid-feedback");
-    $("#iaf").html("Champ invalide");
-    return false;
-    }else{
-    isValid = true;
-    $("#iaf").css("visibility","visible");
-    $("#inputAnFin").removeClass("is-invalid");
-    $("#inputAnFin").addClass("is-valid");
-    console.log(isValid);
-    $("#iaf").removeClass("invalid-feedback");
-    $("#iaf").addClass("valid-feedback");
-    $("#iaf").html("Champ valide");
-    }
-    
-    
-    if( inputEns =="nil" ){
-    $("#iens").css("visibility","visible");
-    isValid = false;
-    $("#inputens").removeClass("is-valid");
-    $("#inputens").addClass("is-invalid");
-    console.log(inputSalle);
-    console.log(isValid);
-    $("#iens").removeClass("valid-feedback");
-    $("#iens").addClass("invalid-feedback");
-    $("#iens").html("Champ invalide");
-    return false;
-    }else{
-    isValid = true;
-    $("#iens").css("visibility","visible");
-    $("#inputens").removeClass("is-invalid");
-    $("#inputens").addClass("is-valid");
-    console.log(isValid);
-    $("#iens").removeClass("invalid-feedback");
-    $("#iens").addClass("valid-feedback");
-    $("#iens").html("Champ valide");
-    }
-    
-    
-    if( inputGroupe =="nil" ){
-    $("#igrp").css("visibility","visible");
-    isValid = false;
-    $("#inputreservgroup").removeClass("is-valid");
-    $("#inputreservgroup").addClass("is-invalid");
-    console.log(inputSalle);
-    console.log(isValid);
-    $("#igrp").removeClass("valid-feedback");
-    $("#igrp").addClass("invalid-feedback");
-    $("#igrp").html("Champ invalide");
-    return false;
-    }else{
-    isValid = true;
-    $("#igrp").css("visibility","visible");
-    $("#inputreservgroup").removeClass("is-invalid");
-    $("#inputreservgroup").addClass("is-valid");
-    console.log(isValid);
-    $("#igrp").removeClass("invalid-feedback");
-    $("#igrp").addClass("valid-feedback");
-    $("#igrp").html("Champ valide");
-    }
-    
-    if((inputHeure >= inputHeureFin) && (inputJour == inputJourFin) && (inputMois == inputMoisFin) && (inputAndeb == inputAnFin)){
-    if(inputHeure == inputHeureFin){
-        console.log("equal hours");
-    }else {
-        console.log("not equal hours");
-    }
-    if(inputJour == inputJourFin){
-        console.log("equal days");
-    }else {
-        console.log("not equal days");
-    }
-    if(inputAndeb == inputAnFin){
-        console.log("equal years");
-    }else {
-        console.log("not equal years");
-    }
-    $("#ih").css("visibility","visible");
-    isValid = false;
-    $("#inputHeure").removeClass("is-valid");
-    $("#inputHeure").addClass("is-invalid");
-    console.log(inputHeure);
-    console.log(isValid);
-    $("#ih").removeClass("valid-feedback");
-    $("#ih").addClass("invalid-feedback");
-    $("#ih").html("L'heure de début doit etre inférieure a l'heure de fin du meme mois et année");
-    return false;
-    }
-    
-    if((inputMois >= inputMoisFin)  && (inputAndeb == inputAnFin)){
-    
-    $("#imf").css("visibility","visible");
-    isValid = false;
-    $("#inputMoisFin").removeClass("is-valid");
-    $("#inputMoisFin").addClass("is-invalid");
-    console.log(inputHeure);
-    console.log(isValid);
-    $("#imf").removeClass("valid-feedback");
-    $("#imf").addClass("invalid-feedback");
-    $("#imf").html("Le mois de début doit etre inférieure ou égal au mois de fin");
-    return false;
-    }
-    
-    if((inputJour > inputJourFin) && (inputMois == inputMoisFin)  && (inputAndeb == inputAnFin)){
-    
-    $("#ijf").css("visibility","visible");
-    isValid = false;
-    $("#inputJourFin").removeClass("is-valid");
-    $("#inputJourFin").addClass("is-invalid");
-    console.log(inputHeure);
-    console.log(isValid);
-    $("#ijf").removeClass("valid-feedback");
-    $("#ijf").addClass("invalid-feedback");
-    $("#ijf").html("Le jour de début doit etre inférieure ou égal au jour de fin");
-    return false;
-    }
-    
-    if(inputAndeb > inputAnFin){
-    $("#iaf").css("visibility","visible");
-    isValid = false;
-    $("#inputAnFin").removeClass("is-valid");
-    $("#inputAnFin").addClass("is-invalid");
-    console.log(inputAndeb);
-    console.log(isValid);
-    $("#iaf").removeClass("valid-feedback");
-    $("#iaf").addClass("invalid-feedback");
-    $("#iaf").html("L'an de début doit etre égale ou inférieure a l'an de fin");
-    return false;
-    }
-    
-    if(isValid == true){
-    
-    let object = {
-    id_loc: $("#inputSalle").val(),
-    id_locataire: $("#inputens").val(),
-    id_groupe: $("#inputreservgroup option:selected").text(),
-    datedeb: $("#inputAndeb").val()+"-"+$("#inputMois").val()+"-"+$("#inputJour").val(),
-    datefin: $("#inputAnFin").val()+"-"+$("#inputMoisFin").val()+"-"+$("#inputJourFin").val(),
-    heuredeb: $("#inputHeure").val(),
-    jourdeb: $("#inputJour").val(),
-    moisdeb: $("#inputMois").val(),
-    andeb: $("#inputAndeb").val(),
-    heurefin: $("#inputHeureFin").val(),
-    jourfin: $("#inputJourFin").val(),
-    moisfin: $("#inputMoisFin").val(),
-    anfin: $("#inputAnFin").val()
-    };
-    console.log("object" +JSON.stringify(object));
-    $.ajax({
-           type: "POST",
-           url: "http://localhost/Zied/server/Api/Reservations/AddReservation.php",
-           data: JSON.stringify(object),
-           dataType: 'json',
-           contentType: 'application/json',
-           success: function(data)
-           {
-               console.log(data);
-                // show response from the php script.
-                var myModal = $("#reservmodal");
-                myModal.modal("show");
-                document.getElementById("createreservation").reset();
-                
-                setTimeout(function(){ location.replace("index.php"); }, 6000);
-           }
-         });
-    
+        e.preventDefault(); // avoid to execute the actual submit of the form.
+        
+        var form = $(this);
+        var isValid = false;
+        var nom_ens = $("#nom_ens").val();
+        var prenom_ens = $("#prenom_ens").val();
+        var cin_ens = $("#cin_ens").val();
+        var prenom_ens = $("#prenom_ens").val();
+        var ville_ens = $("#ville_ens").val();
+        var rue_ens = $("#rue_ens").val();
+        var postal_ens = $("#postal_ens").val();
+        var email_ens = $("#email_ens").val();
+        var tel_ens = $("#tel_ens").val();
+        var portable_ens = $("#portable_ens").val();
+        
+
+        if( nom_ens.length == 0 ){
+        $("#enom").css("visibility","visible");
+        isValid = false;
+        $("#nom_ens").removeClass("is-valid");
+        $("#nom_ens").addClass("is-invalid");
+        console.log(nom_ens);
+        console.log(isValid);
+        $("#enom").removeClass("valid-feedback");
+        $("#enom").addClass("invalid-feedback");
+        $("#enom").html("Champ invalide");
+        return false;
+        }else{
+        isValid = true;
+        $("#enom").css("visibility","visible");
+        $("#nom_ens").removeClass("is-invalid");
+        $("#nom_ens").addClass("is-valid");
+        console.log(isValid);
+        $("#enom").removeClass("invalid-feedback");
+        $("#enom").addClass("valid-feedback");
+        $("#enom").html("Champ valide");
         }
-    });
-    
-    
-    
-    
-        },
-        error: function (data) { alert("Server Error"); }
-    });
-    
-    
+        
+        if( prenom_ens.length == 0){
+        $("#eprenom").css("visibility","visible");
+        isValid = false;
+        $("#prenom_ens").removeClass("is-valid");
+        $("#prenom_ens").addClass("is-invalid");
+        console.log(prenom_ens);
+        console.log(isValid);
+        $("#eprenom").removeClass("valid-feedback");
+        $("#eprenom").addClass("invalid-feedback");
+        $("#eprenom").html("Champ invalide");
+        return false;
+        }else{
+        isValid = true;
+        $("#eprenom").css("visibility","visible");
+        $("#prenom_ens").removeClass("is-invalid");
+        $("#prenom_ens").addClass("is-valid");
+        console.log(isValid);
+        $("#eprenom").removeClass("invalid-feedback");
+        $("#eprenom").addClass("valid-feedback");
+        $("#eprenom").html("Champ valide");
+        }
+        
+        if( cin_ens.length == 0){
+        $("#ecin").css("visibility","visible");
+        isValid = false;
+        $("#cin_ens").removeClass("is-valid");
+        $("#cin_ens").addClass("is-invalid");
+        console.log(cin_ens);
+        console.log(isValid);
+        $("#ecin").removeClass("valid-feedback");
+        $("#ecin").addClass("invalid-feedback");
+        $("#ecin").html("Champ invalide");
+        return false;
+        }else{
+        isValid = true;
+        $("#ecin").css("visibility","visible");
+        $("#cin_ens").removeClass("is-invalid");
+        $("#cin_ens").addClass("is-valid");
+        console.log(isValid);
+        $("#ecin").removeClass("invalid-feedback");
+        $("#ecin").addClass("valid-feedback");
+        $("#ecin").html("Champ valide");
+        }
+        
+        if( ville_ens.length == 0){
+        $("#eville").css("visibility","visible");
+        isValid = false;
+        $("#ville_ens").removeClass("is-valid");
+        $("#ville_ens").addClass("is-invalid");
+        console.log("mois");
+        console.log(ville_ens);
+        console.log(isValid);
+        $("#eville").removeClass("valid-feedback");
+        $("#eville").addClass("invalid-feedback");
+        $("#eville").html("Champ invalide");
+        return false;
+        }else{
+        isValid = true;
+        $("#eville").css("visibility","visible");
+        $("#ville_ens").removeClass("is-invalid");
+        $("#ville_ens").addClass("is-valid");
+        console.log("mois");
+        console.log(ville_ens);
+        console.log(isValid);
+        $("#eville").removeClass("invalid-feedback");
+        $("#eville").addClass("valid-feedback");
+        $("#eville").html("Champ valide");
+        }
+        
+        if( rue_ens.length == 0){
+        $("#erue").css("visibility","visible");
+        isValid = false;
+        $("#rue_ens").removeClass("is-valid");
+        $("#rue_ens").addClass("is-invalid");
+        console.log(rue_ens);
+        console.log(isValid);
+        $("#erue").removeClass("valid-feedback");
+        $("#erue").addClass("invalid-feedback");
+        $("#erue").html("Champ invalide");
+        return false;
+        }else{
+        isValid = true;
+        $("#erue").css("visibility","visible");
+        $("#rue_ens").removeClass("is-invalid");
+        $("#rue_ens").addClass("is-valid");
+        console.log(isValid);
+        console.log("andeb");
+        console.log(rue_ens);
+        $("#erue").removeClass("invalid-feedback");
+        $("#erue").addClass("valid-feedback");
+        $("#erue").html("Champ valide");
+        }
+       // var postal_ens = $("#postal_ens").val();
+       // var email_ens = $("#email_ens").val();
+       // var tel_ens = $("#tel_ens").val(); 
+       if( postal_ens.length == 0){
+        $("#epostal").css("visibility","visible");
+        isValid = false;
+        $("#postal_ens").removeClass("is-valid");
+        $("#postal_ens").addClass("is-invalid");
+        console.log(postal_ens);
+        console.log(isValid);
+        $("#epostal").removeClass("valid-feedback");
+        $("#epostal").addClass("invalid-feedback");
+        $("#epostal").html("Champ invalide");
+        return false;
+        }else{
+        isValid = true;
+        $("#epostal").css("visibility","visible");
+        $("#postal_ens").removeClass("is-invalid");
+        $("#postal_ens").addClass("is-valid");
+        console.log(isValid);
+        $("#epostal").removeClass("invalid-feedback");
+        $("#epostal").addClass("valid-feedback");
+        $("#epostal").html("Champ valide");
+        }
+
+        if( email_ens.length == 0){
+            $("#eemail").css("visibility","visible");
+            isValid = false;
+            $("#email_ens").removeClass("is-valid");
+            $("#email_ens").addClass("is-invalid");
+            console.log(postal_ens);
+            console.log(isValid);
+            $("#eemail").removeClass("valid-feedback");
+            $("#eemail").addClass("invalid-feedback");
+            $("#eemail").html("Champ invalide");
+            return false;
+            }else{
+            isValid = true;
+            $("#eemail").css("visibility","visible");
+            $("#email_ens").removeClass("is-invalid");
+            $("#email_ens").addClass("is-valid");
+            console.log(isValid);
+            $("#eemail").removeClass("invalid-feedback");
+            $("#eemail").addClass("valid-feedback");
+            $("#eemail").html("Champ valide");
+            }
+
+            if( tel_ens.length == 0){
+                $("#etel").css("visibility","visible");
+                isValid = false;
+                $("#tel_ens").removeClass("is-valid");
+                $("#tel_ens").addClass("is-invalid");
+                console.log(postal_ens);
+                console.log(isValid);
+                $("#etel").removeClass("valid-feedback");
+                $("#etel").addClass("invalid-feedback");
+                $("#etel").html("Champ invalide");
+                return false;
+                }else{
+                isValid = true;
+                $("#etel").css("visibility","visible");
+                $("#tel_ens").removeClass("is-invalid");
+                $("#tel_ens").addClass("is-valid");
+                console.log(isValid);
+                $("#etel").removeClass("invalid-feedback");
+                $("#etel").addClass("valid-feedback");
+                $("#etel").html("Champ valide");
+                }
+
+        if( portable_ens.length == 0){
+            $("#eportable").css("visibility","visible");
+            isValid = false;
+            $("#portable_ens").removeClass("is-valid");
+            $("#portable_ens").addClass("is-invalid");
+            console.log(rue_ens);
+            console.log(isValid);
+            $("#eportable").removeClass("valid-feedback");
+            $("#eportable").addClass("invalid-feedback");
+            $("#eportable").html("Champ invalide");
+            return false;
+            }else{
+            isValid = true;
+            $("#eportable").css("visibility","visible");
+            $("#portable_ens").removeClass("is-invalid");
+            $("#portable_ens").addClass("is-valid");
+            console.log(isValid);
+            $("#eportable").removeClass("invalid-feedback");
+            $("#eportable").addClass("valid-feedback");
+            $("#eportable").html("Champ valide");
+            }
+        
+        
+        
+        if(isValid == true){
+        
+        let object = {
+        id_loc: $("#nom_ens").val(),
+        id_locataire: $("#inputens").val(),
+        id_groupe: $("#inputreservgroup option:selected").text(),
+        datedeb: $("#rue_ens").val()+"-"+$("#ville_ens").val()+"-"+$("#cin_ens").val(),
+        datefin: $("#inputAnFin").val()+"-"+$("#ville_ensFin").val()+"-"+$("#cin_ensFin").val(),
+        heuredeb: $("#prenom_ens").val(),
+        jourdeb: $("#cin_ens").val(),
+        moisdeb: $("#ville_ens").val(),
+        andeb: $("#rue_ens").val(),
+        heurefin: $("#prenom_ensFin").val(),
+        jourfin: $("#cin_ensFin").val(),
+        moisfin: $("#ville_ensFin").val(),
+        anfin: $("#inputAnFin").val()
+        };
+        console.log("object" +JSON.stringify(object));
+        $.ajax({
+               type: "POST",
+               url: "http://localhost/Zied/server/Api/Reservations/AddReservation.php",
+               data: JSON.stringify(object),
+               dataType: 'json',
+               contentType: 'application/json',
+               success: function(data)
+               {
+                   console.log(data);
+                    // show response from the php script.
+                    var myModal = $("#reservmodal");
+                    myModal.modal("show");
+                    document.getElementById("createreservation").reset();
+                    
+                    setTimeout(function(){ location.replace("index.php"); }, 6000);
+               }
+             });
+        
+            }
+        });
+
+
+
+
+
     });
