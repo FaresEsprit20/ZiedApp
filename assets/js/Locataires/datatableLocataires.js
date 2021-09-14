@@ -76,7 +76,7 @@ $(document).ready(function(){
                
                 if (confirm('Do you want to Delete?')) {
                     delReserv(object);
-                    //location.reload();
+                    location.reload();
                 }else{
                     return false;
                 }
@@ -90,7 +90,7 @@ $(document).ready(function(){
                 var jsonObject = JSON.stringify(object);
                 if (confirm('Do you want to Archive?')) {
                     archvReserv(object);
-                    //location.reload();
+                    location.reload();
                 }else{
                     return false;
                 }
