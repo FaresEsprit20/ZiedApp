@@ -101,7 +101,6 @@
         <div class="table-reservations">
 
   
-
         <form class="row g-3" id="createens">
        
 
@@ -215,21 +214,20 @@
           <table class="table display" id="reservationsDatatable">
             <caption>Liste des Enseignants</caption>
             <thead class="table-dark">
-              <th scope="col">#id_loc</th>
-              <th scope="col">#Nom_salle</th>
-              <th scope="col">#Nom groupe</th>
-              <th scope="col">CIN Locataire</th>
-              <th scope="col">Nom & Prenom</th>
+              <th scope="col">#id_ens</th>
+              <th scope="col">#Nom</th>
+              <th scope="col">#Prénom</th>
+              <th scope="col">CIN</th>
               <th scope="col">Ville</th>
+              <th scope="col">Rue</th>
+              <th scope="col">Code Postal</th>
               <th scope="col">Email</th>
+              <th scope="col">Tel</th>
               <th scope="col">Portable</th>
-              <th scope="col">Date début Location</th>
-              <th scope="col">Date fin Location</th>
-              <th scope="col">Heure début</th>
               <th scope="col">Action</th>
               
             </thead>
-            <tbody id="tbody">
+            <tbody id="tbodyEns">
               
             </tbody>
           </table>
@@ -271,7 +269,7 @@
     <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="assets/js/main-script.js" ></script> 
-    <script src="assets/js/Reservations/datatableReservation.js" ></script> 
+    <script src="assets/js/Locataires/datatableLocataires.js" ></script> 
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.1/js/dataTables.bootstrap5.min.js"></script>
 

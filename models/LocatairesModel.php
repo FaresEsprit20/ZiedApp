@@ -40,6 +40,13 @@ class LocatairesModel {
     
     }
 
+    public function getLocataires() {       
+        $stmt = $this->conn->prepare("SELECT * from locataires WHERE archiver_state = 0 ");
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode($result);
+        
+    }
     
     public function ArchiverLocataire() {
         $json = file_get_contents('php://input');
