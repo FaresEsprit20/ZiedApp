@@ -320,7 +320,7 @@
         <div class="table-responsive">
 
           <table class="table display" id="locationsDatatable">
-            <caption>Liste des Locations</caption>
+            <caption>Liste des Locations Vides</caption>
             <thead class="table-dark">
               <th scope="col">#id_loc</th>
               <th scope="col">#Nom_salle</th>   
