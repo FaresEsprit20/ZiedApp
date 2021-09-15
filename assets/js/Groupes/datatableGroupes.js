@@ -81,9 +81,9 @@ $(document).ready(function(){
                
               });
               $("#tbodyGroupes").on('click','#btnArchv', function(){
-                var id =   $(this).closest('tr').find('.id_reserv').text();
+                var id =   $(this).closest('tr').find('.id_groupe').text();
                 var object = {
-                    id_reserv: id
+                    id_groupe: id
                 }
                 var jsonObject = JSON.stringify(object);
                 if (confirm('Do you want to Archive?')) {

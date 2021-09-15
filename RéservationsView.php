@@ -332,7 +332,6 @@
   <label for="inputens" class="form-label">Enseignant</label>
     <select id="inputens" class="form-select" required>
       <option selected  value="nil">Sélectionner un Enseignant...</option>
-      <option value="nils">Sélectionner un Enseignant...</option>
     </select>
     <div id="iens" style="visibility:hidden">
       
