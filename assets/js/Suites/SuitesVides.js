@@ -157,11 +157,7 @@ $("#iaf").html("Champ valide");
 
 
 if((inputJour > inputJourFin) && (inputMois == inputMoisFin) && (inputAndeb == inputAnFin)){
-if(inputHeure == inputHeureFin){
-    console.log("equal hours");
-}else {
-    console.log("not equal hours");
-}
+
 if(inputJour == inputJourFin){
     console.log("equal days");
 }else {
@@ -172,15 +168,6 @@ if(inputAndeb == inputAnFin){
 }else {
     console.log("not equal years");
 }
-$("#ih").css("visibility","visible");
-isValid = false;
-$("#inputHeure").removeClass("is-valid");
-$("#inputHeure").addClass("is-invalid");
-console.log(inputHeure);
-console.log(isValid);
-$("#ih").removeClass("valid-feedback");
-$("#ih").addClass("invalid-feedback");
-$("#ih").html("L'heure de début doit etre inférieure a l'heure de fin du meme mois et année");
 return false;
 }
 
@@ -190,7 +177,6 @@ $("#imf").css("visibility","visible");
 isValid = false;
 $("#inputMoisFin").removeClass("is-valid");
 $("#inputMoisFin").addClass("is-invalid");
-console.log(inputHeure);
 console.log(isValid);
 $("#imf").removeClass("valid-feedback");
 $("#imf").addClass("invalid-feedback");
@@ -204,7 +190,6 @@ if(inputMois > inputMoisFin){
     isValid = false;
     $("#inputMoisFin").removeClass("is-valid");
     $("#inputMoisFin").addClass("is-invalid");
-    console.log(inputHeure);
     console.log(isValid);
     $("#imf").removeClass("valid-feedback");
     $("#imf").addClass("invalid-feedback");
@@ -218,7 +203,6 @@ $("#ijf").css("visibility","visible");
 isValid = false;
 $("#inputJourFin").removeClass("is-valid");
 $("#inputJourFin").addClass("is-invalid");
-console.log(inputHeure);
 console.log(isValid);
 $("#ijf").removeClass("valid-feedback");
 $("#ijf").addClass("invalid-feedback");
