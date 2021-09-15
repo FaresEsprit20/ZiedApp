@@ -365,7 +365,8 @@
     <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="assets/js/main-script.js" ></script> 
     <script src="assets/js/Suites/SuitesVides.js" ></script> 
-    
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.1/js/dataTables.bootstrap5.min.js"></script>   
     
 
 

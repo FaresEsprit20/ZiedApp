@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Sep 12, 2021 at 09:25 PM
+-- Generation Time: Sep 15, 2021 at 06:15 PM
 -- Server version: 5.7.31
 -- PHP Version: 7.3.21
 
@@ -56,9 +56,9 @@ CREATE TABLE IF NOT EXISTS `groupe` (
 --
 
 INSERT INTO `groupe` (`id_groupe`, `nom_groupe`, `archive_state`) VALUES
-(2, '5 Sim1', 1),
-(3, '4 NIDS 1', 1),
-(4, '6 BI 6', 0),
+(2, '5 Sim1', 0),
+(3, '5 EPI', 0),
+(4, '6 BI 5', 0),
 (6, '5 EPI IA', 0),
 (7, ' TWIN 5', 0);
 
@@ -108,7 +108,6 @@ CREATE TABLE IF NOT EXISTS `locataires` (
 --
 
 INSERT INTO `locataires` (`id_locataire`, `nom`, `prenom`, `cin`, `rue`, `codepostal`, `ville`, `tel`, `portable`, `email`, `archiver_state`) VALUES
-(7, 'Andrey', 'Smirnov', '45784225', 'Avenue Mexico', '7586', 'Cardiff', '', '85785257', 'andrey_smirnov@email.uk', 0),
 (8, 'Yuri', 'Blankov', '00218241', 'Moscow Avenue', '0021', 'St Petersburg', '02371741', '11114471', 'Yuri77@gmail.com', 0),
 (9, 'Zied', 'Jday', '46882521', 'Sallakta Ben Njima', '5180', 'Ksour Essef', '14243331', '00001140', 'zied81@gmail.com', 0);
 
@@ -123,7 +122,7 @@ CREATE TABLE IF NOT EXISTS `locations` (
   `ID_loc` int(11) NOT NULL AUTO_INCREMENT,
   `cin_loc` varchar(255) NOT NULL,
   PRIMARY KEY (`ID_loc`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `locations`
@@ -133,7 +132,8 @@ INSERT INTO `locations` (`ID_loc`, `cin_loc`) VALUES
 (1, 'A22'),
 (2, 'C214'),
 (4, 'C215'),
-(5, 'C21');
+(5, 'C21'),
+(6, '5 EPI 2');
 
 -- --------------------------------------------------------
 
@@ -147,8 +147,8 @@ CREATE TABLE IF NOT EXISTS `reservation` (
   `id_loc` int(11) NOT NULL,
   `id_locataire` int(11) NOT NULL,
   `id_groupe` varchar(255) NOT NULL,
-  `datedeb` varchar(255) NOT NULL,
-  `datefin` varchar(255) NOT NULL,
+  `datedeb` date NOT NULL,
+  `datefin` date NOT NULL,
   `heuredeb` char(2) NOT NULL,
   `jourdeb` char(2) NOT NULL,
   `moisdeb` char(2) NOT NULL,
@@ -161,7 +161,7 @@ CREATE TABLE IF NOT EXISTS `reservation` (
   PRIMARY KEY (`id_reserv`),
   KEY `reservation_ibfk_1` (`id_loc`),
   KEY `id_locataire` (`id_locataire`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `reservation`
@@ -169,7 +169,7 @@ CREATE TABLE IF NOT EXISTS `reservation` (
 
 INSERT INTO `reservation` (`id_reserv`, `id_loc`, `id_locataire`, `id_groupe`, `datedeb`, `datefin`, `heuredeb`, `jourdeb`, `moisdeb`, `andeb`, `heurefin`, `jourfin`, `moisfin`, `anfin`, `archive_state`) VALUES
 (18, 1, 8, '6 BI 6', '2023-11-03', '2024-02-02', '01', '03', '11', 2023, '01', '02', '02', 2024, 0),
-(28, 1, 8, '6 BI 6', '2021-02-01', '2022-02-03', '00', '01', '02', 2021, '02', '03', '02', 2022, 1);
+(28, 1, 8, '6 BI 6', '2021-02-01', '2022-02-03', '00', '01', '02', 2021, '02', '03', '02', 2022, 0);
 
 --
 -- Constraints for dumped tables
