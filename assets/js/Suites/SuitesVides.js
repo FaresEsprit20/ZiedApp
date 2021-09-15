@@ -244,17 +244,11 @@ if(isValid == true){
 let object = {
 datedeb: $("#inputAndeb").val()+"-"+$("#inputMois").val()+"-"+$("#inputJour").val(),
 datefin: $("#inputAnFin").val()+"-"+$("#inputMoisFin").val()+"-"+$("#inputJourFin").val(),
-jourdeb: $("#inputJour").val(),
-moisdeb: $("#inputMois").val(),
-andeb: $("#inputAndeb").val(),
-jourfin: $("#inputJourFin").val(),
-moisfin: $("#inputMoisFin").val(),
-anfin: $("#inputAnFin").val()
 };
 console.log("object" +JSON.stringify(object));
 $.ajax({
        type: "POST",
-       url: "http://localhost/Zied/server/Api/Reservations/AddReservation.php",
+       url: "http://localhost/Zied/server/Api/Locations/GetEmptyLocations.php",
        data: JSON.stringify(object),
        dataType: 'json',
        contentType: 'application/json',

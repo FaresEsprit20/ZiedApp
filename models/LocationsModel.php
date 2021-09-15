@@ -68,13 +68,20 @@ class LocationsModel {
         }
     }
 
+    
     public function getEmptyLocations() {
-        $stmt = $this->conn->prepare("SELECT * FROM locations WHERE id_loc NOT IN (SELECT locations.id_loc FROM reservation,locations WHERE  locations.id_loc=reservation.id_loc)");
-        $stmt->execute();
+        $json = file_get_contents('php://input');
+        $data = json_decode($json, true);
+        if( isset($data["datedeb"]) and (isset($data["datefin"])) ){
+        $stmt = $this->conn->prepare("SELECT * FROM locations WHERE id_loc NOT IN (SELECT locations.id_loc FROM reservation,locations WHERE  (locations.id_loc=reservation.id_loc) AND (reservation.datedeb LIKE ? ) AND  (reservation.datefin LIKE ? ))");
+        $stmt->execute([$data["datedeb"],$data["datefin"]]);
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        echo json_encode($result) ;
-     
+        echo json_encode($result);
+        }else{
+            echo json_encode(http_response_code(200));
+        }
     }
+
 
     public function getReservedLocations() {
         $stmt = $this->conn->prepare("SELECT * FROM reservation,locations where locations.id_loc=reservation.id_loc");
