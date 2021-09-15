@@ -85,8 +85,8 @@
 
 <section class="reservations" id="reservations">
   <div class="container-fluid">
-    <div class="special-heading">Réservations</div>
-      <p>Créer une réservation</p>
+    <div class="special-heading">Suite Vides</div>
+      <p>Choisir la date de début et de fin pour chercher les suites vides</p>
   <div class="row">
   <div class="col col-sm col-lg-2">
   </div>
@@ -98,47 +98,12 @@
 
   
 
-        <form class="row g-3">
-        <div class="col-md-10">
-    <label for="inputSalle" class="form-label">Choisir Salle</label>
-    <select id="inputSalle" class="form-select">
-      <option selected disabled value="nil">Salle...</option>
-    </select>
-  </div>
-  <div class="col-md-3">
-    <label for="inputHeure" class="form-label">Début de réservation</label>
-    <select id="inputHeure" class="form-select">
-      <option selected disabled value="nil">Heure...</option>
-          <option value="00">00</option>
-          <option value="01">01</option>
-          <option value="02">02</option>
-          <option value="03">03</option>
-          <option value="04">04</option>
-          <option value="05">05</option>
-          <option value="06">06</option>
-          <option value="07">07</option>
-          <option value="08">08</option>
-          <option value="09">09</option>
-          <option value="10">10</option>
-          <option value="11">11</option>
-          <option value="12">12</option>
-          <option value="13">13</option>
-          <option value="14">14</option>
-          <option value="15">15</option>
-          <option value="16">16</option>
-          <option value="17">17</option>
-          <option value="18">18</option>
-          <option value="19">19</option>
-          <option value="20">20</option>
-          <option value="21">21</option>
-          <option value="22">22</option>
-          <option value="23">23</option>
-    </select>
-  </div>
-  <div class="col-md-3">
-  <label for="inputJour" style="visibility:hidden" class="form-label">Début de réservation</label>
+        <form class="row g-3" id="createloc">
+
+  <div class="col-md-4">
+  <label for="inputJour"  class="form-label">Début de réservation</label>
     <select id="inputJour" class="form-select">
-      <option selected disabled value="nil">Jour...</option>
+      <option selected  value="nil">Jour...</option>
           <option value="01">1</option>
           <option value="02">2</option>
           <option value="03">3</option>
@@ -170,11 +135,14 @@
           <option value="30">30</option>
           <option value="31">31</option>
     </select>
+    <div id="ij" style="visibility:hidden">
+      
+    </div>
   </div>
-  <div class="col-md-3">
+  <div class="col-md-4">
   <label for="inputMois" style="visibility:hidden" class="form-label">Début de réservation</label>
     <select id="inputMois" class="form-select">
-      <option selected disabled value="nil">Mois...</option>
+      <option selected  value="nil">Mois...</option>
           <option value="01">Janvier</option>
           <option value="02">Février</option>
           <option value="03">Mars</option>
@@ -188,53 +156,30 @@
           <option value="11">Novembre</option>
           <option value="12">Décembre</option>
     </select>
+    <div id="im" style="visibility:hidden">
+      
+    </div>
   </div>
-  <div class="col-md-3">
+  <div class="col-md-4">
   <label for="inputAndeb" style="visibility:hidden" class="form-label">Début de réservation</label>
     <select id="inputAndeb" class="form-select">
-      <option selected disabled value="nil">An début...</option>
+      <option selected  value="nil">An début...</option>
       <option value="2021">2021</option>
       <option value="2022">2022</option>
       <option value="2023">2023</option>
       <option value="2024">2024</option>  
     </select>
+    <div id="ia" style="visibility:hidden">
+      
+    </div>
   </div>
 
   <!-- Partie Fin de Réservation -->
-  <div class="col-md-3">
-    <label for="inputHeureFin" class="form-label">Fin de réservation</label>
-    <select id="inputHeureFin" class="form-select">
-      <option selected disabled value="nil">Heure...</option>
-          <option value="00">00</option>
-          <option value="01">01</option>
-          <option value="02">02</option>
-          <option value="03">03</option>
-          <option value="04">04</option>
-          <option value="05">05</option>
-          <option value="06">06</option>
-          <option value="07">07</option>
-          <option value="08">08</option>
-          <option value="09">09</option>
-          <option value="10">10</option>
-          <option value="11">11</option>
-          <option value="12">12</option>
-          <option value="13">13</option>
-          <option value="14">14</option>
-          <option value="15">15</option>
-          <option value="16">16</option>
-          <option value="17">17</option>
-          <option value="18">18</option>
-          <option value="19">19</option>
-          <option value="20">20</option>
-          <option value="21">21</option>
-          <option value="22">22</option>
-          <option value="23">23</option>
-    </select>
-  </div>
-  <div class="col-md-3">
-  <label for="inputJourFin" style="visibility:hidden" class="form-label">Fin de réservation</label>
+  
+  <div class="col-md-4">
+  <label for="inputJourFin" class="form-label">Fin de réservation</label>
     <select id="inputJourFin" class="form-select">
-      <option selected disabled value="nil">Jour...</option>
+      <option selected  value="nil">Jour...</option>
           <option value="01">1</option>
           <option value="02">2</option>
           <option value="03">3</option>
@@ -266,11 +211,14 @@
           <option value="30">30</option>
           <option value="31">31</option>
     </select>
+    <div id="ijf" style="visibility:hidden">
+      
+    </div>
   </div>
-  <div class="col-md-3">
+  <div class="col-md-4">
   <label for="inputMoisFin" style="visibility:hidden" class="form-label">Fin de réservation</label>
     <select id="inputMoisFin" class="form-select">
-      <option selected disabled value="nil">Mois...</option>
+      <option selected  value="nil">Mois...</option>
           <option value="01">Janvier</option>
           <option value="02">Février</option>
           <option value="03">Mars</option>
@@ -284,30 +232,25 @@
           <option value="11">Novembre</option>
           <option value="12">Décembre</option>
     </select>
+    <div id="imf" style="visibility:hidden">
+      
+    </div>
   </div>
-  <div class="col-md-3">
+  <div class="col-md-4">
   <label for="inputAnFin" style="visibility:hidden" class="form-label">Fin de réservation</label>
     <select id="inputAnFin" class="form-select">
-      <option selected disabled value="nil">An début...</option>
+      <option selected  value="nil">An début...</option>
       <option value="2021">2021</option>
       <option value="2022">2022</option>
       <option value="2023">2023</option>
       <option value="2024">2024</option>  
     </select>
+    <div id="iaf" style="visibility:hidden">
+      
+    </div>
   </div>
 
 <!-- Fin Partie Fin de Réservation -->
-
-  <div class="col-md-6">
-    <label for="reserv_cin" class="form-label">CIN</label>
-    <input type="text" class="form-control" id="reserv_cin">
-  </div>
-  <div class="col-md-6">
-  <label for="inputreservgroup" class="form-label">Groupe</label>
-    <select id="inputAreservgroup" class="form-select">
-      <option selected disabled value="nil">Sélectionner un groupe...</option>
-    </select>
-  </div>
   
   <div class="col-12">
     <div class="form-check">
@@ -338,12 +281,65 @@
 <!-- End Reservation-->
 
 
-
-
-
-
-
+<!-- Modal -->
+<div class="modal fade" id="reservmodal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Alerte</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       Pas de locations trouvées a cette date de début et de fin
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary"  data-bs-dismiss="modal">OK!</button>
+      </div>
+    </div>
+  </div>
 </div>
+</div>
+<!-- End Modal -->
+
+
+
+<!-- Start Products -->
+
+<section class="reservationsView" id="reservationsView" style="visibility:hidden">
+  <div class="container-fluid">
+    <div class="special-heading">Suites Vides</div>
+      <p>Voir les Locations vides</p>
+  <div class="row">
+  <div class="col col-sm col-lg-2">
+  </div>
+    <div class="col-12 col-sm-12 col-lg-8">
+
+      
+      <div class="locataires-table mt-5 mb-5">
+        <div class="table-responsive">
+
+          <table class="table display" id="locationsDatatable">
+            <caption>Liste des Locations</caption>
+            <thead class="table-dark">
+              <th scope="col">#id_loc</th>
+              <th scope="col">#Nom_salle</th>   
+            </thead>
+            <tbody id="tbodyL">
+              
+            </tbody>
+          </table>
+      
+        </div>
+
+    </div>
+  </div>
+  <div class="col col-sm col-lg-2">
+  </div>
+  </div>
+ 
+</section>
+
 </main>
 <footer>
     <div class="bg-light">
@@ -368,6 +364,8 @@
     <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="assets/js/main-script.js" ></script> 
+    <script src="assets/js/Suites/SuitesVides.js" ></script> 
+    
     
 
 
