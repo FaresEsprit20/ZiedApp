@@ -47,6 +47,10 @@
                 <a class="nav-link d-inline-block" href="GroupesView.php">Groupes</a>
                 <i class="navbar-fa fa fa-users fa-2x d-inline-block"></i>
               </li>
+              <li class="nav-item">
+                <a class="nav-link d-inline-block" href="ElevesView.php">Eleves</a>
+                <i class="navbar-fa fa fa-users fa-2x d-inline-block"></i>
+              </li>
               <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Archive
@@ -64,10 +68,6 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link d-inline-block" href="SuiteVideView.php">Suites Vides</a>
-                <i class="navbar-fa fa fa-mail-forward fa-2x d-inline-block"></i>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link d-inline-block" href="#contact">Contact</a>
                 <i class="navbar-fa fa fa-mail-forward fa-2x d-inline-block"></i>
               </li>
               

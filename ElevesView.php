@@ -48,10 +48,6 @@
                 <a class="nav-link d-inline-block" href="GroupesView.php">Groupes</a>
                 <i class="navbar-fa fa fa-users fa-2x d-inline-block"></i>
               </li>
-              <li class="nav-item">
-                <a class="nav-link d-inline-block" href="ElevesView.php">Eleves</a>
-                <i class="navbar-fa fa fa-users fa-2x d-inline-block"></i>
-              </li>
               <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Archive
@@ -69,6 +65,10 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link d-inline-block" href="SuiteVideView.php">Suites Vides</a>
+                <i class="navbar-fa fa fa-mail-forward fa-2x d-inline-block"></i>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link d-inline-block" href="#contact">Contact</a>
                 <i class="navbar-fa fa fa-mail-forward fa-2x d-inline-block"></i>
               </li>
               
@@ -282,7 +282,7 @@
     <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="assets/js/main-script.js" ></script> 
-    <script src="assets/js/Groupes/datatableGroupes.js" ></script> 
+    <script src="assets/js/Eleves/datatableEleves.js"></script> 
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.1/js/dataTables.bootstrap5.min.js"></script>
 
