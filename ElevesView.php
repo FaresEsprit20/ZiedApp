@@ -109,15 +109,15 @@
     </div>
   </div>
   <div class="col-md-6">
-    <label for="ln_eleve" class="form-label" pattern="[a-zA-Z ]+">Prénom Eleve</label>
-    <input type="text" class="form-control" id="ln_eleve">
+    <label for="ln_eleve" class="form-label" >Prénom Eleve</label>
+    <input type="text" class="form-control" pattern="[a-zA-Z ]+" id="ln_eleve">
     <div id="iln" style="visibility:hidden">
     </div>
   </div>
 
   <div class="col-md-6">
-    <label for="n_eleve" class="form-label" pattern="[a-zA-Z ]+">Nom Eleve</label>
-    <input type="text" class="form-control" id="n_eleve">
+    <label for="n_eleve" class="form-label" >Nom Eleve</label>
+    <input type="text" class="form-control" pattern="[a-zA-Z ]+" id="n_eleve">
     <div id="in" style="visibility:hidden">
   </div>
   </div>
@@ -189,15 +189,15 @@
     </div>
   </div>
   <div class="col-md-6">
-    <label for="ln_elevee" class="form-label" pattern="[a-zA-Z ]+">Prénom Eleve</label>
-    <input type="text" class="form-control" id="ln_elevee">
+    <label for="ln_elevee" class="form-label" >Prénom Eleve</label>
+    <input type="text" class="form-control" pattern="[a-zA-Z ]+" id="ln_elevee">
     <div id="ilne" style="visibility:hidden">
     </div>
   </div>
 
   <div class="col-md-6">
-    <label for="n_elevee" class="form-label" pattern="[a-zA-Z ]+">Nom Eleve</label>
-    <input type="text" class="form-control" id="n_elevee">
+    <label for="n_elevee" class="form-label" >Nom Eleve</label>
+    <input type="text" class="form-control" pattern="[a-zA-Z ]+" id="n_elevee">
     <div id="ine" style="visibility:hidden">
   </div>
   </div>

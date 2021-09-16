@@ -31,11 +31,25 @@ class EleveModel {
     public function AddEleve() {
         $json = file_get_contents('php://input');
         $data = json_decode($json, true);
+        $selected = array();
+       
+        if(isset($data["selectedGroups"])){
+            foreach($data["selectedGroups"] as $item){
+            array_push($selected,$item);
+            }
+        }
+     
         if( isset($data["prenom_eleve"]) and isset($data["nom_eleve"]) and isset($data["classe"]) and isset($data["num_tel"]) ){
         $stmt = $this->conn->prepare("INSERT INTO eleves VALUES(?,?,?,?,?) ");
         $stmt->execute([0,$data["prenom_eleve"],$data["nom_eleve"],$data["classe"],$data["num_tel"]]);
         $lastinsertedId = $this->conn->lastInsertId();
-        echo json_encode(http_response_code(201),$lastinsertedId);
+        foreach($selected as $item){
+           
+          $stmt2 = $this->conn->prepare("INSERT INTO groupe_eleve VALUES(?,?) ");
+          $stmt2->execute([$item,$lastinsertedId]);
+    }
+
+        echo json_encode(http_response_code(201));
     }else {
         http_response_code(401);
         die();

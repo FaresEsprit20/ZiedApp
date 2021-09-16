@@ -344,7 +344,7 @@ $(document).ready(function(){
                     myModal.modal("show");
                     document.getElementById("creategroup").reset();
                     
-                    setTimeout(function(){ location.replace("index.php"); }, 6000);
+                    //setTimeout(function(){ location.replace("index.php"); }, 6000);
                }
              });
         
