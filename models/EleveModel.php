@@ -21,10 +21,7 @@ class EleveModel {
     }
     
     public function getAllElevesByGroup() {
-        $json = file_get_contents('php://input');
-        $data = json_decode($json, true);
-      
-        $stmt = $this->conn->prepare("SELECT * FROM  groupe_eleve GROUP BY id_groupe");
+        $stmt = $this->conn->prepare("SELECT * FROM  groupe_eleve");
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         echo json_encode($result) ;
@@ -37,7 +34,8 @@ class EleveModel {
         if( isset($data["prenom_eleve"]) and isset($data["nom_eleve"]) and isset($data["classe"]) and isset($data["num_tel"]) ){
         $stmt = $this->conn->prepare("INSERT INTO eleves VALUES(?,?,?,?,?) ");
         $stmt->execute([0,$data["prenom_eleve"],$data["nom_eleve"],$data["classe"],$data["num_tel"]]);
-        echo json_encode(http_response_code(201));
+        $lastinsertedId = $this->conn->lastInsertId();
+        echo json_encode(http_response_code(201),$lastinsertedId);
     }else {
         http_response_code(401);
         die();
@@ -50,7 +48,7 @@ class EleveModel {
         $json = file_get_contents('php://input');
         $data = json_decode($json, true);
         if(isset($data["prenom_eleve"]) and isset($data["nom_eleve"]) and isset($data["classe"]) and isset($data["num_tel"]) ){
-        $stmt = $this->conn->prepare(" UPDATE eleves SET prenom_eleve=?,nom_eleve=?,classe=?,num-tel=? ");
+        $stmt = $this->conn->prepare(" UPDATE eleves SET prenom_eleve=?,nom_eleve=?,classe=?,num_tel=? ");
         $stmt->execute([$data["prenom_eleve"],$data["nom_eleve"],$data["classe"],$data["num_tel"]]);
         echo json_encode(http_response_code(201));
     }else {

@@ -52,7 +52,7 @@ $(document).ready(function(){
               for(item of jsonData){
                  
                   var row = "<tr>";
-                  row+='<td class="id_groupe">'+item.id_groupe+'</td>';
+                  row+='<td class="group_id">'+item.group_id+'</td>';
                   row+="<td>"+item.nom_groupe+"</td>";
                   row+='<td><div><button id="btnDelete" style="display:block;width:65px;margin-bottom:5px;" type="button" class="btn btn-info">Del</button><button style="display:block;width:65px;" id="btnArchv"type="button" class="btn btn-dark">Archv</button></div></td>';
                   row+="</td>";
@@ -64,11 +64,15 @@ $(document).ready(function(){
                   var option = new Option(item.nom_groupe,item.id_groupe);
                 $("#group_id").append(option);
               }
+              for(var item of jsonData){
+                var option = new Option(item.nom_groupe,item.id_groupe);
+              $("#group_ide").append(option);
+            }
               
               $("#tbodyGroupes").on('click','#btnDelete', function(){
-                var id =   $(this).closest('tr').find('.id_groupe').text();
+                var id =   $(this).closest('tr').find('.group_id').text();
                 var object = {
-                    id_groupe: id
+                    group_id: id
                 }
               
                
@@ -81,9 +85,9 @@ $(document).ready(function(){
                
               });
               $("#tbodyGroupes").on('click','#btnArchv', function(){
-                var id =   $(this).closest('tr').find('.id_groupe').text();
+                var id =   $(this).closest('tr').find('.group_id').text();
                 var object = {
-                    id_groupe: id
+                    group_id: id
                 }
                 var jsonObject = JSON.stringify(object);
                 if (confirm('Do you want to Archive?')) {
@@ -93,7 +97,7 @@ $(document).ready(function(){
                     return false;
                 }
               });
-              $('#reservationsDatatable').DataTable();
+             // $('#reservationsDatatable').DataTable();
             
                    //edit group
     // this is the id of the form
@@ -103,7 +107,7 @@ $(document).ready(function(){
         
         var form = $(this);
         var isValid = false;
-        var inputSalle = $("#group_name").val();
+        var inputName = $("#group_name").val();
         var idgroup = $("#group_id").val();
        
         
@@ -112,7 +116,7 @@ $(document).ready(function(){
             isValid = false;
             $("#group_id").removeClass("is-valid");
             $("#group_id").addClass("is-invalid");
-            console.log(inputSalle);
+            console.log(inputName);
             console.log(isValid);
             $("#ig").removeClass("valid-feedback");
             $("#ig").addClass("invalid-feedback");
@@ -129,12 +133,12 @@ $(document).ready(function(){
             $("#ig").html("Champ valide");
             }
 
-        if( inputSalle =="nil" || inputSalle.length < 3){
+        if( inputName =="nil" || inputName.length < 3){
         $("#iss").css("visibility","visible");
         isValid = false;
         $("#group_name").removeClass("is-valid");
         $("#group_name").addClass("is-invalid");
-        console.log(inputSalle);
+        console.log(inputName);
         console.log(isValid);
         $("#iss").removeClass("valid-feedback");
         $("#iss").addClass("invalid-feedback");
@@ -156,7 +160,7 @@ $(document).ready(function(){
         if(isValid == true){
         
         let object = {
-        id_groupe: $("#group_id").val(),
+        group_id: $("#group_id").val(),
         nom_groupe: $("#group_name").val(),
         };
         console.log("object" +JSON.stringify(object));
@@ -196,42 +200,139 @@ $(document).ready(function(){
         
         var form = $(this);
         var isValid = false;
-        var inputSalle = $("#nom_groupe").val();
-       
+        var selectedGroups = [];
+        var inputLastName = $("#ln_eleve").val();
+        var inputName = $("#n_eleve").val();
+        var inputClasse = $("#c_eleve").val();
+        var inputTel = $("#t_eleve").val();
+
+        $("#group_id :selected").each(function(){
+            selectedGroups.push(this.value);
+         });
+        console.log(selectedGroups);
+        if( selectedGroups.length == 0){
+            $("#ig").css("visibility","visible");
+            isValid = false;
+            $("#group_id").removeClass("is-valid");
+            $("#group_id").addClass("is-invalid");
+            console.log(inputName);
+            console.log(isValid);
+            $("#ig").removeClass("valid-feedback");
+            $("#ig").addClass("invalid-feedback");
+            $("#ig").html("Champ invalide");
+            return false;
+            }else{
+            isValid = true;
+            $("#ig").css("visibility","visible");
+            $("#group_id").removeClass("is-invalid");
+            $("#group_id").addClass("is-valid");
+            console.log(isValid);
+            $("#ig").removeClass("invalid-feedback");
+            $("#ig").addClass("valid-feedback");
+            $("#ig").html("Champ valide");
+            }
+                
+        if( inputLastName =="nil" || inputLastName.length < 3){
+            $("#iln").css("visibility","visible");
+            isValid = false;
+            $("#ln_eleve").removeClass("is-valid");
+            $("#ln_eleve").addClass("is-invalid");
+            console.log(inputName);
+            console.log(isValid);
+            $("#iln").removeClass("valid-feedback");
+            $("#iln").addClass("invalid-feedback");
+            $("#iln").html("Champ invalide");
+            return false;
+            }else{
+            isValid = true;
+            $("#iln").css("visibility","visible");
+            $("#ln_eleve").removeClass("is-invalid");
+            $("#ln_eleve").addClass("is-valid");
+            console.log(isValid);
+            $("#iln").removeClass("invalid-feedback");
+            $("#iln").addClass("valid-feedback");
+            $("#iln").html("Champ valide");
+            }
         
-        if( inputSalle =="nil" || inputSalle.length < 3){
-        $("#is").css("visibility","visible");
+        if( inputName =="nil" || inputName.length < 2){
+        $("#in").css("visibility","visible");
         isValid = false;
-        $("#nom_groupe").removeClass("is-valid");
-        $("#nom_groupe").addClass("is-invalid");
-        console.log(inputSalle);
+        $("#n_eleve").removeClass("is-valid");
+        $("#n_eleve").addClass("is-invalid");
+        console.log(inputName);
         console.log(isValid);
-        $("#is").removeClass("valid-feedback");
-        $("#is").addClass("invalid-feedback");
-        $("#is").html("Champ invalide");
+        $("#in").removeClass("valid-feedback");
+        $("#in").addClass("invalid-feedback");
+        $("#in").html("Champ invalide");
         return false;
         }else{
         isValid = true;
-        $("#is").css("visibility","visible");
-        $("#nom_groupe").removeClass("is-invalid");
-        $("#nom_groupe").addClass("is-valid");
+        $("#in").css("visibility","visible");
+        $("#n_eleve").removeClass("is-invalid");
+        $("#n_eleve").addClass("is-valid");
         console.log(isValid);
-        $("#is").removeClass("invalid-feedback");
-        $("#is").addClass("valid-feedback");
-        $("#is").html("Champ valide");
+        $("#iln").removeClass("invalid-feedback");
+        $("#iln").addClass("valid-feedback");
+        $("#iln").html("Champ valide");
         }
         
+        if( inputClasse =="nil" ){
+            $("#ic").css("visibility","visible");
+            isValid = false;
+            $("#c_eleve").removeClass("is-valid");
+            $("#c_eleve").addClass("is-invalid");
+            console.log(inputName);
+            console.log(isValid);
+            $("#ic").removeClass("valid-feedback");
+            $("#ic").addClass("invalid-feedback");
+            $("#ic").html("Champ invalide");
+            return false;
+            }else{
+            isValid = true;
+            $("#ic").css("visibility","visible");
+            $("#c_eleve").removeClass("is-invalid");
+            $("#c_eleve").addClass("is-valid");
+            console.log(isValid);
+            $("#ic").removeClass("invalid-feedback");
+            $("#ic").addClass("valid-feedback");
+            $("#ic").html("Champ valide");
+            }
        
+            if( inputTel =="nil" || inputTel< 10000000 || inputTel > 99999999){
+                $("#it").css("visibility","visible");
+                isValid = false;
+                $("#t_eleve").removeClass("is-valid");
+                $("#t_eleve").addClass("is-invalid");
+                console.log(inputName);
+                console.log(isValid);
+                $("#it").removeClass("valid-feedback");
+                $("#it").addClass("invalid-feedback");
+                $("#it").html("Champ invalide");
+                return false;
+                }else{
+                isValid = true;
+                $("#it").css("visibility","visible");
+                $("#t_eleve").removeClass("is-invalid");
+                $("#t_eleve").addClass("is-valid");
+                console.log(isValid);
+                $("#it").removeClass("invalid-feedback");
+                $("#it").addClass("valid-feedback");
+                $("#it").html("Champ valide");
+                }
         
         if(isValid == true){
         
         let object = {
-        nom_groupe: $("#nom_groupe").val(),
+             selectedGroups: selectedGroups,
+             prenom_eleve:inputLastName,
+             nom_eleve:  inputName,
+             classe: inputClasse,
+             num_tel: inputTel
         };
         console.log("object" +JSON.stringify(object));
         $.ajax({
                type: "POST",
-               url: "http://localhost/Zied/server/Api/Groupes/AddGroup.php",
+               url: "http://localhost/Zied/server/Api/Eleves/AddEleve.php",
                data: JSON.stringify(object),
                dataType: 'json',
                contentType: 'application/json',
