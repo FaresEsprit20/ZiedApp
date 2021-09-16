@@ -8,35 +8,18 @@ $(document).ready(function(){
         //get dashboard data
         $.ajax({    
             type: "POST",
-            url: "http://localhost/Zied/server/Api/Groupes/DeleteGroupe.php",                     
+            url: "http://localhost/Zied/server/Api/Eleves/DeleteEleve.php",              
             dataType: "json",            
             data: JSON.stringify($id),
             contentType: 'application/json',   
             success: function(data){     
-              console.log("reservation deleted !");
+              console.log("eleve deleted !");
               console.log(data);
             }
         });
     
     }
     
-    
-    function archvReserv($id){
-    
-        //get dashboard data
-        $.ajax({    
-            type: "POST",
-            url: "http://localhost/Zied/server/Api/Groupes/ArchiverGroupe.php",                     
-            dataType: "json",            
-            data: JSON.stringify($id),
-            contentType: 'application/json',   
-            success: function(data){     
-              console.log("reservation archived !");
-              console.log(data);
-            }
-        });
-    
-    }
     
     
         //get dashboard data
@@ -49,16 +32,6 @@ $(document).ready(function(){
               console.log("Groups data loaded ....");
               console.log(jsonData);
     
-              for(item of jsonData){
-                 
-                  var row = "<tr>";
-                  row+='<td class="group_id">'+item.group_id+'</td>';
-                  row+="<td>"+item.nom_groupe+"</td>";
-                  row+='<td><div><button id="btnDelete" style="display:block;width:65px;margin-bottom:5px;" type="button" class="btn btn-info">Del</button><button style="display:block;width:65px;" id="btnArchv"type="button" class="btn btn-dark">Archv</button></div></td>';
-                  row+="</td>";
-    
-                $("#tbodyGroupes").append(row);
-              }
 
               for(var item of jsonData){
                   var option = new Option(item.nom_groupe,item.id_groupe);
@@ -69,36 +42,56 @@ $(document).ready(function(){
               $("#group_ide").append(option);
             }
               
-              $("#tbodyGroupes").on('click','#btnDelete', function(){
-                var id =   $(this).closest('tr').find('.group_id').text();
-                var object = {
-                    group_id: id
-                }
-              
-               
-                if (confirm('Do you want to Delete?')) {
-                    delReserv(object);
-                    location.reload();
-                }else{
-                    return false;
-                }
-               
-              });
-              $("#tbodyGroupes").on('click','#btnArchv', function(){
-                var id =   $(this).closest('tr').find('.group_id').text();
-                var object = {
-                    group_id: id
-                }
-                var jsonObject = JSON.stringify(object);
-                if (confirm('Do you want to Archive?')) {
-                    archvReserv(object);
-                    location.reload();
-                }else{
-                    return false;
-                }
-              });
+   
              // $('#reservationsDatatable').DataTable();
-            
+   
+              //get dashboard data
+        $.ajax({    
+            type: "GET",
+            url: "http://localhost/Zied/server/Api/Eleves/GetAllEleves.php",                     
+            dataType: "json",               
+            success: function(data){      
+                var jsonData = data;
+                console.log("Eleves data loaded ....");
+                console.log(jsonData);
+      
+                for(item of jsonData){
+                   
+                    var row = "<tr>";
+                    row+='<td class="group_id">'+item.code_eleve+'</td>';
+                    row+="<td>"+item.prenom_eleve+"</td>";
+                    row+="<td>"+item.nom_eleve+"</td>";
+                    row+="<td>"+item.classe+"</td>";
+                    row+="<td>"+item.num_tel+"</td>";
+                    row+='<td><div><button id="btnDelete" style="display:block;width:65px;margin-bottom:5px;" type="button" class="btn btn-info">Del</button>';
+                    row+="</td>";
+      
+                  $("#tbodyGroupes").append(row);
+                }
+
+                $("#tbodyGroupes").on('click','#btnDelete', function(){
+                    var id =   $(this).closest('tr').find('.group_id').text();
+                    var object = {
+                        code_eleve: id
+                    }
+                   
+                    if (confirm('Do you want to Delete?')) {
+                        delReserv(object);
+                        location.reload();
+                    }else{
+                        return false;
+                    }
+                   
+                  });
+
+                  for(var item of jsonData){
+                    var option = new Option(item.nom_eleve + " "+item.prenom_eleve,item.code_eleve);
+                  $("#eleve_ide").append(option);
+                }
+
+
+            }
+        });
                    //edit group
     // this is the id of the form
     $("#editgroup").submit(function(e) {
@@ -107,66 +100,162 @@ $(document).ready(function(){
         
         var form = $(this);
         var isValid = false;
-        var inputName = $("#group_name").val();
-        var idgroup = $("#group_id").val();
-       
-        
-        if( idgroup =="nil"){
-            $("#ig").css("visibility","visible");
+        var selectedGroups = [];
+        var inputEleve = $("#eleve_ide").val();
+        var inputLastName = $("#ln_elevee").val();
+        var inputName = $("#n_elevee").val();
+        var inputClasse = $("#c_elevee").val();
+        var inputTel = $("#t_elevee").val();
+
+        $("#group_ide :selected").each(function(){
+            selectedGroups.push(this.value);
+         });
+        console.log(selectedGroups);
+        if( selectedGroups.length == 0){
+            $("#ige").css("visibility","visible");
             isValid = false;
-            $("#group_id").removeClass("is-valid");
-            $("#group_id").addClass("is-invalid");
+            $("#group_ide").removeClass("is-valid");
+            $("#group_ide").addClass("is-invalid");
             console.log(inputName);
             console.log(isValid);
-            $("#ig").removeClass("valid-feedback");
-            $("#ig").addClass("invalid-feedback");
-            $("#ig").html("Champ invalide");
+            $("#ige").removeClass("valid-feedback");
+            $("#ige").addClass("invalid-feedback");
+            $("#ige").html("Champ invalide");
             return false;
             }else{
             isValid = true;
-            $("#ig").css("visibility","visible");
-            $("#group_id").removeClass("is-invalid");
-            $("#group_id").addClass("is-valid");
+            $("#ige").css("visibility","visible");
+            $("#group_ide").removeClass("is-invalid");
+            $("#group_ide").addClass("is-valid");
             console.log(isValid);
-            $("#ig").removeClass("invalid-feedback");
-            $("#ig").addClass("valid-feedback");
-            $("#ig").html("Champ valide");
+            $("#ige").removeClass("invalid-feedback");
+            $("#ige").addClass("valid-feedback");
+            $("#ige").html("Champ valide");
             }
-
-        if( inputName =="nil" || inputName.length < 3){
-        $("#iss").css("visibility","visible");
+                
+            if( inputEleve =="nil"){
+                $("#iee").css("visibility","visible");
+                isValid = false;
+                $("#eleve_ide").removeClass("is-valid");
+                $("#eleve_ide").addClass("is-invalid");
+                console.log(inputName);
+                console.log(isValid);
+                $("#iee").removeClass("valid-feedback");
+                $("#iee").addClass("invalid-feedback");
+                $("#iee").html("Champ invalide");
+                return false;
+                }else{
+                isValid = true;
+                $("#iee").css("visibility","visible");
+                $("#eleve_ide").removeClass("is-invalid");
+                $("#eleve_ide").addClass("is-valid");
+                console.log(isValid);
+                $("#iee").removeClass("invalid-feedback");
+                $("#iee").addClass("valid-feedback");
+                $("#iee").html("Champ valide");
+                }
+        if( inputLastName =="nil" || inputLastName.length < 3){
+            $("#ilne").css("visibility","visible");
+            isValid = false;
+            $("#ln_elevee").removeClass("is-valid");
+            $("#ln_elevee").addClass("is-invalid");
+            console.log(inputName);
+            console.log(isValid);
+            $("#ilne").removeClass("valid-feedback");
+            $("#ilne").addClass("invalid-feedback");
+            $("#ilne").html("Champ invalide");
+            return false;
+            }else{
+            isValid = true;
+            $("#ilne").css("visibility","visible");
+            $("#ln_elevee").removeClass("is-invalid");
+            $("#ln_elevee").addClass("is-valid");
+            console.log(isValid);
+            $("#ilne").removeClass("invalid-feedback");
+            $("#ilne").addClass("valid-feedback");
+            $("#ilne").html("Champ valide");
+            }
+        
+        if( inputName =="nil" || inputName.length < 2){
+        $("#in").css("visibility","visible");
         isValid = false;
-        $("#group_name").removeClass("is-valid");
-        $("#group_name").addClass("is-invalid");
+        $("#n_elevee").removeClass("is-valid");
+        $("#n_elevee").addClass("is-invalid");
         console.log(inputName);
         console.log(isValid);
-        $("#iss").removeClass("valid-feedback");
-        $("#iss").addClass("invalid-feedback");
-        $("#iss").html("Champ invalide");
+        $("#ine").removeClass("valid-feedback");
+        $("#ine").addClass("invalid-feedback");
+        $("#ine").html("Champ invalide");
         return false;
         }else{
         isValid = true;
-        $("#iss").css("visibility","visible");
-        $("#group_name").removeClass("is-invalid");
-        $("#group_name").addClass("is-valid");
+        $("#ine").css("visibility","visible");
+        $("#n_elevee").removeClass("is-invalid");
+        $("#n_elevee").addClass("is-valid");
         console.log(isValid);
-        $("#iss").removeClass("invalid-feedback");
-        $("#iss").addClass("valid-feedback");
-        $("#iss").html("Champ valide");
+        $("#ilne").removeClass("invalid-feedback");
+        $("#ilne").addClass("valid-feedback");
+        $("#ilne").html("Champ valide");
         }
         
+        if( inputClasse =="nil" ){
+            $("#ice").css("visibility","visible");
+            isValid = false;
+            $("#c_elevee").removeClass("is-valid");
+            $("#c_elevee").addClass("is-invalid");
+            console.log(inputName);
+            console.log(isValid);
+            $("#ice").removeClass("valid-feedback");
+            $("#ice").addClass("invalid-feedback");
+            $("#ice").html("Champ invalide");
+            return false;
+            }else{
+            isValid = true;
+            $("#ice").css("visibility","visible");
+            $("#c_elevee").removeClass("is-invalid");
+            $("#c_elevee").addClass("is-valid");
+            console.log(isValid);
+            $("#ice").removeClass("invalid-feedback");
+            $("#ice").addClass("valid-feedback");
+            $("#ice").html("Champ valide");
+            }
+       
+            if( inputTel =="nil" || inputTel< 10000000 || inputTel > 99999999){
+                $("#ite").css("visibility","visible");
+                isValid = false;
+                $("#t_elevee").removeClass("is-valid");
+                $("#t_elevee").addClass("is-invalid");
+                console.log(inputName);
+                console.log(isValid);
+                $("#ite").removeClass("valid-feedback");
+                $("#ite").addClass("invalid-feedback");
+                $("#ite").html("Champ invalide");
+                return false;
+                }else{
+                isValid = true;
+                $("#ite").css("visibility","visible");
+                $("#t_elevee").removeClass("is-invalid");
+                $("#t_elevee").addClass("is-valid");
+                console.log(isValid);
+                $("#ite").removeClass("invalid-feedback");
+                $("#ite").addClass("valid-feedback");
+                $("#ite").html("Champ valide");
+                }
        
         
         if(isValid == true){
-        
-        let object = {
-        group_id: $("#group_id").val(),
-        nom_groupe: $("#group_name").val(),
-        };
-        console.log("object" +JSON.stringify(object));
+            let object = {
+                code_eleve: inputEleve,
+                selectedGroups: selectedGroups,
+                prenom_eleve:inputLastName,
+                nom_eleve:  inputName,
+                classe: inputClasse,
+                num_tel: inputTel
+           };
+           console.log("object" +JSON.stringify(object));
         $.ajax({
                type: "POST",
-               url: "http://localhost/Zied/server/Api/Groupes/UpdateGroup.php",
+               url: "http://localhost/Zied/server/Api/Eleves/UpdateEleve.php",
                data: JSON.stringify(object),
                dataType: 'json',
                contentType: 'application/json',
@@ -176,9 +265,9 @@ $(document).ready(function(){
                     // show response from the php script.
                     var myModal = $("#reservmodal");
                     myModal.modal("show");
-                    document.getElementById("creategroup").reset();
+                    document.getElementById("editgroup").reset();
                     
-                    setTimeout(function(){ location.replace("index.php"); }, 6000);
+                    setTimeout(function(){ location.reload(); }, 6000);
                }
              });
         
@@ -193,7 +282,7 @@ $(document).ready(function(){
     
 
     //create reservation
-    // this is the id of the form
+    //this is the id of the form
     $("#creategroup").submit(function(e) {
     
         e.preventDefault(); // avoid to execute the actual submit of the form.
@@ -344,14 +433,12 @@ $(document).ready(function(){
                     myModal.modal("show");
                     document.getElementById("creategroup").reset();
                     
-                    //setTimeout(function(){ location.replace("index.php"); }, 6000);
+                    setTimeout(function(){ location.replace("index.php"); }, 6000);
                }
              });
         
             }
         });
-
-
 
 
 

@@ -105,6 +105,7 @@ class EleveModel {
     }
 
 
+    
     public function GetEleveById() {
         $json = file_get_contents('php://input');
         $data = json_decode($json, true);

@@ -182,9 +182,18 @@
 
         <div class="col-md-12">
       <label for="group_ide" class="form-label">Groupe</label>
-      <select id="group_ide" class="form-select" required multiple>
+      <select id="group_ide" class="form-select" multiple>
       </select>
     <div id="ige" style="visibility:hidden">
+      
+    </div>
+  </div>
+  <div class="col-md-12">
+      <label for="eleve_ide" class="form-label">Eleve</label>
+      <select id="eleve_ide" class="form-select" required >
+          <option value="nil">Selectionner un Eleve ...</option>
+      </select>
+    <div id="iee" style="visibility:hidden">
       
     </div>
   </div>
