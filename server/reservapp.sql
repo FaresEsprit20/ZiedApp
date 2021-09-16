@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Sep 15, 2021 at 06:15 PM
+-- Generation Time: Sep 16, 2021 at 09:13 PM
 -- Server version: 5.7.31
 -- PHP Version: 7.3.21
 
@@ -35,7 +35,14 @@ CREATE TABLE IF NOT EXISTS `eleves` (
   `classe` varchar(255) NOT NULL,
   `num_tel` varchar(255) NOT NULL,
   PRIMARY KEY (`code_eleve`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `eleves`
+--
+
+INSERT INTO `eleves` (`code_eleve`, `prenom_eleve`, `nom_eleve`, `classe`, `num_tel`) VALUES
+(1, 'Zied', 'Jday', '5 BI 2', '33335555');
 
 -- --------------------------------------------------------
 
@@ -56,8 +63,7 @@ CREATE TABLE IF NOT EXISTS `groupe` (
 --
 
 INSERT INTO `groupe` (`id_groupe`, `nom_groupe`, `archive_state`) VALUES
-(2, '5 Sim1', 0),
-(3, '5 EPI', 0),
+(3, '5 EPI', 1),
 (4, '6 BI 5', 0),
 (6, '5 EPI IA', 0),
 (7, ' TWIN 5', 0);
@@ -72,13 +78,16 @@ DROP TABLE IF EXISTS `groupe_eleve`;
 CREATE TABLE IF NOT EXISTS `groupe_eleve` (
   `id_groupe` int(11) NOT NULL,
   `id_eleve` int(11) NOT NULL,
-  `payer` smallint(1) NOT NULL DEFAULT '0',
-  `presence` smallint(1) NOT NULL DEFAULT '1',
-  `date` date NOT NULL,
-  `heure` time NOT NULL,
-  `nom_prof` varchar(255) NOT NULL,
-  PRIMARY KEY (`id_eleve`,`id_groupe`)
+  PRIMARY KEY (`id_eleve`,`id_groupe`),
+  KEY `groupe_eleve_ibfk_2` (`id_groupe`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `groupe_eleve`
+--
+
+INSERT INTO `groupe_eleve` (`id_groupe`, `id_eleve`) VALUES
+(6, 1);
 
 -- --------------------------------------------------------
 
@@ -170,6 +179,22 @@ CREATE TABLE IF NOT EXISTS `reservation` (
 INSERT INTO `reservation` (`id_reserv`, `id_loc`, `id_locataire`, `id_groupe`, `datedeb`, `datefin`, `heuredeb`, `jourdeb`, `moisdeb`, `andeb`, `heurefin`, `jourfin`, `moisfin`, `anfin`, `archive_state`) VALUES
 (18, 1, 8, '6 BI 6', '2023-11-03', '2024-02-02', '01', '03', '11', 2023, '01', '02', '02', 2024, 0),
 (28, 1, 8, '6 BI 6', '2021-02-01', '2022-02-03', '00', '01', '02', 2021, '02', '03', '02', 2022, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `seance`
+--
+
+DROP TABLE IF EXISTS `seance`;
+CREATE TABLE IF NOT EXISTS `seance` (
+  `id_seance` bigint(11) NOT NULL AUTO_INCREMENT,
+  `date` date NOT NULL,
+  `heure` varchar(255) NOT NULL,
+  `id_locataire` int(11) NOT NULL,
+  `id_groupe` int(11) NOT NULL,
+  PRIMARY KEY (`id_seance`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Constraints for dumped tables
