@@ -64,15 +64,17 @@ $(document).ready(function(){
                  $("#seancesDatatable").DataTable();
 
                  $("#tbodySeances").on('click','#btnDelete', function(){
-                     var id = $(this).closest('tr').find('.seance_id').text();
+                     var ids = $(this).closest('tr').find('.seance_id').text();
+                     var idg = $(this).closest('tr').find('.groupe_ids').text();
                      var object = {
-                         seance_id: id
+                         id_seance: ids,
+                         id_groupe: idg
                      }
-
+          console.log(object);
 
              $.ajax({
               type: "POST",
-              url: "http://localhost/Zied/server/Api/Seances/AddSeance.php",
+              url: "http://localhost/Zied/server/Api/Seances/getSeancesByEleves.php",
               data: JSON.stringify(object),
               dataType: 'json',
               contentType: 'application/json',
@@ -80,8 +82,27 @@ $(document).ready(function(){
                 {
              //Treatements
          
+             var jsonData = data;
+             console.log(jsonData);
+          //treatements  
+          for(item of jsonData){   
+              var row = "<tr>";
+              row+='<td class="seance_ids">'+item.id_seance+'</td>';
+              row+='<td class="groupe_id" >'+item.id_groupe+'</td>';
+              row+='<td class="eleve_id" >'+item.id_eleve+'</td>';
+              row+="<td>"+item.nom_groupe+"</td>";
+              row+="<td>"+item.prenom_eleve+"</td>";
+              row+="<td>"+item.nom_eleve+"</td>";
+              row+="<td>"+item.classe+"</td>";
+              row+="<td>"+item.num_tel+"</td>";
+              row+="<td>"+item.date+"</td>";
+              row+="<td>"+item.heure+"</td>";
+              row+='<td><div><button id="btnAbsent" style="display:block;width:70px;margin-bottom:5px;" type="button" class="btn btn-info">Absent</button><button id="btnPresent" style="display:block;width:70px;margin-bottom:5px;" type="button" class="btn btn-secondary">Présent</button></div>';
+              row+="</td>";
 
-
+            $("#tbodyGroupes").append(row);
+          }
+          $("#reservationsDatatable").DataTable();
 
 
                 }

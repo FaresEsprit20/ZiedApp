@@ -57,11 +57,17 @@ class SeancesModel {
     }   
 
     public function getSeancesByEleves() {
-
-        $stmt = $this->conn->prepare("SELECT * FROM seance,groupe,locataires WHERE (seance.id_locataire = locataires.id_locataire) AND (seance.id_groupe = groupe.id_groupe)  ");
-        $stmt->execute();
+        $json = file_get_contents('php://input');
+        $data = json_decode($json, true);
+        if(isset($data["id_groupe"]) AND isset($data["id_seance"])){
+        $stmt = $this->conn->prepare("SELECT * FROM groupe_eleve,eleves,groupe,seance WHERE (groupe_eleve.id_groupe = ?) AND (eleves.code_eleve = groupe_eleve.id_eleve) AND (groupe.id_groupe = groupe_eleve.id_groupe) AND(seance.id_seance = ?) AND (seance.id_groupe = ?)");
+        $stmt->execute([$data["id_groupe"],$data["id_seance"],$data["id_groupe"]]);
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         echo json_encode($result);
+        }else {
+            echo json_encode(http_response_code(401));
+            die();
+        }
     }   
 
     /*public function GetElevesByGroup() {

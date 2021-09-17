@@ -254,6 +254,7 @@
           <table class="table display" id="reservationsDatatable">
             <caption>Liste des Eleves</caption>
             <thead class="table-dark">
+              <th scope="col">#Id_Séance</th>
               <th scope="col">#Id_Groupe</th>
               <th scope="col">#Id_Eleve</th>
               <th scope="col">#Nom_Groupe</th>
@@ -261,6 +262,8 @@
               <th scope="col">#NomEleve</th>
               <th scope="col">#Classe</th>
               <th scope="col">#Tel</th>
+              <th scope="col">#Date_Séance</th>
+              <th scope="col">#Heure_Séance</th>
               <th scope="col">Action</th>
             </thead>
             <tbody id="tbodyGroupes">
