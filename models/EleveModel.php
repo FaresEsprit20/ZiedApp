@@ -130,6 +130,20 @@ class EleveModel {
       
     }
 
+    public function GetElevesByGroup() {
+        $json = file_get_contents('php://input');
+        $data = json_decode($json, true);
+        if(isset($data["id_groupe"]) ){
+        $stmt = $this->conn->prepare("SELECT * FROM groupe_eleve,eleves WHERE (groupe_eleve.id_groupe = ? ) AND (eleves.code_eleve = groupe_eleve.id_eleve) ");
+        $stmt->execute([$data["id_groupe"]]);
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode($result);
+        }else{
+            echo(json_encode(http_response_code(401)));
+            die();
+        }
+      
+    }
 
 
 

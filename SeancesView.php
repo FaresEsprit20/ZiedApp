@@ -75,10 +75,6 @@
                 <a class="nav-link d-inline-block" href="SuiteVideView.php">Suites Vides</a>
                 <i class="navbar-fa fa fa-mail-forward fa-2x d-inline-block"></i>
               </li>
-              <li class="nav-item">
-                <a class="nav-link d-inline-block" href="#contact">Contact</a>
-                <i class="navbar-fa fa fa-mail-forward fa-2x d-inline-block"></i>
-              </li>
               
             </ul>
           </div>
@@ -91,89 +87,12 @@
 
 <a id="button-scroll-top"></a>
 
-
-<!-- Start Groupes -->
-
-<section class="gView" id="gView">
-  <div class="container-fluid">
-    <div class="special-heading">Elèves</div>
-      <p>Créer un élève</p>
-  <div class="row">
-  <div class="col col-sm col-lg-2">
-  </div>
-    <div class="col-12 col-sm-12 col-lg-8">
-
-      <div class="products-table mt-5 mb-5">
-        <div class="table-reservations">
-
-        <form class="row g-3" id="creategroup">
-  
-    <div class="col-md-12">
-      <label for="group_id" class="form-label">Groupe</label>
-      <select id="group_id" class="form-select"  multiple>
-      </select>
-    <div id="ig" style="visibility:hidden">
-      
-    </div>
-  </div>
-  <div class="col-md-6">
-    <label for="ln_eleve" class="form-label" >Prénom Eleve</label>
-    <input type="text" class="form-control" pattern="[a-zA-Z ]+" id="ln_eleve">
-    <div id="iln" style="visibility:hidden">
-    </div>
-  </div>
-
-  <div class="col-md-6">
-    <label for="n_eleve" class="form-label" >Nom Eleve</label>
-    <input type="text" class="form-control" pattern="[a-zA-Z ]+" id="n_eleve">
-    <div id="in" style="visibility:hidden">
-  </div>
-  </div>
-  <div class="col-md-6">
-    <label for="c_eleve" class="form-label">Classe Eleve</label>
-    <input type="text" class="form-control" id="c_eleve">
-    <div id="ic" style="visibility:hidden">
-    </div>
-  </div>
-  <div class="col-md-6">
-    <label for="t_eleve" class="form-label" >Tel Eleve</label>
-    <input type="number" class="form-control" id="t_eleve">
-    <div id="it" style="visibility:hidden">
-    </div>
-  </div>
-  <div class="col-12">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="reservCheckss" required>
-      <label class="form-check-label" for="reservCheckss">
-        Cochez moi
-      </label>
-    </div>
-  </div>
-  <div class="col-12">
-    <button type="submit" class="btn btn-dark">Créer Elève</button>
-  </div>
-
-</form>
-
-
-      
-        </div>
-
-    </div>
-  </div>
-  <div class="col col-sm col-lg-2">
-  </div>
-  </div>
- 
-</section>
-
-<!-- End Groupes -->
 <!-- Start Groupes -->
 
 <section class="geView" id="geView">
   <div class="container-fluid">
-    <div class="special-heading">Eleves</div>
-      <p>Modifier un eleve</p>
+    <div class="special-heading">Groupes</div>
+      <p>Choisir un groupe des éleves</p>
   <div class="row">
   <div class="col col-sm col-lg-2">
   </div>
@@ -188,62 +107,21 @@
         <form class="row g-3" id="editgroup">
        
 
-        <div class="col-md-12">
-      <label for="group_ide" class="form-label">Groupe</label>
-      <select id="group_ide" class="form-select" multiple>
-      </select>
-    <div id="ige" style="visibility:hidden">
+  <div class="col-md-8">
+  <label for="group_id" class="form-label">Groupe</label>
+    <select id="group_id" class="form-select" required>
+      <option selected  value="nil">Sélectionner un groupe...</option>
+    </select>
+    <div id="ig" style="visibility:hidden">
       
     </div>
   </div>
-  <div class="col-md-12">
-      <label for="eleve_ide" class="form-label">Eleve</label>
-      <select id="eleve_ide" class="form-select" required >
-          <option value="nil">Selectionner un Eleve ...</option>
-      </select>
-    <div id="iee" style="visibility:hidden">
-      
-    </div>
-  </div>
-  <div class="col-md-6">
-    <label for="ln_elevee" class="form-label" >Prénom Eleve</label>
-    <input type="text" class="form-control" pattern="[a-zA-Z ]+" id="ln_elevee">
-    <div id="ilne" style="visibility:hidden">
-    </div>
-  </div>
 
-  <div class="col-md-6">
-    <label for="n_elevee" class="form-label" >Nom Eleve</label>
-    <input type="text" class="form-control" pattern="[a-zA-Z ]+" id="n_elevee">
-    <div id="ine" style="visibility:hidden">
-  </div>
-  </div>
-  <div class="col-md-6">
-    <label for="c_elevee" class="form-label">Classe Eleve</label>
-    <input type="text" class="form-control" id="c_elevee">
-    <div id="ice" style="visibility:hidden">
-    </div>
-  </div>
-  <div class="col-md-6">
-    <label for="t_elevee" class="form-label" >Tel Eleve</label>
-    <input type="number" class="form-control" id="t_elevee">
-    <div id="ite" style="visibility:hidden">
-    </div>
-  </div>
   <div class="col-12">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="reservChecksse" required>
-      <label class="form-check-label" for="reservChecksse">
-        Cochez moi
-      </label>
-    </div>
-  </div>
-  <div class="col-12">
-    <button type="submit" class="btn btn-dark">Modifier Elève</button>
+    <button type="submit" class="btn btn-dark">Voir les Eleves</button>
   </div>
 
-
-    </form>
+</form>
 
 
       
@@ -267,7 +145,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-       Votre Elève a été crée avec Succés!
+       Votre Séance a été crée avec Succés!
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -322,6 +200,7 @@
 
 <!-- End Products -->
 
+
 </main>
 <footer>
     <div class="bg-light">
@@ -342,14 +221,14 @@
 </footer>
 
 
-
- <!-- Popper.js first, then Bootstrap JS -->
- <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+    <!-- Popper.js first, then Bootstrap JS -->
+    <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="assets/js/main-script.js" ></script> 
-    <script src="assets/js/Eleves/datatableEleves.js" ></script> 
+    <script src="assets/js/Groupes/datatableGroupes.js" ></script> 
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.1/js/dataTables.bootstrap5.min.js"></script>
+
 
 
     
