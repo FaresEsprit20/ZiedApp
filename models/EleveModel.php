@@ -134,7 +134,7 @@ class EleveModel {
         $json = file_get_contents('php://input');
         $data = json_decode($json, true);
         if(isset($data["id_groupe"]) ){
-        $stmt = $this->conn->prepare("SELECT * FROM groupe_eleve,eleves WHERE (groupe_eleve.id_groupe = ? ) AND (eleves.code_eleve = groupe_eleve.id_eleve) ");
+        $stmt = $this->conn->prepare("SELECT * FROM groupe_eleve,eleves,groupe WHERE (groupe_eleve.id_groupe = ? ) AND (eleves.code_eleve = groupe_eleve.id_eleve) AND (groupe.id_groupe = groupe_eleve.id_groupe)");
         $stmt->execute([$data["id_groupe"]]);
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         echo json_encode($result);
