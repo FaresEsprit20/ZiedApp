@@ -25,7 +25,7 @@ function btnPresent($id){
   //get dashboard data
   $.ajax({    
       type: "POST",
-      url: "http://localhost/Zied/server/Api/Eleves/SetEleveState.php",                     
+      url: "http://localhost/Zied/server/Api/Eleves/DeleteEleveState.php",                     
       dataType: "json",            
       data: JSON.stringify($id),
       contentType: 'application/json',   
@@ -144,7 +144,7 @@ function btnPresent($id){
                 id_eleve: ide
             }
             var jsonObject = JSON.stringify(object);
-           
+            console.log(object);
             if (confirm('Do you want to put Absent ?')) {
                 btnAbsent(object);
                 location.reload();
@@ -161,6 +161,7 @@ function btnPresent($id){
                 id_eleve: ide
             }
             var jsonObject = JSON.stringify(object);
+            console.log(object);
            
             if (confirm('Do you want to put Present ?')) {
                 btnPresent(object);
@@ -256,7 +257,7 @@ function btnPresent($id){
                                 var myModal = $("#reservmodal");
                                 myModal.modal("show");
                                 document.getElementById("editseance").reset();
-                                location.reload();
+                                setTimeout(function(){ location.replace("index.php"); }, 6000);
                                 
                            }
                          });

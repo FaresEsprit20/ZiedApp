@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Sep 16, 2021 at 09:13 PM
+-- Generation Time: Sep 17, 2021 at 09:22 PM
 -- Server version: 5.7.31
 -- PHP Version: 7.3.21
 
@@ -78,9 +78,8 @@ DROP TABLE IF EXISTS `groupe_eleve`;
 CREATE TABLE IF NOT EXISTS `groupe_eleve` (
   `id_groupe` int(11) NOT NULL,
   `id_eleve` int(11) NOT NULL,
-  PRIMARY KEY (`id_eleve`,`id_groupe`),
-  KEY `groupe_eleve_ibfk_2` (`id_groupe`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id_groupe`,`id_eleve`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `groupe_eleve`
@@ -194,7 +193,36 @@ CREATE TABLE IF NOT EXISTS `seance` (
   `id_locataire` int(11) NOT NULL,
   `id_groupe` int(11) NOT NULL,
   PRIMARY KEY (`id_seance`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `seance`
+--
+
+INSERT INTO `seance` (`id_seance`, `date`, `heure`, `id_locataire`, `id_groupe`) VALUES
+(7, '2021-09-20', '13:19', 9, 6);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `seance_eleves`
+--
+
+DROP TABLE IF EXISTS `seance_eleves`;
+CREATE TABLE IF NOT EXISTS `seance_eleves` (
+  `id_seance` int(11) NOT NULL,
+  `id_eleve` int(11) NOT NULL,
+  `absents` varchar(255) DEFAULT '0',
+  `payement` double DEFAULT '0',
+  PRIMARY KEY (`id_seance`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `seance_eleves`
+--
+
+INSERT INTO `seance_eleves` (`id_seance`, `id_eleve`, `absents`, `payement`) VALUES
+(7, 1, '0', 0);
 
 --
 -- Constraints for dumped tables

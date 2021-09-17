@@ -57,6 +57,7 @@ class EleveModel {
       
     }
  
+    
 
     public function updateEleve() {
         $json = file_get_contents('php://input');
@@ -104,7 +105,33 @@ class EleveModel {
       
     }
 
+    public function SetEleveState() {
+        $json = file_get_contents('php://input');
+        $data = json_decode($json, true);
+        if(isset($data["id_eleve"]) and isset($data["id_seance"])){
+        $stmt = $this->conn->prepare("UPDATE  seance_eleves SET absents = ? WHERE id_eleve = ? AND id_seance = ? ");
+        $stmt->execute([1,$data["id_eleve"],$data["id_seance"]]);
+        echo json_encode(http_response_code(201));
+    }else {
+        http_response_code(401);
+        die();
+    }
+      
+    }
 
+    public function DeleteEleveState() {
+        $json = file_get_contents('php://input');
+        $data = json_decode($json, true);
+        if(isset($data["id_eleve"]) and isset($data["id_seance"])){
+        $stmt = $this->conn->prepare("UPDATE seance_eleves SET absents = ? WHERE id_eleve = ? AND id_seance = ? ");
+        $stmt->execute([0,$data["id_eleve"],$data["id_seance"]]);
+        echo json_encode(http_response_code(201));
+    }else {
+        http_response_code(401);
+        die();
+    }
+      
+    }
     
     public function GetEleveById() {
         $json = file_get_contents('php://input');

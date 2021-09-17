@@ -46,7 +46,7 @@ class SeancesModel {
         $result2 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
         foreach($result2 as $item){
             $stmt3 = $this->conn->prepare("INSERT INTO seance_eleves VALUES(?,?,?,?) ");
-            $stmt3->execute([0,$item["code_eleve"],0,0 ]);
+            $stmt3->execute([$lastInsertedId,$item["code_eleve"],0,0 ]);
         }
         echo json_encode(http_response_code(201));
         }else{
