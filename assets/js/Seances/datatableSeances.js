@@ -2,6 +2,40 @@
 
 $(document).ready(function(){
         
+  function btnAbsent($id){
+
+    //get dashboard data
+    $.ajax({    
+        type: "POST",
+        url: "http://localhost/Zied/server/Api/Eleves/SetEleveState.php",                     
+        dataType: "json",            
+        data: JSON.stringify($id),
+        contentType: 'application/json',   
+        success: function(data){     
+          console.log("eleve abscent !");
+          console.log(data);
+        }
+    });
+
+}
+
+
+function btnPresent($id){
+
+  //get dashboard data
+  $.ajax({    
+      type: "POST",
+      url: "http://localhost/Zied/server/Api/Eleves/SetEleveState.php",                     
+      dataType: "json",            
+      data: JSON.stringify($id),
+      contentType: 'application/json',   
+      success: function(data){     
+        console.log("eleve present !");
+        console.log(data);
+      }
+  });
+
+}
     
         //get dashboard data
         $.ajax({    
@@ -87,9 +121,9 @@ $(document).ready(function(){
           //treatements  
           for(item of jsonData){   
               var row = "<tr>";
-              row+='<td class="seance_ids">'+item.id_seance+'</td>';
-              row+='<td class="groupe_id" >'+item.id_groupe+'</td>';
-              row+='<td class="eleve_id" >'+item.id_eleve+'</td>';
+              row+='<td class="seance_idsx">'+item.id_seance+'</td>';
+              row+='<td class="groupe_idx" >'+item.id_groupe+'</td>';
+              row+='<td class="eleve_idx" >'+item.id_eleve+'</td>';
               row+="<td>"+item.nom_groupe+"</td>";
               row+="<td>"+item.prenom_eleve+"</td>";
               row+="<td>"+item.nom_eleve+"</td>";
@@ -102,6 +136,40 @@ $(document).ready(function(){
 
             $("#tbodyGroupes").append(row);
           }
+          $("#tbodyGroupes").on('click','#btnAbsent', function(){
+            var ids =   $(this).closest('tr').find('.seance_idsx').text();
+            var ide =   $(this).closest('tr').find('.eleve_idx').text();
+            var object = {
+                id_seance: ids,
+                id_eleve: ide
+            }
+            var jsonObject = JSON.stringify(object);
+           
+            if (confirm('Do you want to put Absent ?')) {
+                btnAbsent(object);
+                location.reload();
+            }else{
+                return false;
+            }
+           
+          });
+          $("#tbodyGroupes").on('click','#btnPresent', function(){
+            var ids =   $(this).closest('tr').find('.seance_idsx').text();
+            var ide =   $(this).closest('tr').find('.eleve_idx').text();
+            var object = {
+                id_seance: ids,
+                id_eleve: ide
+            }
+            var jsonObject = JSON.stringify(object);
+           
+            if (confirm('Do you want to put Present ?')) {
+                btnPresent(object);
+                location.reload();
+            }else{
+                return false;
+            }
+           
+          });
           $("#reservationsDatatable").DataTable();
 
 
