@@ -169,41 +169,38 @@
 
 <!-- End Séances -->
 
-<section class="geView" id="geView">
+
+<!-- Start Products -->
+
+<section class="SeancesTable" id="SeancesTable">
   <div class="container-fluid">
-    <div class="special-heading">Groupes</div>
-      <p>Choisir un groupe des éleves</p>
+    <div class="special-heading">Séances</div>
+      <p>Voir la liste des séances</p>
   <div class="row">
   <div class="col col-sm col-lg-2">
   </div>
     <div class="col-12 col-sm-12 col-lg-8">
 
       
-      <div class="products-table mt-5 mb-5">
-        <div class="table-reservations">
+      <div class="locataires-table mt-5 mb-5">
+        <div class="table-responsive">
 
-  
-
-        <form class="row g-3" id="editgroup">
-       
-
-  <div class="col-md-8">
-  <label for="group_id" class="form-label">Groupe</label>
-    <select id="group_id" class="form-select" required>
-      <option selected  value="nil">Sélectionner un groupe...</option>
-    </select>
-    <div id="ig" style="visibility:hidden">
-      
-    </div>
-  </div>
-
-  <div class="col-12">
-    <button type="submit" class="btn btn-dark">Voir les Eleves</button>
-  </div>
-
-</form>
-
-
+          <table class="table display" id="seancesDatatable">
+            <caption>Liste des Séances</caption>
+            <thead class="table-dark">
+              <th scope="col">#Id_Seance</th>
+              <th scope="col">#Id_Enseignant</th>
+              <th scope="col">#Id_Groupe</th>
+              <th scope="col">#Nom & Prénom Ens</th>
+              <th scope="col">#Nom_Groupe</th>
+              <th scope="col">#Date</th>
+              <th scope="col">#Heure</th>
+              <th scope="col">Action</th>
+            </thead>
+            <tbody id="tbodySeances">
+              
+            </tbody>
+          </table>
       
         </div>
 
@@ -215,7 +212,8 @@
  
 </section>
 
-<!-- End Groupes -->
+<!-- End Products -->
+
 <!-- Modal -->
 <div class="modal fade" id="reservmodal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">

@@ -38,10 +38,67 @@ $(document).ready(function(){
                 var option = new Option(item.nom + " " + item.prenom ,item.id_locataire);
               $("#loc_id").append(option);
                }
+               $.ajax({
+                type: "GET",
+                url: "http://localhost/Zied/server/Api/Seances/getSeancesByGroupAndLocataire.php",
+                dataType: 'json',
+                success: function(data)
+                {
+                    var jsonData = data;
+                    console.log(jsonData);
+                 //treatements  
+                 for(item of jsonData){   
+                     var row = "<tr>";
+                     row+='<td class="seance_id">'+item.id_seance+'</td>';
+                     row+='<td class="locataire_ids">'+item.id_locataire+'</td>';
+                     row+='<td class="groupe_ids" >'+item.id_groupe+'</td>';
+                     row+="<td>"+item.nom+" "+item.prenom+"</td>";
+                     row+="<td>"+item.nom_groupe+"</td>";
+                     row+="<td>"+item.date+"</td>";
+                     row+="<td>"+item.heure+"</td>";
+                     row+='<td><div><button id="btnDelete" style="display:block;width:45px;margin-bottom:5px;" type="button" class="btn btn-info"><i class="fa fa-eye"></button>';
+                     row+="</td>";
+       
+                   $("#tbodySeances").append(row);
+                 }
+                 $("#seancesDatatable").DataTable();
+
+                 $("#tbodySeances").on('click','#btnDelete', function(){
+                     var id = $(this).closest('tr').find('.seance_id').text();
+                     var object = {
+                         seance_id: id
+                     }
+
+
+             $.ajax({
+              type: "POST",
+              url: "http://localhost/Zied/server/Api/Seances/AddSeance.php",
+              data: JSON.stringify(object),
+              dataType: 'json',
+              contentType: 'application/json',
+                success: function(data)
+                {
+             //Treatements
+         
+
+
+
+
+                }
+
+              });
+                   
+
+                    
+                   });
+     
+ 
+                }
+              });
 
      $("#editseance").submit(function(e) {
     
-                e.preventDefault(); 
+               e.preventDefault(); 
                var isValid = false;
                var inputGroup = $("#group_ides").val();
                var inputLoc = $("#loc_id").val();
@@ -110,8 +167,8 @@ $(document).ready(function(){
                                 var myModal = $("#reservmodal");
                                 myModal.modal("show");
                                 document.getElementById("editseance").reset();
+                                location.reload();
                                 
-                                setTimeout(function(){ location.reload(); }, 6000);
                            }
                          });
                     
@@ -122,85 +179,7 @@ $(document).ready(function(){
                 }
             });
 
-                   //edit group
-    // this is the id of the form
-    $("#editgroup").submit(function(e) {
-    
-        e.preventDefault(); // avoid to execute the actual submit of the form.
         
-        var form = $(this);
-        var isValid = false;
-        var inputGroup = $("#group_id").val();
-
-        if( inputGroup == "nil"){
-            $("#ig").css("visibility","visible");
-            isValid = false;
-            $("#group_id").removeClass("is-valid");
-            $("#group_id").addClass("is-invalid");
-            console.log(isValid);
-            $("#ig").removeClass("valid-feedback");
-            $("#ig").addClass("invalid-feedback");
-            $("#ig").html("Champ invalide");
-            return false;
-            }else{
-            isValid = true;
-            $("#ig").css("visibility","visible");
-            $("#group_id").removeClass("is-invalid");
-            $("#group_id").addClass("is-valid");
-            console.log(isValid);
-            $("#ig").removeClass("invalid-feedback");
-            $("#ig").addClass("valid-feedback");
-            $("#ig").html("Champ valide");
-            }
-            
-        if(isValid == true){
-            let object = {
-                id_groupe: inputGroup,
-           };
-           console.log("object" +JSON.stringify(object));
-        $.ajax({
-               type: "POST",
-               url: "http://localhost/Zied/server/Api/Eleves/getElevesByGroup.php",
-               data: JSON.stringify(object),
-               dataType: 'json',
-               contentType: 'application/json',
-               success: function(data)
-               {
-                   var jsonData = data;
-                   console.log(jsonData);
-                //treatements  
-                for(item of jsonData){   
-                    var row = "<tr>";
-                    row+='<td class="group_id"'+item.id_groupe+'</td>';
-                    row+='<td class="eleve_id">'+item.code_eleve+'</td>';
-                    row+="<td>"+item.nom_groupe+"</td>";
-                    row+="<td>"+item.prenom_eleve+"</td>";
-                    row+="<td>"+item.nom_eleve+"</td>";
-                    row+="<td>"+item.classe+"</td>";
-                    row+="<td>"+item.num_tel+"</td>";
-                    row+='<td><div><button id="btnDelete" style="display:block;width:45px;margin-bottom:5px;" type="button" class="btn btn-info"><i class="fa fa-bandcamp"></button>';
-                    row+="</td>";
-      
-                  $("#tbodyGroupes").append(row);
-                }
-               
-                $("#tbodyGroupes").on('click','#btnDelete', function(){
-                    var id = $(this).closest('tr').find('.group_id').text();
-                    var object = {
-                        code_eleve: id
-                    }
-                   
-                   
-                  });
-    
-
-               }
-             });
-        
-            }
-        });
-    
-    
             },
             error: function (data) { alert("Server Error"); }
         });
