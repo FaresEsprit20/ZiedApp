@@ -12,7 +12,8 @@ $(document).ready(function(){
               var jsonData = data;
               console.log("Groups data loaded ....");
               console.log(jsonData);
-    
+              $("#reservationsDatatable").DataTable();
+
 
               for(var item of jsonData){
                   var option = new Option(item.nom_groupe,item.id_groupe);
@@ -37,6 +38,10 @@ $(document).ready(function(){
                 var option = new Option(item.nom + " " + item.prenom ,item.id_locataire);
               $("#loc_id").append(option);
                }
+
+     $("#editseance").submit(function(e) {
+    
+                e.preventDefault(); 
                var isValid = false;
                var inputGroup = $("#group_ides").val();
                var inputLoc = $("#loc_id").val();
@@ -86,7 +91,7 @@ $(document).ready(function(){
                 if(isValid == true){
 
                     let object = {
-                    id_loc: inputLoc,
+                    id_locataire: inputLoc,
                     id_groupe: inputGroup,
                     date: inputDate,
                     heure: inputHour
@@ -94,7 +99,7 @@ $(document).ready(function(){
                     console.log("object" +JSON.stringify(object));
                     $.ajax({
                            type: "POST",
-                           url: "http://localhost/Zied/server/Api/Reservations/AddReservation.php",
+                           url: "http://localhost/Zied/server/Api/Seances/AddSeance.php",
                            data: JSON.stringify(object),
                            dataType: 'json',
                            contentType: 'application/json',
@@ -104,14 +109,14 @@ $(document).ready(function(){
                                 // show response from the php script.
                                 var myModal = $("#reservmodal");
                                 myModal.modal("show");
-                                document.getElementById("createreservation").reset();
+                                document.getElementById("editseance").reset();
                                 
-                                setTimeout(function(){ location.replace("index.php"); }, 6000);
+                                setTimeout(function(){ location.reload(); }, 6000);
                            }
                          });
                     
                         }
-                
+                    });
 
 
                 }
@@ -164,10 +169,9 @@ $(document).ready(function(){
                    var jsonData = data;
                    console.log(jsonData);
                 //treatements  
-                for(item of jsonData){
-                   
+                for(item of jsonData){   
                     var row = "<tr>";
-                    row+='<td> class="group_id"'+item.id_groupe+'</td>';
+                    row+='<td class="group_id"'+item.id_groupe+'</td>';
                     row+='<td class="eleve_id">'+item.code_eleve+'</td>';
                     row+="<td>"+item.nom_groupe+"</td>";
                     row+="<td>"+item.prenom_eleve+"</td>";
@@ -179,9 +183,9 @@ $(document).ready(function(){
       
                   $("#tbodyGroupes").append(row);
                 }
-
+               
                 $("#tbodyGroupes").on('click','#btnDelete', function(){
-                    var id =   $(this).closest('tr').find('.group_id').text();
+                    var id = $(this).closest('tr').find('.group_id').text();
                     var object = {
                         code_eleve: id
                     }
@@ -189,10 +193,6 @@ $(document).ready(function(){
                    
                   });
     
-
-
-
-
 
                }
              });
@@ -206,9 +206,6 @@ $(document).ready(function(){
         });
     
     
-
-
-
 
 
 

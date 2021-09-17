@@ -89,6 +89,86 @@
 
 <!-- Start Groupes -->
 
+<!-- Start Séances -->
+
+<section class="geView" id="geView">
+  <div class="container-fluid">
+    <div class="special-heading">Séances</div>
+      <p>Créer une Séance</p>
+  <div class="row">
+  <div class="col col-sm col-lg-2">
+  </div>
+    <div class="col-12 col-sm-12 col-lg-8">
+
+    
+      <div class="products-table mt-5 mb-5">
+        <div class="table-reservations">
+
+
+        <form class="row g-3" id="editseance">
+       
+
+  <div class="col-md-8">
+  <label for="group_ides" class="form-label">Groupe</label>
+    <select id="group_ides" class="form-select">
+      <option selected  value="nil">Sélectionner un groupe...</option>
+    </select>
+    <div id="ige" style="visibility:hidden">
+      
+    </div>
+  </div>
+  <div class="col-md-8">
+  <label for="loc_id" class="form-label">Locataire</label>
+    <select id="loc_id" class="form-select">
+      <option selected  value="nil">Sélectionner un locataire...</option>
+    </select>
+    <div id="il" style="visibility:hidden">
+      
+    </div>
+  </div>
+
+  <div class="col-md-8">
+  <label for="hour_id" class="form-label">Heure</label>
+    <input type="time" id="hour_id" class="form-control" required>
+    <div id="ih" style="visibility:hidden">
+      
+    </div>
+  </div>
+  <div class="col-md-8">
+  <label for="date_id" class="form-label">Date</label>
+    <input type="date" id="date_id" class="form-control" required>
+    <div id="id" style="visibility:hidden">
+      
+    </div>
+  </div>
+  <div class="col-12">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="reservCheck" required>
+      <label class="form-check-label" for="reservCheck">
+        Cochez moi
+      </label>
+    </div>
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-dark">Créer Séance</button>
+  </div>
+
+</form>
+
+
+      
+        </div>
+
+    </div>
+  </div>
+  <div class="col col-sm col-lg-2">
+  </div>
+  </div>
+ 
+</section>
+
+<!-- End Séances -->
+
 <section class="geView" id="geView">
   <div class="container-fluid">
     <div class="special-heading">Groupes</div>
@@ -163,7 +243,7 @@
 <section class="GroupesTable" id="GroupeTable">
   <div class="container-fluid">
     <div class="special-heading">Eleves</div>
-      <p>Voir la liste des éleves</p>
+      <p>Voir la liste des éleves par séance</p>
   <div class="row">
   <div class="col col-sm col-lg-2">
   </div>
@@ -202,85 +282,7 @@
 
 <!-- End Products -->
 
-<!-- Start Séances -->
 
-<section class="geView" id="geView">
-  <div class="container-fluid">
-    <div class="special-heading">Séances</div>
-      <p>Créer une Séance</p>
-  <div class="row">
-  <div class="col col-sm col-lg-2">
-  </div>
-    <div class="col-12 col-sm-12 col-lg-8">
-
-      
-      <div class="products-table mt-5 mb-5">
-        <div class="table-reservations">
-
-
-        <form class="row g-3" id="editseance">
-       
-
-  <div class="col-md-8">
-  <label for="group_ides" class="form-label">Groupe</label>
-    <select id="group_ides" class="form-select" required>
-      <option selected  value="nil">Sélectionner un groupe...</option>
-    </select>
-    <div id="ige" style="visibility:hidden">
-      
-    </div>
-  </div>
-  <div class="col-md-8">
-  <label for="loc_id" class="form-label">Locataire</label>
-    <select id="loc_id" class="form-select" required>
-      <option selected  value="nil">Sélectionner un locataire...</option>
-    </select>
-    <div id="il" style="visibility:hidden">
-      
-    </div>
-  </div>
-
-  <div class="col-md-8">
-  <label for="hour_id" class="form-label">Heure</label>
-    <input type="time" id="hour_id" class="form-control" required>
-    <div id="ih" style="visibility:hidden">
-      
-    </div>
-  </div>
-  <div class="col-md-8">
-  <label for="date_id" class="form-label">Date</label>
-    <input type="date" id="date_id" class="form-control" required>
-    <div id="id" style="visibility:hidden">
-      
-    </div>
-  </div>
-  <div class="col-12">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="reservCheck" required>
-      <label class="form-check-label" for="reservCheck">
-        Cochez moi
-      </label>
-    </div>
-  </div>
-  <div class="col-12">
-    <button type="submit" class="btn btn-dark">Créer Séance</button>
-  </div>
-
-</form>
-
-
-      
-        </div>
-
-    </div>
-  </div>
-  <div class="col col-sm col-lg-2">
-  </div>
-  </div>
- 
-</section>
-
-<!-- End Séances -->
 
 
 </main>
