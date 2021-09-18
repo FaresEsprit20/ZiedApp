@@ -173,7 +173,6 @@
 
 <!-- End Séances -->
 
-
 <!-- Start Products -->
 
 <section class="SeancesTable" id="SeancesTable">
@@ -217,6 +216,8 @@
 </section>
 
 <!-- End Products -->
+
+
 
 <!-- Modal -->
 <div class="modal fade" id="reservmodal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

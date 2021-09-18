@@ -3,102 +3,106 @@
 $(document).ready(function(){
 
 
-    function delReserv($id){
-    
-        //get dashboard data
-        $.ajax({    
-            type: "POST",
-            url: "http://localhost/Zied/server/Api/Groupes/DeleteGroupe.php",                     
-            dataType: "json",            
-            data: JSON.stringify($id),
-            contentType: 'application/json',   
-            success: function(data){     
-              console.log("reservation deleted !");
-              console.log(data);
-            }
-        });
-    
-    }
-    
-    
-    function archvReserv($id){
-    
-        //get dashboard data
-        $.ajax({    
-            type: "POST",
-            url: "http://localhost/Zied/server/Api/Groupes/ArchiverGroupe.php",                     
-            dataType: "json",            
-            data: JSON.stringify($id),
-            contentType: 'application/json',   
-            success: function(data){     
-              console.log("reservation archived !");
-              console.log(data);
-            }
-        });
-    
-    }
-    
-    
-        //get dashboard data
-        $.ajax({    
-            type: "GET",
-            url: "http://localhost/Zied/server/Api/Groupes/GetGroups.php",                     
-            dataType: "json",               
-            success: function(data){      
-              var jsonData = data;
-              console.log("Groups data loaded ....");
-              console.log(jsonData);
-    
-              for(item of jsonData){
-                 
-                  var row = "<tr>";
-                  row+='<td class="id_groupe">'+item.id_groupe+'</td>';
-                  row+="<td>"+item.nom_groupe+"</td>";
-                  row+='<td><div><button id="btnDelete" style="display:block;width:65px;margin-bottom:5px;" type="button" class="btn btn-info">Del</button><button style="display:block;width:65px;" id="btnArchv"type="button" class="btn btn-dark">Archv</button></div></td>';
-                  row+="</td>";
-    
-                $("#tbodyGroupes").append(row);
-              }
+    $.ajax({
+        type: "GET",
+        url: "http://localhost/Zied/server/Api/Seances/getSeancesByGroupAndLocataire.php",
+        dataType: 'json',
+        success: function(data)
+        {
+            var jsonData = data;
+            console.log(jsonData);
+         //treatements  
+         for(item of jsonData){   
+             var row = "<tr>";
+             row+='<td class="seance_id">'+item.id_seance+'</td>';
+             row+='<td class="locataire_ids">'+item.id_locataire+'</td>';
+             row+='<td class="groupe_ids" >'+item.id_groupe+'</td>';
+             row+="<td>"+item.nom+" "+item.prenom+"</td>";
+             row+="<td>"+item.nom_groupe+"</td>";
+             row+="<td>"+item.date+"</td>";
+             row+="<td>"+item.heure+"</td>";
+             row+='<td><div><button id="btnDelete" style="display:block;width:45px;margin-bottom:5px;" type="button" class="btn btn-info"><i class="fa fa-eye"></button>';
+             row+="</td>";
 
-              for(var item of jsonData){
-                  var option = new Option(item.nom_groupe,item.id_groupe);
-                $("#group_id").append(option);
-              }
-              
-              $("#tbodyGroupes").on('click','#btnDelete', function(){
-                var id =   $(this).closest('tr').find('.id_groupe').text();
-                var object = {
-                    id_groupe: id
-                }
-              
-               
-                if (confirm('Do you want to Delete?')) {
-                    delReserv(object);
-                    location.reload();
-                }else{
-                    return false;
-                }
-               
-              });
-              $("#tbodyGroupes").on('click','#btnArchv', function(){
-                var id =   $(this).closest('tr').find('.id_groupe').text();
-                var object = {
-                    id_groupe: id
-                }
-                var jsonObject = JSON.stringify(object);
-                if (confirm('Do you want to Archive?')) {
-                    archvReserv(object);
-                    location.reload();
-                }else{
-                    return false;
-                }
-              });
-              $('#reservationsDatatable').DataTable();
+           $("#tbodySeances").append(row);
+         }
+         $("#seancesDatatable").DataTable();
+
+         $("#tbodySeances").on('click','#btnDelete', function(){
+             var ids = $(this).closest('tr').find('.seance_id').text();
+             var idg = $(this).closest('tr').find('.groupe_ids').text();
+             var object = {
+                 id_seance: ids,
+                 id_groupe: idg
+             }
+  console.log(object);
+
+     $.ajax({
+      type: "POST",
+      url: "http://localhost/Zied/server/Api/Seances/getSeancesByEleves.php",
+      data: JSON.stringify(object),
+      dataType: 'json',
+      contentType: 'application/json',
+        success: function(data)
+        {
+     //Treatements
+ 
+     var jsonData = data;
+     console.log(jsonData);
+  //treatements  
+  for(item of jsonData){   
+      var row = "<tr>";
+      row+='<td class="seance_idsx">'+item.id_seance+'</td>';
+      row+='<td class="groupe_idx" >'+item.id_groupe+'</td>';
+      row+='<td class="eleve_idx" >'+item.id_eleve+'</td>';
+      row+="<td>"+item.nom_groupe+"</td>";
+      row+="<td>"+item.prenom_eleve+"</td>";
+      row+="<td>"+item.nom_eleve+"</td>";
+      row+="<td>"+item.classe+"</td>";
+      row+="<td>"+item.num_tel+"</td>";
+      row+="<td>"+item.date+"</td>";
+      row+="<td>"+item.heure+"</td>";
+      row+="<td>"+item.payement+" DT" +"</td>";
+      row+="<td>"+item.absents+"</td>";
+      row+='<td><div><button id="btnAbsent" style="display:block;width:70px;margin-bottom:5px;" type="button" class="btn btn-info">Absent</button></div>';
+      row+="</td>";
+
+    $("#tbodyGroupes").append(row);
+  }
+  $("#tbodyGroupes").on('click','#btnAbsent', function(){
+    var ids =   $(this).closest('tr').find('.seance_idsx').text();
+    var ide =   $(this).closest('tr').find('.eleve_idx').text();
+    var object = {
+        id_seance: ids,
+        id_eleve: ide
+    }
+    var jsonObject = JSON.stringify(object);
+    console.log(object);
+    if (confirm('Do you want to put Absent ?')) {
+        btnAbsent(object);
+        location.reload();
+    }else{
+        return false;
+    }
+   
+  });
+
+  
+  $("#reservationsDatatable").DataTable();
+
+
+        }
+
+      });
+           
+
             
-    
-            },
-            error: function (data) { alert("Server Error"); }
-        });
+           });
+
+
+        }
+      });
+
     
     
 
