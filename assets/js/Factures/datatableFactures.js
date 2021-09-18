@@ -184,9 +184,9 @@ $(document).ready(function(){
         if(isValid == true){
         
         let object = {
-        id_seance: inputSeance,
-        id_eleve: inputEleve,
-        payement: inputPayement
+          id_seance: inputSeance,
+          id_eleve: inputEleve,
+          payement: inputPayement
         };
         console.log("object" +JSON.stringify(object));
         $.ajax({

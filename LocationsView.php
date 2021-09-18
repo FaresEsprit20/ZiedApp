@@ -53,6 +53,10 @@
                 <i class="navbar-fa fa fa-users fa-2x d-inline-block"></i>
               </li>
               <li class="nav-item">
+                <a class="nav-link d-inline-block" href="FactureView.php">Payement</a>
+                <i class="navbar-fa fa fa-users fa-2x d-inline-block"></i>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link d-inline-block" href="SeancesView.php">Seances</a>
                 <i class="navbar-fa fa fa-users fa-2x d-inline-block"></i>
               </li>
