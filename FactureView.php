@@ -127,7 +127,7 @@
 
   <div class="col-md-8">
     <label for="payement_id" class="form-label">Payement</label>
-    <input type="number" class="form-control"  step="any" id="payement_id">
+    <input type="number" class="form-control"  step="any" id="payement_id" required>
     <div id="ip" style="visibility:hidden">
   </div>
   </div>
@@ -180,7 +180,26 @@
 </div>
 </div>
 <!-- End Modal -->
-
+<!-- Modal -->
+<div class="modal fade" id="reservmodalerr" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Erreur</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       Votre Etudiant Séance n'a pas été payée car ID séance ou ID éleve est incorrect ou n'existe pas!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger"  data-bs-dismiss="modal">OK!</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- End Modal -->
 
 <!-- Start Products -->
 

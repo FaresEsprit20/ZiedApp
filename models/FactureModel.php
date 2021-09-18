@@ -47,14 +47,25 @@ class FactureModel {
     public function PayerSeance() {
         $json = file_get_contents('php://input');
         $data = json_decode($json, true);
-        if( isset($data["id_seance"]) and (intval($data["id_seance"])) and isset($data["id_eleve"]) and (intval($data["id_eleve"])) and isset($data["payement"])   ){
+        $result = 0;
+        if( isset($data["id_seance"])  and isset($data["id_eleve"]) and isset($data["payement"])   ){
+            $stmt2 = $this->conn->prepare("SELECT * from seance_eleves WHERE  id_seance= ? AND  id_eleve = ? ");
+            $stmt2->execute([$data["id_seance"],$data["id_eleve"]]);
+            $result = $stmt2->fetchColumn();
+
+      if($result > 0){
         $stmt = $this->conn->prepare("UPDATE seance_eleves SET payement = ? WHERE  id_seance= ? AND  id_eleve = ? ");
         $stmt->execute([$data["payement"],$data["id_seance"],$data["id_eleve"]]);
         echo json_encode(http_response_code(200));
         }else {
-            http_response_code(401);
+            http_response_code(404);
             die();
+            
         }
+    }else if($result == 0 ){
+        http_response_code(401);
+        die();
+    }
     }
 
 

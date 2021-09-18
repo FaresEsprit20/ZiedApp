@@ -138,7 +138,11 @@ $(document).ready(function(){
                     document.getElementById("creategroup").reset();
                     
                     setTimeout(function(){ location.replace("index.php"); }, 6000);
-               }
+               },
+               error: function (data) {
+                var myModals = $("#reservmodalerr");
+                myModals.modal("show");
+                }
              });
         
             }
