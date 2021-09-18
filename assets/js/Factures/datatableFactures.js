@@ -109,77 +109,11 @@ $(document).ready(function(){
         e.preventDefault(); // avoid to execute the actual submit of the form.
         
         var form = $(this);
-        var isValid = false;
+        var isValid = true;
         var inputSeance = $("#id_seance").val();
         var inputEleve = $("#eleve_id").val();
         var inputPayement = $("#payement_id").val();
-       
         
-        if( inputSeance == undefined || inputSeance == null || inputSeance == ""){
-        $("#is").css("visibility","visible");
-        isValid = false;
-        $("#id_seance").removeClass("is-valid");
-        $("#id_seance").addClass("is-invalid");
-        console.log(inputSeance);
-        console.log(isValid);
-        $("#is").removeClass("valid-feedback");
-        $("#is").addClass("invalid-feedback");
-        $("#is").html("Champ invalide");
-        return false;
-        }else{
-        isValid = true;
-        $("#is").css("visibility","visible");
-        $("#id_seance").removeClass("is-invalid");
-        $("#id_seance").addClass("is-valid");
-        console.log(isValid);
-        $("#is").removeClass("invalid-feedback");
-        $("#is").addClass("valid-feedback");
-        $("#is").html("Champ valide");
-        }
-        
-        if( inputEleve == undefined || inputEleve == null || inputEleve == "" ){
-            $("#ie").css("visibility","visible");
-            isValid = false;
-            $("#eleve_id").removeClass("is-valid");
-            $("#eleve_id").addClass("is-invalid");
-            console.log(inputSeance);
-            console.log(isValid);
-            $("#ie").removeClass("valid-feedback");
-            $("#ie").addClass("invalid-feedback");
-            $("#ie").html("Champ invalide");
-            return false;
-            }else{
-            isValid = true;
-            $("#ie").css("visibility","visible");
-            $("#eleve_id").removeClass("is-invalid");
-            $("#eleve_id").addClass("is-valid");
-            console.log(isValid);
-            $("#ie").removeClass("invalid-feedback");
-            $("#ie").addClass("valid-feedback");
-            $("#ie").html("Champ valide");
-            }
-
-            if( inputPayement == undefined || inputPayement == null || inputPayement == "" ){
-                $("#ip").css("visibility","visible");
-                isValid = false;
-                $("#seance_id").removeClass("is-valid");
-                $("#seance_id").addClass("is-invalid");
-                console.log(inputSeance);
-                console.log(isValid);
-                $("#ip").removeClass("valid-feedback");
-                $("#ip").addClass("invalid-feedback");
-                $("#ip").html("Champ invalide");
-                return false;
-                }else{
-                isValid = true;
-                $("#ip").css("visibility","visible");
-                $("#seance_id").removeClass("is-invalid");
-                $("#seance_id").addClass("is-valid");
-                console.log(isValid);
-                $("#ip").removeClass("invalid-feedback");
-                $("#ip").addClass("valid-feedback");
-                $("#ip").html("Champ valide");
-                }
         
         if(isValid == true){
         

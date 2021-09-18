@@ -120,14 +120,14 @@
 
    <div class="col-md-8">
     <label for="eleve_id" class="form-label">#Eleve_ID</label>
-    <input type="number" class="form-control" step="any" id="eleve_id" required>
+    <input type="number" class="form-control" id="eleve_id" required>
     <div id="ie" style="visibility:hidden">
   </div>
   </div>
 
   <div class="col-md-8">
     <label for="payement_id" class="form-label">Payement</label>
-    <input type="text" class="form-control" id="payement_id">
+    <input type="number" class="form-control"  step="any" id="payement_id">
     <div id="ip" style="visibility:hidden">
   </div>
   </div>
