@@ -131,6 +131,8 @@ function btnPresent($id){
               row+="<td>"+item.num_tel+"</td>";
               row+="<td>"+item.date+"</td>";
               row+="<td>"+item.heure+"</td>";
+              row+="<td>"+item.payement+" DT" +"</td>";
+              row+="<td>"+item.absents+"</td>";
               row+='<td><div><button id="btnAbsent" style="display:block;width:70px;margin-bottom:5px;" type="button" class="btn btn-info">Absent</button><button id="btnPresent" style="display:block;width:70px;margin-bottom:5px;" type="button" class="btn btn-secondary">Présent</button></div>';
               row+="</td>";
 

@@ -264,6 +264,8 @@
               <th scope="col">#Tel</th>
               <th scope="col">#Date_Séance</th>
               <th scope="col">#Heure_Séance</th>
+              <th scope="col">#Payement</th>
+              <th scope="col">#Absent 1 Présent 0</th>
               <th scope="col">Action</th>
             </thead>
             <tbody id="tbodyGroupes">
