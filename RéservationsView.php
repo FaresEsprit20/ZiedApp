@@ -91,7 +91,26 @@
 
 <a id="button-scroll-top"></a>
 
-
+<!-- Modal -->
+<div class="modal fade" id="reservmodalerr" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Erreur</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       Votre Réservation n'a pas été crée car la Salle est déja reservée a cette date !
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger"  data-bs-dismiss="modal">OK!</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- End Modal -->
 
 <!-- Start Reservation -->
 

@@ -92,10 +92,21 @@ class ReservationModel {
         $json = file_get_contents('php://input');
         $data = json_decode($json, true);
         if (isset($data["id_loc"]) and isset($data["id_locataire"]) and isset($data["id_groupe"]) and isset($data["datedeb"]) and isset($data["datefin"]) and isset($data["heuredeb"]) and isset($data["jourdeb"]) and isset($data["moisdeb"]) and isset($data["andeb"]) and isset($data["heurefin"]) and isset($data["jourfin"]) and isset($data["moisfin"]) and isset($data["anfin"])){
+    $count = 0;
+    $stmts = $this->conn->prepare("SELECT  COUNT(ID_loc) FROM reservation WHERE (datedeb between ? and ? ) OR (datefin between ? and ? ) ");
+    $stmts->execute([$data["datedeb"],$data["datefin"],$data["datedeb"],$data["datefin"]]);
+    $count = intval($stmts->fetchColumn());
+
+    if($count == 0) {
         $stmt = $this->conn->prepare("INSERT INTO reservation VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ");
         $stmt->execute([0,$data["id_loc"],$data["id_locataire"],$data["id_groupe"],$data["datedeb"],$data["datefin"],$data["heuredeb"],$data["jourdeb"],$data["moisdeb"],$data["andeb"],$data["heurefin"],$data["jourfin"],$data["moisfin"],$data["anfin"],0  ]);
         echo json_encode(http_response_code(201));
-        }else{
+    }else {
+        http_response_code(404);
+        die();
+    }
+
+    }else{
             http_response_code(401);
             die();
         }
