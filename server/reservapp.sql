@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Sep 17, 2021 at 09:22 PM
+-- Generation Time: Sep 19, 2021 at 07:41 PM
 -- Server version: 5.7.31
 -- PHP Version: 7.3.21
 
@@ -169,7 +169,7 @@ CREATE TABLE IF NOT EXISTS `reservation` (
   PRIMARY KEY (`id_reserv`),
   KEY `reservation_ibfk_1` (`id_loc`),
   KEY `id_locataire` (`id_locataire`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `reservation`
@@ -177,7 +177,13 @@ CREATE TABLE IF NOT EXISTS `reservation` (
 
 INSERT INTO `reservation` (`id_reserv`, `id_loc`, `id_locataire`, `id_groupe`, `datedeb`, `datefin`, `heuredeb`, `jourdeb`, `moisdeb`, `andeb`, `heurefin`, `jourfin`, `moisfin`, `anfin`, `archive_state`) VALUES
 (18, 1, 8, '6 BI 6', '2023-11-03', '2024-02-02', '01', '03', '11', 2023, '01', '02', '02', 2024, 0),
-(28, 1, 8, '6 BI 6', '2021-02-01', '2022-02-03', '00', '01', '02', 2021, '02', '03', '02', 2022, 0);
+(28, 1, 8, '6 BI 6', '2021-02-01', '2022-02-03', '00', '01', '02', 2021, '02', '03', '02', 2022, 0),
+(29, 1, 8, '6 BI 6', '2023-11-03', '2024-02-02', '01', '03', '11', 2023, '01', '02', '02', 2024, 0),
+(30, 1, 8, '6 BI 6', '2020-11-03', '2020-02-02', '01', '03', '11', 2023, '01', '02', '02', 2024, 0),
+(31, 1, 8, ' TWIN 5', '2023-12-20', '2024-01-01', '15', '20', '12', 2023, '16', '01', '01', 2024, 0),
+(32, 1, 8, '6 BI 6', '2020-11-03', '2020-02-02', '01', '03', '11', 2023, '01', '02', '02', 2024, 0),
+(33, 1, 8, '6 BI 6', '2020-11-03', '2020-02-02', '01', '03', '11', 2023, '01', '02', '02', 2024, 0),
+(34, 1, 8, '6 BI 6', '2020-11-03', '2020-02-02', '01', '03', '11', 2023, '01', '02', '02', 2024, 0);
 
 -- --------------------------------------------------------
 
@@ -222,7 +228,7 @@ CREATE TABLE IF NOT EXISTS `seance_eleves` (
 --
 
 INSERT INTO `seance_eleves` (`id_seance`, `id_eleve`, `absents`, `payement`) VALUES
-(7, 1, '0', 0);
+(7, 1, '0', 10);
 
 --
 -- Constraints for dumped tables
