@@ -1,7 +1,8 @@
 <?php
 
 header('Access-Control-Allow-Origin: *');
- 
+require "ToJson/EleveModelToJson.php";
+require "ToJson/FactureModelToJson.php";
 // imports will be here
 
 class FactureModel {
@@ -78,5 +79,58 @@ class FactureModel {
     }
 
 
+
+    public function FacturerEleve() {
+        $json = file_get_contents('php://input');
+        $data = json_decode($json, true);
+        $result = 0;
+        if( isset($data["id_groupe"])  and isset($data["payement"])   ){
+            $stmt2 = $this->conn->prepare("SELECT * from seance WHERE  id_groupe = ? ");
+            $stmt2->execute([$data["id_groupe"]]);
+            $result = $stmt2->fetchColumn();
+
+      if($result > 0){
+        $stmt3 = $this->conn->prepare("SELECT * FROM groupe_eleve,eleves,groupe WHERE (groupe_eleve.id_groupe = ? ) AND (eleves.code_eleve = groupe_eleve.id_eleve) AND (groupe.id_groupe = groupe_eleve.id_groupe)");
+        $stmt3->execute([$data["id_groupe"]]);
+        $eleves = $stmt3->fetchAll(PDO::FETCH_ASSOC);
+
+        $factures = array();
+        
+        foreach($eleves as $item){
+            //initialization
+            $totalSeances = 0;
+            $totalPaid = 0;
+            $totalToPay = 0;
+            $difference = 0;
+
+            $eleve = new EleveModelToJson($item["code_eleve"],$item["prenom_eleve"],$item["nom_eleve"],$item["classe"],$item["num_tel"]);
+           //total number of seances
+            $stmt = $this->conn->prepare("SELECT COUNT(*) FROM seance_eleves WHERE id_eleve = ?");
+            $stmt->execute([$eleve->code_eleve]);
+            $totalSeances = intVal($stmt->fetchColumn());
+            //total paid money
+            $stmt4 = $this->conn->prepare("SELECT SUM(payement) FROM seance_eleves WHERE id_eleve = ?");
+            $stmt4->execute([$eleve->code_eleve]);
+            $totalPaid = floatVal($stmt4->fetchColumn());
+             //total to pay money
+            $totalToPay = floatVal($data["payement"]) * $totalSeances;
+            //total difference
+            $difference = $totalToPay - $totalPaid;
+            
+            $object = new FactureModelToJson($item["code_eleve"],$item["prenom_eleve"],$item["nom_eleve"],$item["classe"],$item["num_tel"],$totalSeances,$totalPaid,$totalToPay,$difference);
+            array_push($factures,$object);
+        }
+                
+        echo json_encode($factures);
+        }else if($result == 0 ){
+            http_response_code(404);
+            die();
+            
+        }
+    }else {
+        http_response_code(401);
+        die();
+    }
+    }
 
 }

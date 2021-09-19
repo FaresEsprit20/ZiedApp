@@ -181,6 +181,26 @@
 </div>
 <!-- End Modal -->
 <!-- Modal -->
+<div class="modal fade" id="reservmodalgrp" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Succés</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       Votre Groupe a été facturé avec Succés!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary"  data-bs-dismiss="modal">OK!</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- End Modal -->
+<!-- Modal -->
 <div class="modal fade" id="reservmodalerr" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -200,38 +220,74 @@
 </div>
 </div>
 <!-- End Modal -->
+<!-- Modal -->
+<div class="modal fade" id="reservmodalerrgrp" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Erreur</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       Votre Groupe n'a pas été facturé car ID groupe est incorrect ou n'existe pas!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger"  data-bs-dismiss="modal">OK!</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- End Modal -->
+<!-- Start Groupes -->
 
-<!-- Start Products -->
-
-<section class="SeancesTable" id="SeancesTable">
+<section class="gView" id="gView">
   <div class="container-fluid">
-    <div class="special-heading">Séances</div>
-      <p>Voir la liste des séances</p>
+    <div class="special-heading">Facture</div>
+      <p>Facturer un groupe</p>
   <div class="row">
   <div class="col col-sm col-lg-2">
   </div>
     <div class="col-12 col-sm-12 col-lg-8">
 
       
-      <div class="locataires-table mt-5 mb-5">
-        <div class="table-responsive">
+      <div class="products-table mt-5 mb-5">
+        <div class="table-reservations">
 
-          <table class="table display" id="seancesDatatable">
-            <caption>Liste des Séances</caption>
-            <thead class="table-dark">
-              <th scope="col">#Id_Seance</th>
-              <th scope="col">#Id_Enseignant</th>
-              <th scope="col">#Id_Groupe</th>
-              <th scope="col">#Nom & Prénom Ens</th>
-              <th scope="col">#Nom_Groupe</th>
-              <th scope="col">#Date</th>
-              <th scope="col">#Heure</th>
-              <th scope="col">Action</th>
-            </thead>
-            <tbody id="tbodySeances">
-              
-            </tbody>
-          </table>
+  
+
+        <form class="row g-3" id="facturergroup">
+       
+   <div class="col-md-8">
+    <label for="eleve_ids" class="form-label">#Groupe_ID</label>
+    <input type="number" class="form-control" id="eleve_ids" required>
+    <div id="ies" style="visibility:hidden">
+  </div>
+  </div>
+
+  <div class="col-md-8">
+    <label for="payement_ids" class="form-label">Prix Unitaire de chaque séance</label>
+    <input type="number" class="form-control"  step="any" id="payement_ids" required>
+    <div id="ips" style="visibility:hidden">
+  </div>
+  </div>
+
+  <div class="col-12">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="reservChecke" required>
+      <label class="form-check-label" for="reservChecke">
+        Cochez moi
+      </label>
+    </div>
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-dark">Facturer Groupe</button>
+  </div>
+
+</form>
+
+
       
         </div>
 
@@ -243,13 +299,15 @@
  
 </section>
 
-<!-- End Products -->
+<!-- End Groupes -->
+
+
 <!-- Start Products -->
 
 <section class="GroupesTable" id="GroupeTable">
   <div class="container-fluid">
-    <div class="special-heading">Eleves</div>
-      <p>Voir la liste des éleves par séance</p>
+    <div class="special-heading">Groupes</div>
+      <p>Voir la liste des groupes</p>
   <div class="row">
   <div class="col col-sm col-lg-2">
   </div>
@@ -260,21 +318,14 @@
         <div class="table-responsive">
 
           <table class="table display" id="reservationsDatatable">
-            <caption>Liste des Eleves</caption>
+            <caption>Liste des Factures Des éleves du Groupe</caption>
             <thead class="table-dark">
-              <th scope="col">#Id_Séance</th>
-              <th scope="col">#Id_Groupe</th>
-              <th scope="col">#Id_Eleve</th>
-              <th scope="col">#Nom_Groupe</th>
-              <th scope="col">#Prenom_Eleve</th>
-              <th scope="col">#NomEleve</th>
-              <th scope="col">#Classe</th>
-              <th scope="col">#Tel</th>
-              <th scope="col">#Date_Séance</th>
-              <th scope="col">#Heure_Séance</th>
-              <th scope="col">#Payement</th>
-              <th scope="col">#Absent 1 Présent 0</th>
-              <th scope="col">Action</th>
+              <th scope="col">#Id_Elève</th>
+              <th scope="col">#Nom_Prénom_Elève</th>
+              <th scope="col">#Nbre Séances</th>
+              <th scope="col">#Prix de chaque séance</th>
+              <th scope="col">#Montant Payé</th>
+              <th scope="col">#Montant a Payer </th>
             </thead>
             <tbody id="tbodyGroupes">
               
@@ -292,6 +343,7 @@
 </section>
 
 <!-- End Products -->
+
 
 
 </main>
