@@ -104,23 +104,29 @@ class FactureModel {
             $difference = 0;
 
             $eleve = new EleveModelToJson($item["code_eleve"],$item["prenom_eleve"],$item["nom_eleve"],$item["classe"],$item["num_tel"]);
-           //total number of seances
-            $stmt = $this->conn->prepare("SELECT COUNT(*) FROM seance_eleves WHERE id_eleve = ?");
-            $stmt->execute([$eleve->code_eleve]);
+            
+            //total number of seances
+            $stmt = $this->conn->prepare("SELECT COUNT(*) FROM seance_eleves,seance WHERE (seance.id_seance = seance_eleves.id_seance ) AND (seance_eleves.id_eleve = ?)  AND (seance.id_groupe = ? )");
+            $stmt->execute([$eleve->code_eleve,$data["id_groupe"]]);
             $totalSeances = intVal($stmt->fetchColumn());
             //total paid money
-            $stmt4 = $this->conn->prepare("SELECT SUM(payement) FROM seance_eleves WHERE id_eleve = ?");
-            $stmt4->execute([$eleve->code_eleve]);
+            $stmt4 = $this->conn->prepare("SELECT SUM(payement) FROM seance_eleves,seance WHERE (id_eleve = ?) AND (seance_eleves.id_seance = seance.id_seance) AND (seance.id_groupe = ? ) ");
+            $stmt4->execute([$eleve->code_eleve,$data["id_groupe"]]);
             $totalPaid = floatVal($stmt4->fetchColumn());
              //total to pay money
             $totalToPay = floatVal($data["payement"]) * $totalSeances;
             //total difference
             $difference = $totalToPay - $totalPaid;
             
-            $object = new FactureModelToJson($item["code_eleve"],$item["prenom_eleve"],$item["nom_eleve"],$item["classe"],$item["num_tel"],$totalSeances,$totalPaid,$totalToPay,$difference);
+            $object = new FactureModelToJson($data["id_groupe"],$item["code_eleve"],$item["prenom_eleve"],$item["nom_eleve"],$item["classe"],$item["num_tel"],$totalSeances,$totalPaid,$totalToPay,$difference);
             array_push($factures,$object);
         }
-                
+        foreach($factures as $item){
+            $date = new DateTime();
+        $stmt5 = $this->conn->prepare("INSERT INTO facture(id_eleve, id_groupe,nbreseances,prixseances,montantpaye,topay) VALUES(?,?,?,?,?,?)");
+        $stmt5->execute([$item->code_eleve,$data["id_groupe"],$item->totalSeances,$item->totalToPay,$item->totalPaid,$item->difference]);
+    //echo(json_encode($item->code_eleve,$data["id_groupe"],$item["totalSeances"]));
+    }
         echo json_encode($factures);
         }else if($result == 0 ){
             http_response_code(404);

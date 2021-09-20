@@ -41,12 +41,12 @@ class SeancesModel {
         $stmt = $this->conn->prepare("INSERT INTO seance VALUES(?,?,?,?,?)");
         $stmt->execute([0,$data["date"],$data["heure"],$data["id_locataire"],$data["id_groupe"]]);
         $lastInsertedId = $this->conn->lastInsertId();
-        $stmt2 = $this->conn->prepare("SELECT * FROM groupe_eleve,eleves,groupe WHERE (groupe_eleve.id_groupe = ? ) AND (eleves.code_eleve = groupe_eleve.id_eleve) AND (groupe.id_groupe = groupe_eleve.id_groupe)");
+        $stmt2 = $this->conn->prepare("SELECT * FROM groupe_eleve,groupe WHERE (groupe_eleve.id_groupe = ? )  AND (groupe.id_groupe = groupe_eleve.id_groupe)");
         $stmt2->execute([$data["id_groupe"]]);
         $result2 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
         foreach($result2 as $item){
-            $stmt3 = $this->conn->prepare("INSERT INTO seance_eleves VALUES(?,?,?,?) ");
-            $stmt3->execute([$lastInsertedId,$item["code_eleve"],0,0 ]);
+            $stmt3 = $this->conn->prepare("INSERT INTO seance_eleves VALUES(?,?,?,?,?) ");
+            $stmt3->execute([0,$lastInsertedId,$item["id_eleve"],0,0 ]);
         }
         echo json_encode(http_response_code(201));
         }else{

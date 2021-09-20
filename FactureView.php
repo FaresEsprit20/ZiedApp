@@ -323,7 +323,7 @@
               <th scope="col">#Id_Elève</th>
               <th scope="col">#Nom_Prénom_Elève</th>
               <th scope="col">#Nbre Séances</th>
-              <th scope="col">#Prix de chaque séance</th>
+              <th scope="col">#Prix des séances</th>
               <th scope="col">#Montant Payé</th>
               <th scope="col">#Montant a Payer </th>
             </thead>
