@@ -65,6 +65,8 @@
             <li><a class="dropdown-item" href="LocationsView.php">Locations</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="ProfesseurView.php">Enseignants</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="FacturesView.php">Factures</a></li>
           </ul>
         </li>
               <li class="nav-item">

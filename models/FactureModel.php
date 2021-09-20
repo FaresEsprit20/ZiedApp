@@ -19,6 +19,54 @@ class FactureModel {
     }
     
 
+    public function ArchiverFacture() {
+        $json = file_get_contents('php://input');
+        $data = json_decode($json, true);
+        if(isset($data["id_facture"])  ){
+        $stmt = $this->conn->prepare("UPDATE facture SET archive_state = ? WHERE id_facture = ? ");
+        $stmt->execute([1,$data["id_facture"]]);
+        echo json_encode(http_response_code(201));
+        }else{
+            http_response_code(401);
+            die();
+        }
+    }
+
+    public function ArchiverFactureEns() {
+        $json = file_get_contents('php://input');
+        $data = json_decode($json, true);
+        if(isset($data["id_facture"])  ){
+        $stmt = $this->conn->prepare("UPDATE facture_ens SET archive_state = ? WHERE id_facture_ens = ? ");
+        $stmt->execute([1,$data["id_facture"]]);
+        echo json_encode(http_response_code(201));
+        }else{
+            http_response_code(401);
+            die();
+        }
+    }
+
+
+
+
+    public function getAllFactures(){
+       
+        $stmt = $this->conn->prepare("SELECT * from facture,eleves,groupe WHERE (facture.id_eleve = eleves.code_eleve) AND (facture.id_groupe = groupe.id_groupe) AND (facture.archive_state = 0 ) ");
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode($result);
+    
+    }
+
+    public function getAllEnsFactures(){
+       
+        $stmt = $this->conn->prepare("SELECT * from facture_ens,locataires,groupe WHERE (facture_ens.id_locataire = locataires.id_locataire) AND (facture_ens.id_groupe = groupe.id_groupe) AND (facture_ens.archive_state = 0 ) ");
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode($result);
+    
+    }
+
+
     public function AddGroup() {
         $json = file_get_contents('php://input');
         $data = json_decode($json, true);
