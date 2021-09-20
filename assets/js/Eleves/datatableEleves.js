@@ -68,7 +68,7 @@ $(document).ready(function(){
       
                   $("#tbodyGroupes").append(row);
                 }
-
+                 $("#eleDatatable").DataTable();
                 $("#tbodyGroupes").on('click','#btnDelete', function(){
                     var id =   $(this).closest('tr').find('.group_id').text();
                     var object = {

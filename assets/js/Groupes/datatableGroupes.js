@@ -258,5 +258,106 @@ $(document).ready(function(){
 
 
 
+//trouver eleves group
+
+//get dashboard data
+$.ajax({    
+    type: "GET",
+    url: "http://localhost/Zied/server/Api/Eleves/GetAllEleves.php",                     
+    dataType: "json",               
+    success: function(data){      
+      var jsonData = data;
+      console.log("Eleves data loaded ....");
+      console.log(jsonData);
+
+      for(var item of jsonData){
+        var option = new Option(item.nom_eleve + " "+item.prenom_eleve,item.code_eleve);
+      $("#eleve_id").append(option);
+    }     
+
+      
+    
+           //edit group
+// this is the id of the form
+$("#editeleve").submit(function(e) {
+
+e.preventDefault(); // avoid to execute the actual submit of the form.
+
+var form = $(this);
+var isValid = false;
+
+var idgroup = $("#eleve_id").val();
+
+
+if( idgroup =="nil"){
+    $("#ie").css("visibility","visible");
+    isValid = false;
+    $("#eleve_id").removeClass("is-valid");
+    $("#eleve_id").addClass("is-invalid");
+    console.log(inputSalle);
+    console.log(isValid);
+    $("#ie").removeClass("valid-feedback");
+    $("#ie").addClass("invalid-feedback");
+    $("#ie").html("Champ invalide");
+    return false;
+    }else{
+    isValid = true;
+    $("#ig").css("visibility","visible");
+    $("#eleve_id").removeClass("is-invalid");
+    $("#eleve_id").addClass("is-valid");
+    console.log(isValid);
+    $("#ie").removeClass("invalid-feedback");
+    $("#ie").addClass("valid-feedback");
+    $("#ie").html("Champ valide");
+    }
+
+
+if(isValid == true){
+
+let object = {
+code_eleve: $("#eleve_id").val()
+};
+console.log("object" +JSON.stringify(object));
+$.ajax({
+       type: "POST",
+       url: "http://localhost/Zied/server/Api/Groupes/FindGroupsByEleves.php",
+       data: JSON.stringify(object),
+       dataType: 'json',
+       contentType: 'application/json',
+       success: function(data)
+       {
+           var jsonData = data;
+            // show response from the php script.
+            console.log("Groups data loaded ....");
+              console.log(jsonData);
+    
+              for(item of jsonData){
+                 
+                  var row = "<tr>";
+                  row+='<td class="id_group">'+item.id_groupe+'</td>';
+                  row+="<td>"+item.nom_groupe+"</td>";
+                  row+="</td>";
+    
+                $("#tbodyEG").append(row);
+              }
+       }
+     });
+
+    }
+});
+
+
+    },
+    error: function (data) { alert("Server Error"); }
+});
+
+
+
+
+
+
+
+
+
 
     });

@@ -295,7 +295,7 @@
       <div class="locataires-table mt-5 mb-5">
         <div class="table-responsive">
 
-          <table class="table display" id="reservationsDatatable">
+          <table class="table display" id="eleDatatable">
             <caption>Liste des Eleves</caption>
             <thead class="table-dark">
               <th scope="col">#Id_Eleve</th>

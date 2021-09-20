@@ -71,12 +71,31 @@ class GroupeModel {
         }
     }
 
-    public function getGroups() {       
+
+    public function getGroups() {  
         $stmt = $this->conn->prepare("SELECT * from groupe WHERE archive_state = 0 ");
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         echo json_encode($result);
+    }
+
+   
+    public function  FindGroupsByEleves() { 
+        $json = file_get_contents('php://input');
+        $data = json_decode($json, true);
+        if(isset($data["code_eleve"])){
+        $stmt = $this->conn->prepare("SELECT * from groupe,groupe_eleve WHERE (groupe.id_groupe = groupe_eleve.id_groupe) AND (groupe_eleve.id_eleve = ? )  ");
+        $stmt->execute([$data["code_eleve"]]);
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode($result);
+    }else{
+        echo(json_encode(http_response_code(401)));
+        die();
+    }
+
         
     }
+
+
 
 }

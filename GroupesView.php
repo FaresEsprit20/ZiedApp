@@ -266,6 +266,96 @@
 
 <!-- End Products -->
 
+
+<!-- Start Groupes -->
+
+<section class="geView" id="geView">
+  <div class="container-fluid">
+    <div class="special-heading">Elèves</div>
+      <p>Trouver les élèves d'un groupe</p>
+  <div class="row">
+  <div class="col col-sm col-lg-2">
+  </div>
+    <div class="col-12 col-sm-12 col-lg-8">
+
+      
+      <div class="products-table mt-5 mb-5">
+        <div class="table-reservations">
+
+  
+
+        <form class="row g-3" id="editeleve">
+       
+
+  <div class="col-md-8">
+  <label for="eleve_id" class="form-label">Elèves</label>
+    <select id="eleve_id" class="form-select" required>
+      <option selected  value="nil">Sélectionner un éleve...</option>
+    </select>
+    <div id="ie" style="visibility:hidden">
+      
+    </div>
+  </div>
+
+  <div class="col-12">
+    <button type="submit" class="btn btn-dark">Trouver les Groupes</button>
+  </div>
+
+</form>
+
+
+      
+        </div>
+
+    </div>
+  </div>
+  <div class="col col-sm col-lg-2">
+  </div>
+  </div>
+ 
+</section>
+
+<!-- End Groupes -->
+
+
+<!-- Start Products -->
+
+<section class="GroupesTable" id="GroupeTable">
+  <div class="container-fluid">
+    <div class="special-heading">Eleve Groupes</div>
+      <p>Voir la liste des groupes de l'éleve</p>
+  <div class="row">
+  <div class="col col-sm col-lg-2">
+  </div>
+    <div class="col-12 col-sm-12 col-lg-8">
+
+      
+      <div class="locataires-table mt-5 mb-5">
+        <div class="table-responsive">
+
+          <table class="table display" id="egDatatable">
+            <caption>Liste des Groupes</caption>
+            <thead class="table-dark">
+              <th scope="col">#Id_Groupe</th>
+              <th scope="col">#Nom_Groupe</th>
+            </thead>
+            <tbody id="tbodyEG">
+              
+            </tbody>
+          </table>
+      
+        </div>
+
+    </div>
+  </div>
+  <div class="col col-sm col-lg-2">
+  </div>
+  </div>
+ 
+</section>
+
+<!-- End Products -->
+
 </main>
 <footer>
     <div class="bg-light">
