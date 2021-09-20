@@ -209,15 +209,14 @@ $(document).ready(function(){
               for(item of jsonData){
                  
                   var row = "<tr>";
-                  row+='<td class="id_groupese">'+item.code_eleve+'</td>';
-                  row+="<td>"+item.nom_eleve+" "+item.prenom_eleve+"</td>";
+                  row+='<td class="id_groupese">'+item.id_locataire+'</td>';
+                  row+="<td>"+item.nom_loc+" "+item.prenom_loc+"</td>";
                   row+='<td>'+item.totalSeances+'</td>';
                   row+='<td>'+item.totalToPay+' DT'+'</td>';
                   row+='<td>'+item.totalPaid+' DT'+'</td>';
                   row+='<td>'+item.difference+' DT'+'</td>';
                   row+="</td>";
-    
-                $("#tbodyGroupes").append(row);
+                $("#tbodyGroupesEns").append(row);
               }
                   
                   
