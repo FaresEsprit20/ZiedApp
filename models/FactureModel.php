@@ -165,4 +165,66 @@ class FactureModel {
     }
     }
 
+
+
+    public function FacturerLocataire() {
+        $json = file_get_contents('php://input');
+        $data = json_decode($json, true);
+        $result = 0;
+        if( isset($data["id_groupe"])  and isset($data["payement"]) and isset($data["id_loc"])   ){
+            $stmt2 = $this->conn->prepare("SELECT * from seance WHERE  id_groupe = ? and id_locataire = ? ");
+            $stmt2->execute([$data["id_groupe"],$data["id_loc"]]);
+            $result = $stmt2->fetchColumn();
+
+      if($result > 0){
+        $stmt3 = $this->conn->prepare("SELECT locataires.id_locataire,locataires.nom,locataires.prenom FROM seance,locataires WHERE (seance.id_groupe = ? ) AND (seance.id_locataire = locataires.id_locataire) AND (seance.id_locataire = ?) GROUP BY locataires.id_locataire");
+        $stmt3->execute([$data["id_groupe"],$data["id_loc"]]);
+        $eleves = $stmt3->fetchAll(PDO::FETCH_ASSOC);
+        echo(json_encode($eleves));
+        die();
+        $factures = array();
+        
+        foreach($eleves as $item){
+            //initialization
+            $totalSeances = 0;
+            $totalPaid = 0;
+            $totalToPay = 0;
+            $difference = 0;
+
+            $eleve = new EleveModelToJson($item["code_eleve"],$item["prenom_eleve"],$item["nom_eleve"],$item["classe"],$item["num_tel"]);
+            
+            //total number of seances
+            $stmt = $this->conn->prepare("SELECT COUNT(*) FROM seance_eleves,seance WHERE (seance.id_seance = seance_eleves.id_seance ) AND (seance_eleves.id_eleve = ?)  AND (seance.id_groupe = ? )");
+            $stmt->execute([$eleve->code_eleve,$data["id_groupe"]]);
+            $totalSeances = intVal($stmt->fetchColumn());
+            //total paid money
+            $stmt4 = $this->conn->prepare("SELECT SUM(payement) FROM seance_eleves,seance WHERE (id_eleve = ?) AND (seance_eleves.id_seance = seance.id_seance) AND (seance.id_groupe = ? ) ");
+            $stmt4->execute([$eleve->code_eleve,$data["id_groupe"]]);
+            $totalPaid = floatVal($stmt4->fetchColumn());
+             //total to pay money
+            $totalToPay = floatVal($data["payement"]) * $totalSeances;
+            //total difference
+            $difference = $totalToPay - $totalPaid;
+            
+            $object = new FactureModelToJson($data["id_groupe"],$item["code_eleve"],$item["prenom_eleve"],$item["nom_eleve"],$item["classe"],$item["num_tel"],$totalSeances,$totalPaid,$totalToPay,$difference);
+            array_push($factures,$object);
+        }
+        foreach($factures as $item){
+            $date = new DateTime();
+        $stmt5 = $this->conn->prepare("INSERT INTO facture(id_eleve, id_groupe,nbreseances,prixseances,montantpaye,topay) VALUES(?,?,?,?,?,?)");
+        $stmt5->execute([$item->code_eleve,$data["id_groupe"],$item->totalSeances,$item->totalToPay,$item->totalPaid,$item->difference]);
+    //echo(json_encode($item->code_eleve,$data["id_groupe"],$item["totalSeances"]));
+    }
+        echo json_encode($factures);
+        }else if($result == 0 ){
+            http_response_code(404);
+            die();
+            
+        }
+    }else {
+        http_response_code(401);
+        die();
+    }
+    }
+
 }

@@ -460,6 +460,119 @@
 
 
 
+<!-- section facturer ENseignant -->
+
+<!-- Start Groupes -->
+
+<section class="gView" id="gView">
+  <div class="container-fluid">
+    <div class="special-heading">Facture</div>
+      <p>Facturer un Enseignant</p>
+  <div class="row">
+  <div class="col col-sm col-lg-2">
+  </div>
+    <div class="col-12 col-sm-12 col-lg-8">
+      
+      <div class="products-table mt-5 mb-5">
+        <div class="table-reservations">
+
+        <form class="row g-3" id="facturerens">
+       
+   <div class="col-md-8">
+    <label for="eleve_idss" class="form-label">#Groupe_ID</label>
+    <input type="number" class="form-control" id="eleve_idss" required>
+    <div id="iess" style="visibility:hidden">
+  </div>
+  </div>
+
+  <div class="col-md-8">
+    <label for="ens_ids" class="form-label">#Enseignant_ID</label>
+    <input type="number" class="form-control" id="ens_ids" required>
+    <div id="ensids" style="visibility:hidden">
+  </div>
+  </div>
+
+  <div class="col-md-8">
+    <label for="payement_idss" class="form-label">Prix Unitaire de chaque séance</label>
+    <input type="number" class="form-control"  step="any" id="payement_idss" required>
+    <div id="ips" style="visibility:hidden">
+  </div>
+  </div>
+
+  <div class="col-12">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="reservCheckee" required>
+      <label class="form-check-label" for="reservCheckee">
+        Cochez moi
+      </label>
+    </div>
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-dark">Facturer Enseignant</button>
+  </div>
+
+</form>
+
+
+      
+        </div>
+
+    </div>
+  </div>
+  <div class="col col-sm col-lg-2">
+  </div>
+  </div>
+ 
+</section>
+
+<!-- End Groupes -->
+
+
+<!-- Start Products -->
+
+<section class="GroupesTable" id="GroupeTable">
+  <div class="container-fluid">
+    <div class="special-heading">Factures</div>
+      <p>Voir la facture enseignant de ce groupe</p>
+  <div class="row">
+  <div class="col col-sm col-lg-2">
+  </div>
+    <div class="col-12 col-sm-12 col-lg-8">
+
+      
+      <div class="locataires-table mt-5 mb-5">
+        <div class="table-responsive">
+
+          <table class="table display" id="reservationsDatatableens">
+            <caption>Facture Enseignant du groupe</caption>
+            <thead class="table-dark">
+              <th scope="col">#Id_Enseignant</th>
+              <th scope="col">#Nom_Prénom_Enseignant</th>
+              <th scope="col">#Nbre Séances</th>
+              <th scope="col">#Prix des séances</th>
+              <th scope="col">#Montant Payé</th>
+              <th scope="col">#Montant a Payer </th>
+            </thead>
+            <tbody id="tbodyGroupesEns">
+              
+            </tbody>
+          </table>
+      
+        </div>
+
+    </div>
+  </div>
+  <div class="col col-sm col-lg-2">
+  </div>
+  </div>
+ 
+</section>
+
+<!-- End Products -->
+
+
+
+
 </main>
 <footer>
     <div class="bg-light">

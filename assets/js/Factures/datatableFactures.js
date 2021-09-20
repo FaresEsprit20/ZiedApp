@@ -164,6 +164,72 @@ $(document).ready(function(){
           }
       });
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  //facturer etudiant
+
+            //create reservation
+    // this is the id of the form
+    $("#facturerens").submit(function(e) {
+    
+      e.preventDefault(); // avoid to execute the actual submit of the form.
+      
+      var form = $(this);
+      var isValid = true;
+      
+      var inputEns = $("#ens_ids").val();
+      var inputGroupe = $("#eleve_idss").val();
+      var inputPayement = $("#payement_idss").val();
+      
+      
+      if(isValid == true){
+      
+      let object = {
+        id_loc: inputEns,
+        id_groupe: inputGroupe,
+        payement: inputPayement
+      };
+      console.log("object" +JSON.stringify(object));
+      $.ajax({
+             type: "POST",
+             url: "http://localhost/Zied/server/Api/Factures/FacturerLocataire.php",
+             data: JSON.stringify(object),
+             dataType: 'json',
+             contentType: 'application/json',
+             success: function(data)
+             {
+                 console.log(data);
+                  // show response from the php script.
+                  var myModal = $("#reservmodalgrp");
+                  myModal.modal("show");
+                  var jsonData = data;
+              console.log("Factures data loaded ....");
+              console.log(jsonData);
+    
+              for(item of jsonData){
+                 
+                  var row = "<tr>";
+                  row+='<td class="id_groupese">'+item.code_eleve+'</td>';
+                  row+="<td>"+item.nom_eleve+" "+item.prenom_eleve+"</td>";
+                  row+='<td>'+item.totalSeances+'</td>';
+                  row+='<td>'+item.totalToPay+' DT'+'</td>';
+                  row+='<td>'+item.totalPaid+' DT'+'</td>';
+                  row+='<td>'+item.difference+' DT'+'</td>';
+                  row+="</td>";
+    
+                $("#tbodyGroupes").append(row);
+              }
+                  
+                  
+             },
+             error: function (data) {
+              var myModals = $("#reservmodalerrgrp");
+              myModals.modal("show");
+              }
+           });
+      
+          }
+      });
 
 
 
