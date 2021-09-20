@@ -70,6 +70,32 @@ class FactureModel {
     }
 
 
+
+    public function PayerSeanceLocataire() {
+        $json = file_get_contents('php://input');
+        $data = json_decode($json, true);
+        $result = 0;
+        if( isset($data["id_seance"])  and isset($data["id_loc"]) and isset($data["payement"]) and isset($data["id_groupe"])   ){
+            $stmt2 = $this->conn->prepare("SELECT * from seance_locataires WHERE  id_seance= ? AND  id_loc = ? AND id_groupe = ?");
+            $stmt2->execute([$data["id_seance"],$data["id_loc"],$data["id_groupe"]]);
+            $result = $stmt2->fetchColumn();
+
+      if($result > 0){
+        $stmt = $this->conn->prepare("UPDATE seance_locataires SET payement = ? WHERE  id_seance= ? AND  id_loc = ? ");
+        $stmt->execute([$data["payement"],$data["id_seance"],$data["id_loc"]]);
+        echo json_encode(http_response_code(200));
+        }else {
+            http_response_code(404);
+            die();
+            
+        }
+    }else if($result == 0 ){
+        http_response_code(401);
+        die();
+    }
+    }
+
+
     public function getFactures() {       
         $stmt = $this->conn->prepare("SELECT * from groupe WHERE archive_state = 0 ");
         $stmt->execute();

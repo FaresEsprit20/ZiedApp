@@ -48,6 +48,8 @@ class SeancesModel {
             $stmt3 = $this->conn->prepare("INSERT INTO seance_eleves VALUES(?,?,?,?,?) ");
             $stmt3->execute([0,$lastInsertedId,$item["id_eleve"],0,0 ]);
         }
+        $stmt4 = $this->conn->prepare("INSERT INTO seance_locataires VALUES(?,?,?,?,?) ");
+            $stmt4->execute([0,$lastInsertedId,$data["id_groupe"],$data["id_locataire"],0 ]);
         echo json_encode(http_response_code(201));
         }else{
             http_response_code(401);

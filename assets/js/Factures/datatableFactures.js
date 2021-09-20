@@ -50,6 +50,57 @@ $(document).ready(function(){
         });
 
 
+//create reservation
+    // this is the id of the form
+    $("#creategroupenss").submit(function(e) {
+    
+      e.preventDefault(); // avoid to execute the actual submit of the form.
+      
+      var form = $(this);
+      var isValid = true;
+      var inputSeance = $("#id_seanceens").val();
+      var inputEleve = $("#eleve_ids").val();
+      var inputGroupe = $("#groupe_id").val();
+      var inputPayement = $("#payement_idens").val();
+      
+      
+      if(isValid == true){
+      
+      let object = {
+        id_seance: inputSeance,
+        id_groupe: inputGroupe,
+        id_loc: inputEleve,
+        payement: inputPayement
+      };
+      console.log("object" +JSON.stringify(object));
+      $.ajax({
+             type: "POST",
+             url: "http://localhost/Zied/server/Api/Factures/PayerSeanceLocataire.php",
+             data: JSON.stringify(object),
+             dataType: 'json',
+             contentType: 'application/json',
+             success: function(data)
+             {
+                 console.log(data);
+                  // show response from the php script.
+                  var myModal = $("#reservmodalens");
+                  myModal.modal("show");
+                  document.getElementById("creategroupenss").reset();
+                  
+                  setTimeout(function(){ location.replace("index.php"); }, 6000);
+             },
+             error: function (data) {
+              var myModals = $("#reservmodalerrens");
+              myModals.modal("show");
+              }
+           });
+      
+          }
+      });
+
+
+
+
         //facturer etudiant
 
             //create reservation
