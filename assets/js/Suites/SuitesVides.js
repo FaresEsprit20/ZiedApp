@@ -13,6 +13,8 @@ var isValid = false;
 var inputJour = $("#inputJour").val();
 var inputMois = $("#inputMois").val();
 var inputAndeb = $("#inputAndeb").val();
+var inputHeuredeb = $("#hour_id").val();
+var inputHeureFin = $("#hour_ids").val();
 var inputJourFin = $("#inputJourFin").val();
 var inputMoisFin = $("#inputMoisFin").val();
 var inputAnFin = $("#inputAnFin").val();
@@ -156,61 +158,17 @@ $("#iaf").html("Champ valide");
 
 
 
-if((inputJour > inputJourFin) && (inputMois == inputMoisFin) && (inputAndeb == inputAnFin)){
 
-if(inputJour == inputJourFin){
-    console.log("equal days");
-}else {
-    console.log("not equal days");
-}
-if(inputAndeb == inputAnFin){
-    console.log("equal years");
-}else {
-    console.log("not equal years");
-}
-return false;
-}
 
-if((inputMois > inputMoisFin)  && (inputAndeb == inputAnFin)){
 
-$("#imf").css("visibility","visible");
-isValid = false;
-$("#inputMoisFin").removeClass("is-valid");
-$("#inputMoisFin").addClass("is-invalid");
-console.log(isValid);
-$("#imf").removeClass("valid-feedback");
-$("#imf").addClass("invalid-feedback");
-$("#imf").html("Le mois de début doit etre inférieure ou égal au mois de fin");
-return false;
-}
 
-if(inputMois > inputMoisFin){
 
-    $("#imf").css("visibility","visible");
-    isValid = false;
-    $("#inputMoisFin").removeClass("is-valid");
-    $("#inputMoisFin").addClass("is-invalid");
-    console.log(isValid);
-    $("#imf").removeClass("valid-feedback");
-    $("#imf").addClass("invalid-feedback");
-    $("#imf").html("Le mois de début doit etre inférieure ou égal au mois de fin");
-    return false;
-    }
+var date1 = inputAndeb+"-"+inputMois
++"-"+inputJour+" "+inputHeuredeb;
+var date2 = inputAnFin+"-"+inputMoisFin
++"-"+inputJourFin+" "+inputHeureFin;
 
-if((inputJour > inputJourFin) && (inputMois == inputMoisFin)  && (inputAndeb == inputAnFin)){
-
-$("#ijf").css("visibility","visible");
-isValid = false;
-$("#inputJourFin").removeClass("is-valid");
-$("#inputJourFin").addClass("is-invalid");
-console.log(isValid);
-$("#ijf").removeClass("valid-feedback");
-$("#ijf").addClass("invalid-feedback");
-$("#ijf").html("Le jour de début doit etre inférieure ou égal au jour de fin");
-return false;
-}
-
-if(inputAndeb > inputAnFin){
+if(date1 > date2){
 $("#iaf").css("visibility","visible");
 isValid = false;
 $("#inputAnFin").removeClass("is-valid");
@@ -219,15 +177,15 @@ console.log(inputAndeb);
 console.log(isValid);
 $("#iaf").removeClass("valid-feedback");
 $("#iaf").addClass("invalid-feedback");
-$("#iaf").html("L'an de début doit etre égale ou inférieure a l'an de fin");
+$("#iaf").html("La date de début doit etre  inférieure a la date de fin");
 return false;
 }
 
 if(isValid == true){
 
 let object = {
-datedeb: $("#inputAndeb").val()+"-"+$("#inputMois").val()+"-"+$("#inputJour").val(),
-datefin: $("#inputAnFin").val()+"-"+$("#inputMoisFin").val()+"-"+$("#inputJourFin").val(),
+datedeb: date1,
+datefin:date2,
 };
 console.log("object" +JSON.stringify(object));
 $.ajax({

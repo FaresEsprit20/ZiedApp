@@ -198,7 +198,7 @@
     </div>
   </div>
   <div class="col-md-8">
-    <label for="group_name" class="form-label">Nom Groupe</label>
+    <label for="group_name" class="form-label">Nom Location</label>
     <input type="text" class="form-control" id="group_name">
     <div id="iss" style="visibility:hidden">
   </div>

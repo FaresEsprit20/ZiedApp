@@ -88,6 +88,9 @@ $(document).ready(function(){
                     var option = new Option(item.nom_eleve + " "+item.prenom_eleve,item.code_eleve);
                   $("#eleve_ide").append(option);
                 }
+               /* $('#eleveide').on('change', function() {
+                    alert( this.value );
+                  });*/
 
 
             }

@@ -71,8 +71,8 @@ class EleveModel {
         }
      
         if( isset($data["prenom_eleve"]) and isset($data["nom_eleve"]) and isset($data["classe"]) and isset($data["num_tel"]) ){
-        $stmt = $this->conn->prepare("UPDATE eleves SET prenom_eleve=?,nom_eleve=?,classe=?,num_tel=?");
-        $stmt->execute([$data["prenom_eleve"],$data["nom_eleve"],$data["classe"],$data["num_tel"]]);
+        $stmt = $this->conn->prepare("UPDATE eleves SET prenom_eleve=?,nom_eleve=?,classe=?,num_tel=? WHERE code_eleve = ?");
+        $stmt->execute([$data["prenom_eleve"],$data["nom_eleve"],$data["classe"],$data["num_tel"],$data["code_eleve"]]);
       
         $stmt2 = $this->conn->prepare("DELETE from groupe_eleve WHERE id_eleve = ? ");
         $stmt2->execute([$data["code_eleve"]]);

@@ -245,7 +245,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-       Votre Enseignat(locataire) Séance a été payée avec Succés!
+       Votre Enseignant(locataire) Séance a été payée avec Succés!
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -373,14 +373,15 @@
 
   
 
-        <form class="row g-3" id="facturergroup">
+        <form class="row g-3" id="facturergroupv">
        
-   <div class="col-md-8">
-    <label for="eleve_ids" class="form-label">#Groupe_ID</label>
-    <input type="number" class="form-control" id="eleve_ids" required>
-    <div id="ies" style="visibility:hidden">
+        <div class="col-md-8">
+    <label for="ev_id" class="form-label">#ID_Groupe</label>
+    <input type="number" class="form-control" id="ev_id" required>
+    <div id="ipsvvv" style="visibility:hidden">
   </div>
   </div>
+
 
   <div class="col-md-8">
     <label for="payement_ids" class="form-label">Prix Unitaire de chaque séance</label>

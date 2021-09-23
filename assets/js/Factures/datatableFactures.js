@@ -105,21 +105,21 @@ $(document).ready(function(){
 
             //create reservation
     // this is the id of the form
-    $("#facturergroup").submit(function(e) {
+    $("#facturergroupv").submit(function(e) {
     
       e.preventDefault(); // avoid to execute the actual submit of the form.
       
       var form = $(this);
       var isValid = true;
       
-      var inputEleve = $("#eleve_ids").val();
+      var inputGroupe = $("#ev_id").val();
       var inputPayement = $("#payement_ids").val();
       
       
       if(isValid == true){
       
       let object = {
-        id_groupe: inputEleve,
+        id_groupe: inputGroupe,
         payement: inputPayement
       };
       console.log("object" +JSON.stringify(object));

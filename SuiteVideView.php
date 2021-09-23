@@ -184,6 +184,13 @@
       
     </div>
   </div>
+  <div class="col-md-8">
+  <label for="hour_id" class="form-label">Heure</label>
+    <input type="time" id="hour_id" class="form-control" required>
+    <div id="ih" style="visibility:hidden">
+      
+    </div>
+  </div>
 
   <!-- Partie Fin de Réservation -->
   
@@ -261,6 +268,13 @@
     </div>
   </div>
 
+  <div class="col-md-8">
+  <label for="hour_ids" class="form-label">Heure Fin</label>
+    <input type="time" id="hour_ids" class="form-control" required>
+    <div id="ih" style="visibility:hidden">
+      
+    </div>
+  </div>
 <!-- Fin Partie Fin de Réservation -->
   
   <div class="col-12">
