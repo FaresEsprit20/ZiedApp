@@ -1,0 +1,44 @@
+package tn.esprit.spring;
+import org.junit.Test;
+
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import tn.esprit.spring.entities.Departement;
+import tn.esprit.spring.entities.Entreprise;
+import tn.esprit.spring.services.IEmployeService;
+import tn.esprit.spring.services.IEntrepriseService;
+
+import java.util.List;
+
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class TimesheetApplicationTests {
+ @Autowired
+ IEntrepriseService entreservices ;
+ @Autowired
+ IEmployeService empservices ;
+	
+	 private static final Logger L = LogManager.getLogger(TimesheetApplicationTests.class);
+	@Test
+	void contextLoads() {
+		Entreprise e = new Entreprise("test","test");
+		entreservices.ajouterEntreprise(e);
+		Departement d = new Departement("BNA");
+		entreservices.ajouterDepartement(d);
+		
+		entreservices.affecterDepartementAEntreprise(1, 1);
+		List<String> lnoms = entreservices.getAllDepartementsNamesByEntreprise(1);
+		for (String nom:lnoms) {
+			L.info(nom);
+		}
+		L.info("test");
+		
+		
+	}
+
+}
